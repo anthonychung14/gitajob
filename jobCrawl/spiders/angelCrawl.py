@@ -11,6 +11,7 @@ from selenium import webdriver
 
 import requests
 import re, time, os
+from lxml import etree
 
 #Creates the item.
 from jobCrawl.items import GitJobItem
@@ -51,50 +52,59 @@ class angelCrawler(InitSpider):
 
     return self.initialized()      
   
-  def parse(self, response):        
+  def parse(self, response):            
     # add in logic to customize the search terms
 
-
-
-    # for i in range(1,20): 
-    #   self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-    #   time.sleep(4)
+    for i in range(1,20): 
+      self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+      time.sleep(4)
 
     print("=========== PARSE FUNCTION =============")
     elem = self.driver.find_element_by_class_name('startup-container')
     soup = BeautifulSoup(elem.get_attribute('innerHTML'), 'lxml')
-    listing = soup.findAll('div', attrs={'class': 'job_listings'})    
+    company = soup.findAll('div', attrs={'class': 'browse_startups_table_row'})        
+    print(len(company), "================== AM I GETTING IT ALL =============")
     
-    for row in listing:      
+    for row in company:      
       item = GitJobItem()        
-      item['company_link'] = row.find('a', attrs={'class': 'website-link'}).text.encode('utf-8')
-      item['tagline'] = row.find('div', attrs={'class': 'tagline'}).text.encode('utf-8')
-      
-      skills =  row.find('div', attrs={'class': 'details-row jobs'}).findAll('div', attrs={'class': 'content'})
-      
-      item['url'] = response.url
-      item['desc'] = row.find('div', attrs={'class': 'description'}).text.encode('utf-8')    
+      item['company'] = row.find('a', attrs={'class': 'startup-link'}).text
+      item['company_link'] = row.find('a', attrs={'class': 'website-link'}).text      
+      item['last_active'] = row.find('div', attrs={'class': 'footer-bar'}).find('div',attrs={'class': 'active'}).text
+      tagline = row.find('div', attrs={'class': 'tagline'}).text
+      if tagline is not None:
+        item['tagline'] = tagline      
+      item['desc'] = row.find('div', attrs={'class': 'details-row product'}).find('div', attrs={'class': 'description'}).text
     
-      jobs = row.findAll('div', attrs={'class': 'details-row jobs'})
-      print(jobs, "============== jobs")            
-      for item in jobs:
-        listJobs = item.findAll('div', attrs={'class': 'listing-row'})
-        print(listJobs, "============== listJobs")
-        
-        for job in listJobs:
-          job_post = job.find('a')
-          print(job_post, "==================JOB FIND")        
-          request = scrapy.Request(job_post['href'], callback=self.parse_item)
-          request.meta['item'] = item
-          yield request      
+      jobs = row.find('div', attrs={'class': 'details-row jobs'}).find('div' , attrs={'class': 'content'})      
+
+      for div in jobs.findAll('div', attrs={'class': 'listing-row'}):                
+        posting = div.find('div', attrs={'class': 'title'}).find('a')
+        link = posting['href']
+        item['url'] = link
+        request = scrapy.Request(link, callback=self.parse_item)
+        request.meta['item'] = item
+
+        yield request      
       
 
   def parse_item(self, response):    
+    print("+=================== PARSE BEGIN JOBS POST =============")
+    #On the job posting page now
     soup = BeautifulSoup(response.body, 'lxml')
     item = response.meta['item']
-    item['salary'] = soup.find('div', attrs={'class': 's-vgBottom2'}).text.encode('utf-8')
     item['job_title'] = soup.find('h1', attrs={'class': 'u-colorGray3'}).text
     item['location'] = soup.find('div', attrs={'class': 'high-concept'}).text
+
+    for div in soup.findAll('div', attrs={'class': 's-vgBottom0_5 u-colorGray9'}):
+        if div.text == "Compensation":
+          for sibling in div.find_next_siblings():
+            if "$" in sibling.text:
+              item['salary'] = sibling.text
+
+        if div.text == "Skills":
+          for i, sibling in enumerate(div.find_next_siblings()):
+            if i == 0:
+              item['skills'] = sibling.text
 
     #tag parsing    
     tags = []
@@ -103,7 +113,8 @@ class angelCrawler(InitSpider):
     for anchor in data.findAll('a'):
       tags.append(anchor.text)
     item['tag_data'] = tags
-    
+
+    print("+=================== PARSE DONE =============")
     #selenium will click through this to the apply now button, found at
     # soup.find('div', attrs={'class': 'buttons js-apply'})
     yield item

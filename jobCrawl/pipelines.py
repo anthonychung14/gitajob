@@ -15,15 +15,9 @@ class MongoDBPipeline(object):
     
     def process_item(self, item, spider):      
       print("============ MONGO PROCESS =================")
-      for data in item:
-          if not data:              
-              raise DropItem("Missing {0}!".format(data))    
-      
+      print(item)
       self.collection.update(
-        {
-          'job_title': item['job_title'], 
-          'company_link': item['company_link']
-        }, dict(item), upsert=True) 
+        {'job_title': item['job_title'], 'company_link': item['company_link']}, dict(item), upsert=True) 
       log.msg("posting added to MongoDB database!",
         level=log.DEBUG, spider=spider)
       
@@ -31,5 +25,9 @@ class MongoDBPipeline(object):
 
 class GitJobPipeline(object):
     def process_item(self, item, spider):        
-        print("DO YOU NEED THIS PIPELINE BROH")
-        return item
+        search = ['engineer', 'developer']
+        if any(term in item['job_title'].lower() for term in search):
+          print("THERE ARE ENGINEERS AND DEVELOPERS")
+          return item
+        else:
+          raise DropItem("-----------NOT AN ENGINEER BROH----------", item)
