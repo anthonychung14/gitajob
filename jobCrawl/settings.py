@@ -10,14 +10,15 @@ DOWNLOADER_MIDDLEWARE = ['scrapy.contrib.downloadermiddleware.httpauth.HttpAuthM
 MONGODB_SERVER = "localhost"
 MONGODB_PORT = 27017
 MONGODB_DB = "gitjob"
-MONGODB_COLLECTION = "jobs"
+MONGODB_COLLECTION = "postings"
 
 ITEM_PIPELINES = {
    # 'scrapy.contrib.pipeline.images.ImagesPipeline': 100,
    'jobCrawl.pipelines.GitJobPipeline': 200,
+   'jobCrawl.pipelines.MongoDBPipeline': 300
    # 'crawler.pipelines.IngredientPipeline': 300,
    # 'crawler.pipelines.RecipeNutritionPipeline': 400,   
-   # 'scrapyelasticsearch.scrapyelasticsearch.ElasticSearchPipeline': 1000
+   'scrapyelasticsearch.scrapyelasticsearch.ElasticSearchPipeline': 1000
 }
 
 # ELASTICSEARCH_SERVER = 'localhost' 

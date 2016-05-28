@@ -85,11 +85,12 @@ class angelCrawler(InitSpider):
   def parseTable(self, response):    
     soup = BeautifulSoup(response.body, 'lxml')
     item = response.meta['item']
-    item['job_title'] =
-    item['location'] = 
+    item['job_title'] = soup.find('h1', attrs={'class': 'u-colorGray3'}).text
+    item['location'] = soup.find('div', attrs={'class': 'high-concept'}).text
     
+    #selenium will click through this to the apply now button, found at
+    # soup.find('div', attrs={'class': 'buttons js-apply'})
     
-
     yield item
     
 
