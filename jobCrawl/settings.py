@@ -3,7 +3,9 @@ BOT_NAME = 'jobCrawl'
 SPIDER_MODULES = ['jobCrawl.spiders']
 NEWSPIDER_MODULE = 'jobCrawl.spiders'
 
-ITEM_PIPELINES = ['jobCrawl.pipelines.MongoDBPipeline', ]
+ITEM_PIPELINES = ['jobCrawl.pipelines.MongoDBPipeline']
+DOWNLOADER_MIDDLEWARE = ['scrapy.contrib.downloadermiddleware.httpauth.HttpAuthMiddleware']
+
 
 MONGODB_SERVER = "localhost"
 MONGODB_PORT = 27017
@@ -12,10 +14,9 @@ MONGODB_COLLECTION = "jobs"
 
 ITEM_PIPELINES = {
    # 'scrapy.contrib.pipeline.images.ImagesPipeline': 100,
-   # 'crawler.pipelines.RecipePipeline': 200,
+   'jobCrawl.pipelines.GitJobPipeline': 200,
    # 'crawler.pipelines.IngredientPipeline': 300,
-   # 'crawler.pipelines.RecipeNutritionPipeline': 400,
-   # 'crawler.pipelines.ElasticReducer': 500,
+   # 'crawler.pipelines.RecipeNutritionPipeline': 400,   
    # 'scrapyelasticsearch.scrapyelasticsearch.ElasticSearchPipeline': 1000
 }
 
@@ -29,7 +30,7 @@ ITEM_PIPELINES = {
 # DOWNLOAD_DELAY=3
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'gitajob (+http://www.yourdomain.com)'
+USER_AGENT = 'gitajob (+http://www.github.com/anthonychung14)'
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS=32
