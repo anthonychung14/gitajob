@@ -16,11 +16,11 @@ import re, time, os
 from jobCrawl.items import GitJobItem
 
 
-class angelCrawler(InitSpider):  
-  name = 'angelCrawler'
+class stackCrawl(InitSpider):  
+  name = 'stackCrawl'
   
-  allowed_domains = ['angel.co']  
-  login_page = 'https://angel.co/users/login'
+  allowed_domains = ['stackoverflow.com']  
+  login_page = 'https://careers.stackoverflow.com/users/login'
   start_urls = ['https://angel.co/jobs']
   http_user = "anthonychung14@gmail.com"
   http_pass = "bankai69"
@@ -52,13 +52,13 @@ class angelCrawler(InitSpider):
     return self.initialized()      
   
   def parse(self, response):        
-    # add in logic to customize the search terms
+    time.sleep(5)
 
 
 
-    # for i in range(1,20): 
-    #   self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-    #   time.sleep(4)
+    for i in range(1,20): 
+      self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+      time.sleep(4)
 
     print("=========== PARSE FUNCTION =============")
     elem = self.driver.find_element_by_class_name('startup-container')
@@ -69,21 +69,15 @@ class angelCrawler(InitSpider):
       item = GitJobItem()        
       item['company_link'] = row.find('a', attrs={'class': 'website-link'}).text.encode('utf-8')
       item['tagline'] = row.find('div', attrs={'class': 'tagline'}).text.encode('utf-8')
-      
       skills =  row.find('div', attrs={'class': 'details-row jobs'}).findAll('div', attrs={'class': 'content'})
-      
       item['url'] = response.url
       item['desc'] = row.find('div', attrs={'class': 'description'}).text.encode('utf-8')    
     
-      jobs = row.findAll('div', attrs={'class': 'details-row jobs'})
-      print(jobs, "============== jobs")            
+      jobs = row.findAll('div', attrs={'class': 'details-row jobs'})            
       for item in jobs:
         listJobs = item.findAll('div', attrs={'class': 'listing-row'})
-        print(listJobs, "============== listJobs")
-        
         for job in listJobs:
-          job_post = job.find('a')
-          print(job_post, "==================JOB FIND")        
+          job_post = job.find('a')        
           request = scrapy.Request(job_post['href'], callback=self.parse_item)
           request.meta['item'] = item
           yield request      

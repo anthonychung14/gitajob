@@ -1,3 +1,5 @@
+import logging
+
 BOT_NAME = 'jobCrawl'
 
 SPIDER_MODULES = ['jobCrawl.spiders']
@@ -13,20 +15,17 @@ MONGODB_DB = "gitjob"
 MONGODB_COLLECTION = "postings"
 
 ITEM_PIPELINES = {
-   # 'scrapy.contrib.pipeline.images.ImagesPipeline': 100,
+   # 'scrapy.contrib.pipeline.images.ImagesPipeline': 100,   
    'jobCrawl.pipelines.GitJobPipeline': 200,
-   'jobCrawl.pipelines.MongoDBPipeline': 300
-   # 'crawler.pipelines.IngredientPipeline': 300,
-   # 'crawler.pipelines.RecipeNutritionPipeline': 400,   
-   'scrapyelasticsearch.scrapyelasticsearch.ElasticSearchPipeline': 1000
+   'jobCrawl.pipelines.MongoDBPipeline': 300,
+   'scrapyelasticsearch.scrapyelasticsearch.ElasticSearchPipeline': 500,
 }
 
-# ELASTICSEARCH_SERVER = 'localhost' 
-# ELASTICSEARCH_PORT = 9200 
-# ELASTICSEARCH_INDEX = 'recipes'
-# ELASTICSEARCH_TYPE = 'snacks'
-# ELASTICSEARCH_UNIQ_KEY = ''
-# ELASTICSEARCH_LOG_LEVEL= logging.DEBUG
+ELASTICSEARCH_SERVERS = 'localhost:9200' 
+ELASTICSEARCH_INDEX = 'postings'
+ELASTICSEARCH_TYPE = 'angelist'
+ELASTICSEARCH_UNIQ_KEY = 'url'
+ELASTICSEARCH_LOG_LEVEL= logging.DEBUG
 
 # DOWNLOAD_DELAY=3
 
@@ -39,7 +38,7 @@ USER_AGENT = 'gitajob (+http://www.github.com/anthonychung14)'
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY=3
+DOWNLOAD_DELAY=3
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN=16
 #CONCURRENT_REQUESTS_PER_IP=16
