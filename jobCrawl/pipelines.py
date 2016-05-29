@@ -16,8 +16,10 @@ class MongoDBPipeline(object):
     def process_item(self, item, spider):      
       print("============ MONGO PROCESS =================")
       print(item)
+      
       self.collection.update(
-        {'job_title': item['job_title'], 'company_link': item['company_link']}, dict(item), upsert=True) 
+        {'job_title': item['job_title'], 'company': item['company']}, dict(item), upsert=True) 
+      
       log.msg("posting added to MongoDB database!",
         level=log.DEBUG, spider=spider)
       

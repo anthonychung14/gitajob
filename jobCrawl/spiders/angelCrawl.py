@@ -55,7 +55,7 @@ class angelCrawler(InitSpider):
   def parse(self, response):            
     # add in logic to customize the search terms
 
-    for i in range(1,20): 
+    for i in range(1,40): 
       self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
       time.sleep(4)
 
@@ -63,17 +63,25 @@ class angelCrawler(InitSpider):
     elem = self.driver.find_element_by_class_name('startup-container')
     soup = BeautifulSoup(elem.get_attribute('innerHTML'), 'lxml')
     company = soup.findAll('div', attrs={'class': 'browse_startups_table_row'})        
-    print(len(company), "================== AM I GETTING IT ALL =============")
     
     for row in company:      
       item = GitJobItem()        
       item['company'] = row.find('a', attrs={'class': 'startup-link'}).text
       item['company_link'] = row.find('a', attrs={'class': 'website-link'}).text      
-      item['last_active'] = row.find('div', attrs={'class': 'footer-bar'}).find('div',attrs={'class': 'active'}).text
+      item['last_active'] = row.find('div', attrs={'class': 'footer-bar'}).find('div',attrs={'class': 'active'}).text            
+
       tagline = row.find('div', attrs={'class': 'tagline'}).text
       if tagline is not None:
         item['tagline'] = tagline      
-      item['desc'] = row.find('div', attrs={'class': 'details-row product'}).find('div', attrs={'class': 'description'}).text
+      
+      try:
+        item['desc'] = row.find('div', attrs={'class': 'details-row product'}).find('div', attrs={'class': 'description'}).text
+      except:
+        pass
+      try:
+        item['desc'] = row.find('div', attrs={'class': 'details-row why_us'}).find('div', attrs={'class': 'content'}).text
+      except:
+        pass 
     
       jobs = row.find('div', attrs={'class': 'details-row jobs'}).find('div' , attrs={'class': 'content'})      
 
@@ -84,7 +92,9 @@ class angelCrawler(InitSpider):
         request = scrapy.Request(link, callback=self.parse_item)
         request.meta['item'] = item
 
-        yield request      
+        yield request
+    print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ COMPLETE ^^^^^^^^^^^^^^^^^^^^^^^^^")
+    return
       
 
   def parse_item(self, response):    
@@ -108,11 +118,20 @@ class angelCrawler(InitSpider):
 
     #tag parsing    
     tags = []
-    metaData = soup.find('div', attrs={'class': ' djls28 fpt69 _a _jm'})    
-    data = metaData.find('div', attrs={'class': 'vital s-vgBottom1'})
-    for anchor in data.findAll('a'):
-      tags.append(anchor.text)
-    item['tag_data'] = tags
+    try:
+      metaData = soup.find('div', attrs={'class': ' djls28 fpt69 _a _jm'})    
+      data = metaData.find('div', attrs={'class': 'vital s-vgBottom1'})
+      for anchor in data.findAll('a'):
+        tags.append(anchor.text)
+      item['tag_data'] = tags
+    except:
+      pass
+
+    try:
+      item['longDescript'] = soup.find('div', attrs={'class': 'job-description'}).text
+    except:
+      pass
+
 
     print("+=================== PARSE DONE =============")
     #selenium will click through this to the apply now button, found at
