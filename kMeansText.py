@@ -45,21 +45,21 @@ def cluster_texts(texts, clusters=3):
     return clustering
   
 if __name__ == "__main__":    
-    tags = []
-    docs = collection.find({}, {'tag_data': 1, '_id': 0})
-    idocs = collection.find({}, {'tag_data': 1, '_id': 1})
-    
-    ids = [doc['_id'] for doc in idocs]    
+    docs = collection.find({}, {'tag_data': 1, '_id': 1})
+    tagsArray = []
 
-    for item in docs:        
+    for item in docs:
         try:
-            tags.append(item['tag_data'])
+            for term in item['tag_data']:
+                tagsArray.append({'id': item['_id'], 'tag': term})
         except:
             pass
+
+    tags = [tag['tag'] for tag in tagsArray]
+    ids = [tag['id'] for tag in tagsArray]
     
-    newArray = [item for sublist in tags for item in sublist]
-    clusters = cluster_texts(newArray, 7)
-    # print(dict(clusters))
+    clusters = cluster_texts(tags, 7)
+    print(clusters)
 
 
 
