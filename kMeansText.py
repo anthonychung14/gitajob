@@ -45,7 +45,7 @@ def cluster_texts(texts, clusters=3):
     return clustering
   
 if __name__ == "__main__":    
-    docs = collection.find({}, {'tag_data': 1, '_id': 1})
+    docs = collection.find({}, {'tag_data': 1, '_id': 1, 'company': 1})
     tagsArray = []
 
     for item in docs:
@@ -56,10 +56,34 @@ if __name__ == "__main__":
             pass
 
     tags = [tag['tag'] for tag in tagsArray]
+    tagHash = {i: x for i, x in enumerate(tags)}    
+
     ids = [tag['id'] for tag in tagsArray]
     
-    clusters = cluster_texts(tags, 7)
-    print(clusters)
+    clusters = cluster_texts(data['tags'], 10)
+    
+    clusteredSet = {}
+    clusteredTerms = {}    
+    
+    for cluster in clusters:
+        clusteredTerms[cluster] = []
+        for index in clusters[cluster]:
+            clusteredTerms[cluster].append(tagHash[index])
+
+    for grouping in clusteredTerms:
+        clusteredSet[grouping] = set(clusteredTerms[grouping])
+
+    clusteredCompanies = {}
+
+    print(clusteredTerms)
 
 
 
+    # cursor = collection.aggregate([{
+    #     '$group': {
+    #         '_id': None,
+    #         'ids': {'$push': '$_id'},
+    #         'tags': {'$push': '$tag_data'}
+    #     }
+    # }])
+    # data = cursor.next()    
