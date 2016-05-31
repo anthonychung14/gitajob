@@ -11,6 +11,9 @@
     composes: subheading from '../common/typography';
     background: black;
     color: #fff;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
   }
 
   .list {

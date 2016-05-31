@@ -14,30 +14,65 @@ import { incrementCount, decrementCount, destroyTopic, fetchUserJobs} from 'acti
 const cx = classNames.bind(styles)
 
 class Dashboard extends Component {
-
-  static need = [
-    fetchUserJobs
-  ]
-
   render() {
     const { applications, incrementCount, decrementCount } = this.props; 
-    const queueAdd = applications.map((element) => {
-      if(element.status.queue) {
-        return element.company
+    let queueAdd = applications.reduce((prev, curr) => {
+      console.log(prev, curr, "PREV AND CURR")
+      if (curr.status.queue) {
+        prev.push(curr.company)        
       }
-    })
+      return prev
+    }, [])
+        
+    const queueApply = applications.reduce((prev, curr) => {
+      if(curr.status.apply) {
+        prev.push(curr.company)
+      } 
+      return prev
+    }, [])
+
+    const queuePhone = applications.reduce((prev, curr) => {
+      if(curr.status.phone) {
+        prev.push(curr.company)
+      } 
+      return prev
+    }, [])
+
+    const queueChallenge = applications.reduce((prev, curr) => {
+      if(curr.status.on_site) {
+        prev.push(curr.company)
+      } 
+      return prev
+    }, [])
 
     return (
       <div className={cx('dashboard')}>
-        This will be where you can see the postings that you selected        
         <MainSection
-          header={"Chosen Jobs"}
+          header={"Queued"}
           jobs={queueAdd}
+          appplications={applications}
           onIncrement={incrementCount}
           onDecrement={decrementCount}
-          onDestroy={destroyTopic} />
+          onDestroy={destroyTopic}/>
+        <MainSection
+          header={"Apply"}
+          jobs={queueApply}
+          onIncrement={incrementCount}
+          onDecrement={decrementCount}
+          onDestroy={destroyTopic}/>
+        <MainSection
+          header={"Phone"}
+          jobs={queuePhone}
+          onIncrement={incrementCount}
+          onDecrement={decrementCount}
+          onDestroy={destroyTopic}/>
+        <MainSection
+          header={"Code"}
+          jobs={queueChallenge}
+          onIncrement={incrementCount}
+          onDecrement={decrementCount}
+          onDestroy={destroyTopic}/>
       </div>
-
     )
   }
 };

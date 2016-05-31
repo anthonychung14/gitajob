@@ -16,7 +16,6 @@ from lxml import etree
 #Creates the item.
 from jobCrawl.items import GitJobItem
 
-
 class angelCrawler(InitSpider):  
   name = 'angelCrawler'
   
@@ -49,6 +48,7 @@ class angelCrawler(InitSpider):
     
     time.sleep(2)
     time.sleep(2)
+    print("<<<<<<<<<<<<< FINISH REQUEST >>>>>>>>>>>>>>>")
 
     return self.initialized()      
   
@@ -79,7 +79,7 @@ class angelCrawler(InitSpider):
       except:
         pass
       try:
-        item['desc'] = row.find('div', attrs={'class': 'details-row why_us'}).find('div', attrs={'class': 'content'}).text
+        item['why'] = row.find('div', attrs={'class': 'details-row why_us'}).find('div', attrs={'class': 'content'}).text
       except:
         pass 
     

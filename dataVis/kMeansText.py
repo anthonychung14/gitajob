@@ -8,7 +8,7 @@ from sklearn.cluster import KMeans
 from sklearn.feature_extraction.text import TfidfVectorizer
 from pprint import pprint
 
-from pymongo import MongoClient
+1from pymongo import MongoClient
 client = MongoClient()
 db = client.gitjob
 collection = db.postings
@@ -51,31 +51,54 @@ if __name__ == "__main__":
     for item in docs:
         try:
             for term in item['tag_data']:
-                tagsArray.append({'id': item['_id'], 'tag': term})
+                tagsArray.append({'id': item['_id'], 'tag': term, 'company': item['company']})
         except:
             pass
 
+    
+    #for every tag, attach the company owner to it. use index as unique identifier
+    companyTags = [{'tag': tag['tag'], 'company': tag['company']} for tag in tagsArray]
+    companyHash = {i: x['company'] for i, x in enumerate(companyTags)}
+    
+    #ties every index to a specific tag
     tags = [tag['tag'] for tag in tagsArray]
-    tagHash = {i: x for i, x in enumerate(tags)}    
+    tagHash = {i: x for i, x in enumerate(tags)}
 
     ids = [tag['id'] for tag in tagsArray]
+    num_clusters = 7
     
-    clusters = cluster_texts(data['tags'], 10)
+    clusters = cluster_texts(tags, num_clusters)
     
     clusteredSet = {}
-    clusteredTerms = {}    
+    clusteredTerms = {}
+    clusteredCompanies = {}    
+    clusteredCompanySet = {}
     
     for cluster in clusters:
         clusteredTerms[cluster] = []
+        clusteredCompanies[cluster] = []
         for index in clusters[cluster]:
             clusteredTerms[cluster].append(tagHash[index])
+            clusteredCompanies[cluster].append(companyHash[index])
 
     for grouping in clusteredTerms:
-        clusteredSet[grouping] = set(clusteredTerms[grouping])
+        clusteredSet[grouping] = set(clusteredTerms[grouping])        
 
-    clusteredCompanies = {}
+    for group in clusteredCompanies:
+        clusteredCompanySet[group] = set(clusteredCompanies[grouping])
 
-    print(clusteredTerms)
+    # Now that sorting is complete, let's figure out the top words nearest to cluster centroid
+
+    # order_centroids = km.cluster_centers_.argsort()[:,::-1]
+
+    # for i in range(num_clusters):
+    #     print("Cluster %d words:" % i, end='')
+
+    #     for ind in order_centroids[i, :6]:
+    #         print(' %s' % vocab_frame.ix[terms[ind].split(' ')].values.tolist()[0][0].encode('utf-8', 'ignore'), end=',')
+
+
+    print(clusteredCompanies)
 
 
 
