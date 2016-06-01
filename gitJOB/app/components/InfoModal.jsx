@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Modal, OverlayTrigger, Button, Popover, Tooltip } from 'react-bootstrap'
 
-export class InfoModal extends Component {
+export default class InfoModal extends Component {
   constructor(props) {
     super(props)
   }
