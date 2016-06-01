@@ -7,7 +7,7 @@ export class InfoModal extends Component {
   }
   
   render() {
-    const { modalState, openModal, activeJob } = this.props    
+    const { modalState, openModal } = this.props    
     let popover = <Popover title="popover">very popover. such engagement</Popover>;
     let tooltip = <Tooltip>wow.</Tooltip>;
     if (!modalState) { return ( <span/>) }    
@@ -18,8 +18,8 @@ export class InfoModal extends Component {
           </Modal.Header>
           <Modal.Body>
             <h4>Text in a modal</h4>
-            {activeJob.desc}
-            
+            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+
             <h4>Popover in a modal</h4>
             <p>there is a <OverlayTrigger overlay={popover}><a href="#">popover</a></OverlayTrigger> here</p>
 

@@ -1,5 +1,5 @@
 from __future__ import print_function
-import os  # for os.path.basename
+import os  
 
 import matplotlib.pyplot as plt
 import matplotlib as mpl
@@ -21,15 +21,12 @@ from scipy.cluster.hierarchy import ward, dendrogram
 from sklearn.externals import joblib
 from nltk.stem.snowball import SnowballStemmer
 
-#open client connection with mongo
+# open client connection with mongo
 from pymongo import MongoClient
 client = MongoClient()
 db = client.gitjob
 collection = db.postings
 companyProfiles = db.company
-
-#create new list of companies
-
 
 #data setup
 
@@ -53,7 +50,6 @@ textDocs = collection.aggregate([
   }
 ])
 
-
 companyArray = []
 textDoc = []
 
@@ -61,13 +57,11 @@ for item in companyProfiles.find({}):
   companyArray.append(item['company'])  
   textDoc.append(item['desc'])
 
-
 #use NLTK
 stopwords = set(nltk.corpus.stopwords.words('english'))
+
+#attempting to add words to stopwords set
 stopwords |= {b"'s"}
-
-print(b"'s" in stopwords)
-
 stemmer = SnowballStemmer("english")
 
 def tokenize_and_stem(text):
@@ -93,7 +87,8 @@ def tokenize_only(text):
             filtered_tokens.append(token)
     return filtered_tokens
 
-#use extend so it's a big flat list of vocab
+
+#Flatten list
 totalvocab_stemmed = []
 totalvocab_tokenized = []
 for i in textDoc:
@@ -117,7 +112,7 @@ tfidf_matrix = tfidf_vectorizer.fit_transform(textDoc) #fit the vectorizer to co
 terms = tfidf_vectorizer.get_feature_names()
 dist = 1 - cosine_similarity(tfidf_matrix)
 
-#hierarchical doc clustering
+#TODO: hierarchical doc clustering
 
 linkage_matrix = ward(dist)
 
@@ -133,10 +128,7 @@ plt.tick_params(\
 
 plt.tight_layout() #show plot with tight layout
 
-plt.show()
-
-
-
+# plt.show() UNCOMMENT TO DRAW HIERARCHY
 
 
 #K-means clustering and pickle
@@ -147,6 +139,8 @@ km.fit(tfidf_matrix)
 clusters = km.labels_.tolist()
 
 joblib.dump(km, 'story_cluster.pkl')
+
+# Doesn't work. Can't seem to load path
 
 # km = joblib.load('/Users/ACKeepingitCoo/Desktop/gitjob/dataVis/story_cluster.pk1')
 # clusters = km.labels_.toList()
@@ -165,7 +159,7 @@ order_centroids = km.cluster_centers_.argsort()[:, ::-1]
 for i in range(num_clusters):
     print("Cluster %d words:" % i, end='')
     
-    for ind in order_centroids[i, :7]: #replace 6 with n words per cluster
+    for ind in order_centroids[i, :6]: #replace 6 with n words per cluster
         print(' %s' % vocab_frame.ix[terms[ind].split(' ')].values.tolist()[0][0].encode('utf-8', 'ignore'), end=',')
     print() #add whitespace
     print() #add whitespace
@@ -201,9 +195,6 @@ cluster_names = {0: '1',
                  2: '3', 
                  3: '4', 
                  4: '5'}
-
-#some ipython magic to show the matplotlib plots inline
-# %matplotlib inline 
 
 #create data frame that has the result of the MDS plus the cluster numbers and titles
 df = pd.DataFrame(dict(x=xs, y=ys, label=clusters, company=companyArray)) 

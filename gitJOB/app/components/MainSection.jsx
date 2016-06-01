@@ -4,19 +4,23 @@ import classNames from 'classnames/bind';
 import styles from 'css/components/main-section';
 
 // Modal Components 
-import Icon from 'react-geomicons'
-import { Button } from 'react-bootstrap'
-
 const cx = classNames.bind(styles);
 
-const MainSection = ({onIncrement, onDecrement, onDestroy, jobs, header, dateAdded, applications}) => {  
+const MainSection = (
+  {onIncrement, onDecrement, 
+    openModal, modalState, onDestroy, 
+    jobs, header, applications}) => {  
+
   const jobItems = jobs.map((job, key) => {    
     return (
       <JobItem index={key}
         job={job}
         id={job._id}        
         key={key}
-        text={job.job_title}
+        applications={applications}        
+        modalState={modalState}
+        openModal={openModal}
+        text={job.job_title}        
         onIncrement={onIncrement}
         onDecrement={onDecrement}
         onDestroy={onDestroy}/>);
@@ -24,7 +28,7 @@ const MainSection = ({onIncrement, onDecrement, onDestroy, jobs, header, dateAdd
   return (
     <div className={cx('main-section')}>
       <h3 className={cx('header')}><span>{header}</span><span>{jobs.length}</span></h3>
-      <ul className={cx('list')}>{jobItems}</ul>      
+      <ul className={cx('list')}>{jobItems}</ul>            
     </div>
   );
 };

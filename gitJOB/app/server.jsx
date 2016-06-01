@@ -61,7 +61,6 @@ export default function render(req, res) {
     } else if (redirect) {
       res.redirect(302, redirect.pathname + redirect.search);
     } else if (props) {
-      //how do we get all prop components?
       // This method waits for all render component
       // promises to resolve before returning to browser
       preRenderMiddleware(
@@ -84,6 +83,7 @@ export default function render(req, res) {
               ${header.title.toString()}
               ${header.meta.toString()}
               ${header.link.toString()}
+              <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
             </head>
             <body>
               <div id="app">${componentHTML}</div>
@@ -94,7 +94,7 @@ export default function render(req, res) {
         `);
       })
       .catch((err) => {
-        res.status(500).json("err");
+        res.status(500).json(err);
       });
     } else {
       res.sendStatus(404);

@@ -75,12 +75,6 @@ export function increment(index) {
   return { type: types.INCREMENT_COUNT, index };
 }
 
-
-
-
-
-
-
 export function decrement(index) {
   return { type: types.DECREMENT_COUNT, index };
 }

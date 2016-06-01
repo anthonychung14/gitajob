@@ -6,7 +6,7 @@ SPIDER_MODULES = ['jobCrawl.spiders']
 NEWSPIDER_MODULE = 'jobCrawl.spiders'
 
 ITEM_PIPELINES = ['jobCrawl.pipelines.MongoDBPipeline']
-DOWNLOADER_MIDDLEWARE = ['scrapy.contrib.downloadermiddleware.httpauth.HttpAuthMiddleware']
+DOWNLOADER_MIDDLEWARE = ['scrapy.contrib.downloadermiddleware.httpauth.HttpAuthMiddleware', 'scrapy.downloadermiddlewares.retry.RetryMiddleware']
 
 
 MONGODB_SERVER = "localhost"

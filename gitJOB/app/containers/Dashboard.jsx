@@ -1,10 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
+
 import MainSection from 'components/MainSection';
+import { InfoModal } from 'components/InfoModal'
+
 import styles from 'css/components/dashboard';
 
 import { incrementCount, decrementCount, destroyTopic, fetchUserJobs} from 'actions/topics'
+import { openModal } from 'actions/modals'
 
 /*
  * Note: This is kept as a container-level component,
@@ -15,9 +19,8 @@ const cx = classNames.bind(styles)
 
 class Dashboard extends Component {
   render() {
-    const { applications, incrementCount, decrementCount } = this.props; 
+    const { applications, incrementCount, decrementCount, openModal, modalState, activeJob } = this.props; 
     let queueAdd = applications.reduce((prev, curr) => {
-      console.log(prev, curr, "PREV AND CURR")
       if (curr.status.queue) {
         prev.push(curr.company)        
       }
@@ -50,10 +53,12 @@ class Dashboard extends Component {
         <MainSection
           header={"Queued"}
           jobs={queueAdd}
-          appplications={applications}
+          applications={applications}
           onIncrement={incrementCount}
           onDecrement={decrementCount}
-          onDestroy={destroyTopic}/>
+          onDestroy={destroyTopic}
+          openModal={openModal}
+          modalState={modalState}/>
         <MainSection
           header={"Apply"}
           jobs={queueApply}
@@ -71,7 +76,11 @@ class Dashboard extends Component {
           jobs={queueChallenge}
           onIncrement={incrementCount}
           onDecrement={decrementCount}
-          onDestroy={destroyTopic}/>
+          onDestroy={destroyTopic}/>        
+        <InfoModal 
+          modalState={modalState}
+          openModal={openModal}
+          activeJob={activeJob}/>
       </div>
     )
   }
@@ -86,10 +95,11 @@ Dashboard.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    applications: state.userjobs.jobapps
+    applications: state.userjobs.jobapps,
+    modalState: state.modal.modalState,
+    activeJob: state.modal.activeJob
   }
 }
 
 export default connect(mapStateToProps, {
-  incrementCount, decrementCount, destroyTopic
-})(Dashboard);
+  incrementCount, decrementCount, destroyTopic, openModal})(Dashboard);
