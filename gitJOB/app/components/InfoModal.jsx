@@ -14,10 +14,10 @@ export class InfoModal extends Component {
     return (
         <Modal show={modalState} onHide={openModal}>
           <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            <Modal.Title>{activeJob.company}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>Text in a modal</h4>
+            <h4>Product</h4>
             {activeJob.desc}
             
             <h4>Popover in a modal</h4>

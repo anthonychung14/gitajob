@@ -2,7 +2,7 @@ import {
   TYPING,
   CREATE_TOPIC_REQUEST,
   CREATE_TOPIC_FAILURE,
-  DESTROY_TOPIC,
+  DESTROY_POSTING,
   INCREMENT_COUNT,
   DECREMENT_COUNT,
   GET_TOPICS_REQUEST,
@@ -42,9 +42,14 @@ export default function topic(state = {
         topics: [...state.topics.filter((tp) => tp.id !== action.id)],
         newTopic: state.newTopic
       };
-    case DESTROY_TOPIC:
+    case DESTROY_POSTING:
+      const postings = state.jobs
+      const updatedJobs = postings.filter((element) => {
+        return element._id !== action.id
+      })
+                  
       return {
-        jobs: [...state.jobs.filter((tp, i) => i !== action.index)],        
+        jobs: updatedJobs        
       };
     case INCREMENT_COUNT:
       return {

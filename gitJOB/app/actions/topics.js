@@ -27,62 +27,56 @@ export function fetchTopics() {
   };
 }
 
-export function makeJobRequest(method, id, data, api = '/topic') {
+export function makeJobRequest(method, id, data, api = '/posting') {
   return request[method](api + (id ? ('/' + id) : ''), data);
 }
 
-export function fetchUserJobs() {
-  return {
-    type: types.GET_USER_JOBS,
-    promise: makeUserJobRequest('get')
-  };
-}
-
-export function makeUserJobRequest(method, id, data, api = '/jobapps') {
+export function makeNopeRequest(method, id, data, api = '/posting/nope') {
   return request[method](api + (id ? ('/' + id) : ''), data);
 }
-
-
 
 //ADD TO QUEUE LOGIC
-export function incrementCount(id, job, index) {
+export function increment(index) {
+  return { type: types.INCREMENT_COUNT, index };
+}
+
+export function addToQueue(id, job, index) {
   return dispatch => {
-    dispatch(destroy(index));
-    
+    dispatch(destroy(id));
     //TODO: Make sure that you have some input to indicate interest
     //TODO: Server-side filtering as well
     let application = {
       user: "anthonychung14@gmail.com",
-      interest: 4,
+      interest: 1,
       status: {
         queue: true,
         queueDate: moment()
       },
       company: job
     }
+    return makeJobRequest('post', id, application);    
+  };
+}
 
-    return makeJobRequest('post', id, application);
-    // do something with the ajax response
-    // You can also dispatch here
-    // .then(response => {});
+export function destroy(id, job) {    
+  return { 
+    type: types.DESTROY_POSTING, id
   };
 }
 
 
 
-
-export function increment(index) {
-  return { type: types.INCREMENT_COUNT, index };
+export function destroyPosting(id, job) {    
+  return dispatch => {    
+    dispatch(destroy(id, job));
+    return makeNopeRequest('post', id, job);    
+  };
 }
 
 export function decrement(index) {
   return { type: types.DECREMENT_COUNT, index };
 }
 
-
-export function destroy(index) {
-  return { type: types.DESTROY_TOPIC, index };
-}
 
 
 export function typing(text) {
@@ -182,17 +176,6 @@ export function decrementCount(id, index) {
         isFull: false,
         isIncrement: false
       });
-    // do something with the ajax response
-    // You can also dispatch here
-    // E.g.
-    // .then(response => {});
-  };
-}
-
-export function destroyTopic(id, index) {
-  return dispatch => {
-    dispatch(destroy(index));
-    return makeJobRequest('delete', id);
     // do something with the ajax response
     // You can also dispatch here
     // E.g.

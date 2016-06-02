@@ -4,10 +4,10 @@ import User from '../models/user';
 import Application from '../models/apps'
 
 /**
- * List
+ * GET ALL
  */
 export function all(req, res) {
-  Application.find({user: "anthonychung14@gmail.com"}).exec((err, data) => {
+  Application.find({user: "anthonychung14@gmail.com", 'status.nope': {'$ne': true}}).exec((err, data) => {
     if (err) {
       console.log('Error in first query');
       return res.status(500).send('Something went wrong getting the data');
@@ -17,15 +17,17 @@ export function all(req, res) {
 }
 
 /**
- * Add a Topic
+ * INCREMENT INTEREST
  */
-export function add(req, res) {
-  Application.create(req.body, (err) => {
+export function moveUp(req, res) {
+  console.log("moved up")
+  Application.update({'company._id': req.params.id}, {'$inc': {'interest': 1}}, (err) => {
     if (err) {
       console.log(err);
       return res.status(400).send(err);
     }
 
+    //Depending on interest level, assign a new status as well
     return res.status(200).send('OK');
   });
 }
@@ -78,7 +80,7 @@ export function remove(req, res) {
 
 export default {
   all,
-  add,
+  moveUp,
   update,
   remove
 };

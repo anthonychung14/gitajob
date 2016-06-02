@@ -45,17 +45,18 @@ export default (app) => {
   }
   // job routes
   if (jobsController) {
-    app.get('/topic', jobsController.all);
-    app.post('/topic/:id', jobsController.addQueue);
-    // app.put('/topic/:id', jobsController.addNope);
-    app.delete('/topic/:id', jobsController.remove);
+    app.get('/posting', jobsController.all);
+    app.post('/posting/:id', jobsController.addQueue);
+    app.post('/posting/nope/:id', jobsController.addNope);
+    app.delete('/posting/:id', jobsController.remove);
   } else {
     console.warn(unsupportedMessage('job routes'));
   }
 
   //application routes
   if (appController) {
-    app.get('/jobapps', appController.all);
+    app.get('/apps', appController.all)
+    app.post('/apps/:id', appController.moveUp);
   } else {
     console.warn(unsupportedMessage('app routes'))
   }

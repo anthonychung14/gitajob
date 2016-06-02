@@ -2,17 +2,29 @@ import _ from 'lodash';
 import Job from '../models/jobs';
 import User from '../models/user'
 import Application from '../models/apps'
+import moment from 'moment'
 
 /**
  * List
  */
 export function all(req, res) {
-  Job.find({}).limit(30).exec((err, data) => {
+  Job.find({}).exec((err, data) => {
     if (err) {
       console.log('Error in first query');
       return res.status(500).send('Something went wrong getting the data');
     }
-    return res.json(data);
+    
+    let appHash = {}    
+    Application.find({'user': 'anthonychung14@gmail.com'}).exec((err, apps) => {
+      apps.forEach((element) => {
+        console.log("element", element)
+        appHash[element.company._id] = element.company._id
+      })      
+      const result = data.filter((posting) => {
+        return !appHash[posting._id]
+      })            
+      return res.json(result.slice(0,30));
+    })    
   });
 }
 
@@ -25,7 +37,6 @@ export function addQueue(req, res) {
       console.log(err);
       return res.status(400).send(err);
     }
-    console.log(req.body.user, "+++++++++++")
     return res.status(200).send('OK');
   });
 }
@@ -34,31 +45,25 @@ export function addQueue(req, res) {
  * Update a topic
  */
 export function addNope(req, res) {
-  const query = { id: req.params.id };
-  const isIncrement = req.body.isIncrement;
-  const isFull = req.body.isFull;
-  const omitKeys = ['id', '_id', '_v', 'isIncrement', 'isFull'];
-  const data = _.omit(req.body, omitKeys);
-
-  if (isFull) {
-    Topic.findOneAndUpdate(query, data, (err) => {
-      if (err) {
-        console.log('Error on save!');
-        return res.status(500).send('We failed to save for some reason');
-      }
-
-      return res.status(200).send('Updated successfully');
-    });
-  } else {
-    Topic.findOneAndUpdate(query, { $inc: { count: isIncrement ? 1 : -1 } }, (err) => {
-      if (err) {
-        console.log('Error on save!');
-        return res.status(500).send('We failed to save for some reason');
-      }
-
-      return res.status(200).send('Updated successfully');
-    });
+  const query = { 'company._id' : req.params.id };
+  let job = req.body
+  job.status = {
+    queue: false,
+    offer: false,
+    phone: false,
+    apply: false,
+    nope: true,
+    nopeDate: moment()  
   }
+
+  Application.update(query, {'$set': {'status.nope': true}, '$set': {'user': 'anthonychung14@gmail.com'}}, {upsert: true}, (err) => {
+    if (err) {
+      console.log("done goofed bro")
+    }
+    
+    console.log('updated bro')
+    return res.status(200).send('Updated successfully');
+  })
 }
 
 /**

@@ -12,66 +12,43 @@ import { Button, Glyphicon } from 'react-bootstrap'
 export default class JobItem extends Component {
   constructor(props) {
     super(props);
-    this.onIncrement = this.onIncrement.bind(this);
-    this.onDestroyClick = this.onDestroyClick.bind(this);
-    this.openModal = this.openModal.bind(this)
-    this.insertDate = this.insertDate.bind(this)
+    this.increment = this.increment.bind(this);    
+    this.showData = this.showData.bind(this)
+    this.onDestroyClick = this.onDestroyClick.bind(this)
   }
 
-  onIncrement() {
+  increment() {
     const { id, index, job, onIncrement } = this.props;
     onIncrement(id, job, index);
   }
 
-  onDestroyClick() {
-    const { id, index, job, onDestroy, openModal } = this.props;
-    onDestroy(id, job, index);
+  onDestroyClick() {    
+    const { id, job, onDestroy } = this.props;    
+    onDestroy(id, job);
   }
 
-  openModal() {
+  showData() {
     const { id, index, job, openModal } = this.props;    
     openModal(job)
   }
 
-  insertDate() {
-    const id = this.props.id
-    const apps = this.props.applications
-    for (var key in apps) {
-      if(apps[key].status.queue) {
-        let date = new Date(apps[key].status.queueDate)
-        console.log(date.toTimeString())
-        return "Hey"
-      }
-    }
-    return "Date Missing"
-  }
-
   render() {
     return (
-      <li className={cx('topic-item')} key={this.props.id}>
-        <span>{this.insertDate()} </span>        
-        <span className={cx('topic')}>{this.props.text}</span>        
+      <li className={cx('topic-item')} key={this.props.id}>        
+        <span className={cx('topic')}>{this.props.text}</span>                
+        <button
+          onClick={this.onDestroyClick}           
+          className={cx('button', 'destroy')}>          
+          x</button>
+        <button
+          onClick={this.showData}           
+          className={cx('button', 'increment')}>          
+          i</button>
+        <button
+          onClick={this.increment}           
+          className={cx('button', 'increment')}>          
+          +</button>
         
-        <Button           
-          onClick={this.openModal} 
-          bsStyle="success"
-          className={cx('button', 'destroy')}>
-          <Glyphicon glyph="chevron-right" /> 
-        </Button>
-
-        <Button           
-          onClick={this.onDestroyClick} 
-          bsStyle="success"
-          className={cx('button', 'destroy')}>
-          <Glyphicon glyph="chevron-right" /> 
-        </Button>
-
-        <Button           
-          onClick={this.onIncrement} 
-          bsStyle="success"
-          className={cx('button', 'increment')}> 
-          <Glyphicon glyph="chevron-right" /> 
-        </Button>        
       </li>
     );
   }

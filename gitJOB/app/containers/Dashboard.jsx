@@ -7,7 +7,8 @@ import { InfoModal } from 'components/InfoModal'
 
 import styles from 'css/components/dashboard';
 
-import { incrementCount, decrementCount, destroyTopic, fetchUserJobs} from 'actions/topics'
+import { decrementCount, destroyPosting, fetchUserJobs} from 'actions/topics'
+import { moveAppUp } from 'actions/apps'
 import { openModal } from 'actions/modals'
 
 /*
@@ -19,30 +20,30 @@ const cx = classNames.bind(styles)
 
 class Dashboard extends Component {
   render() {
-    const { applications, incrementCount, decrementCount, openModal, modalState, activeJob } = this.props; 
+    const { applications, moveAppUp, decrementCount, destroyPosting, openModal, modalState, activeJob } = this.props; 
     let queueAdd = applications.reduce((prev, curr) => {
-      if (curr.status.queue) {
+      if (curr.interest === 1) {
         prev.push(curr.company)        
       }
       return prev
     }, [])
         
     const queueApply = applications.reduce((prev, curr) => {
-      if(curr.status.apply) {
+      if(curr.interest === 2) {
         prev.push(curr.company)
       } 
       return prev
     }, [])
 
     const queuePhone = applications.reduce((prev, curr) => {
-      if(curr.status.phone) {
+      if(curr.interest === 3) {
         prev.push(curr.company)
       } 
       return prev
     }, [])
 
     const queueChallenge = applications.reduce((prev, curr) => {
-      if(curr.status.on_site) {
+      if(curr.interest === 4) {
         prev.push(curr.company)
       } 
       return prev
@@ -54,29 +55,29 @@ class Dashboard extends Component {
           header={"Queued"}
           jobs={queueAdd}
           applications={applications}
-          onIncrement={incrementCount}
+          onIncrement={moveAppUp}
           onDecrement={decrementCount}
-          onDestroy={destroyTopic}
+          onDestroy={destroyPosting}
           openModal={openModal}
           modalState={modalState}/>
         <MainSection
           header={"Apply"}
           jobs={queueApply}
-          onIncrement={incrementCount}
+          onIncrement={moveAppUp}
           onDecrement={decrementCount}
-          onDestroy={destroyTopic}/>
+          onDestroy={destroyPosting}/>
         <MainSection
           header={"Phone"}
           jobs={queuePhone}
-          onIncrement={incrementCount}
+          onIncrement={moveAppUp}
           onDecrement={decrementCount}
-          onDestroy={destroyTopic}/>
+          onDestroy={destroyPosting}/>
         <MainSection
           header={"Code"}
           jobs={queueChallenge}
-          onIncrement={incrementCount}
+          onIncrement={moveAppUp}
           onDecrement={decrementCount}
-          onDestroy={destroyTopic}/>        
+          onDestroy={destroyPosting}/>        
         <InfoModal 
           modalState={modalState}
           openModal={openModal}
@@ -88,8 +89,8 @@ class Dashboard extends Component {
 
 Dashboard.propTypes = {
   applications: PropTypes.array.isRequired,
-  destroyTopic: PropTypes.func.isRequired,
-  incrementCount: PropTypes.func.isRequired,
+  destroyPosting: PropTypes.func.isRequired,
+  moveAppUp: PropTypes.func.isRequired,
   decrementCount: PropTypes.func.isRequired
 }
 
@@ -102,4 +103,4 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {
-  incrementCount, decrementCount, destroyTopic, openModal})(Dashboard);
+  moveAppUp, decrementCount, destroyPosting, openModal})(Dashboard);
