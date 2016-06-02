@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import user from 'reducers/user';
 import topic from 'reducers/topic';
-import userjobs from 'reducers/applications'
+import applications from 'reducers/applications'
 import message from 'reducers/message';
 import modal from 'reducers/modal';
 import { routerReducer as routing } from 'react-router-redux';
@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
   message,
   routing,
   modal,
-  userjobs
+  applications
 });
 
 export default rootReducer;

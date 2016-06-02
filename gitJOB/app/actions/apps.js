@@ -13,14 +13,35 @@ export function fetchUserJobs() {
   };
 }
 
-export function makeUserJobRequest(method, id, data, api = '/apps/') {
+export function makeUserJobRequest(method, id, data, api = '/apps') {
   return request[method](api + (id ? ('/' + id) : ''), data);
 }
 
-export function moveAppUp(id, job, applications) {  
+export function increment(id) {
+  return { type: types.INCREMENT_COUNT, id };
+}
+
+export function decrement(id) {
+  return { type: types.DECREMENT_COUNT, id };
+}
+
+export function moveAppDown(id, job) {
   return dispatch => {
-    // dispatch(increment(id))
-    return makeUserJobRequest('post', id, job);    
+    dispatch(decrement(id))
+    return makeUserJobRequest('put', id, job)
+    .then(res => {
+      return res
+    });    
+  }
+}
+
+export function moveAppUp(id, job) {  
+  return dispatch => {
+    dispatch(increment(id))
+    return makeUserJobRequest('post', id, job)
+    .then(res => {
+      return res
+    });    
   }  
 }
 

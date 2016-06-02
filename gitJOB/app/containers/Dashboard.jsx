@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 
 import MainSection from 'components/MainSection';
-import { InfoModal } from 'components/InfoModal'
+import InfoModal from 'components/InfoModal'
 
 import styles from 'css/components/dashboard';
 
-import { decrementCount, destroyPosting, fetchUserJobs} from 'actions/topics'
-import { moveAppUp } from 'actions/apps'
+import { decrementCount, destroyPosting} from 'actions/topics'
+import { moveAppUp, moveAppDown, fetchUserJobs } from 'actions/apps'
 import { openModal } from 'actions/modals'
 
 /*
@@ -19,8 +19,9 @@ import { openModal } from 'actions/modals'
 const cx = classNames.bind(styles)
 
 class Dashboard extends Component {
+  
   render() {
-    const { applications, moveAppUp, decrementCount, destroyPosting, openModal, modalState, activeJob } = this.props; 
+    const { applications, moveAppUp, decrementCount, destroyPosting, openModal, fetchUserJobs, modalState, activeJob } = this.props; 
     let queueAdd = applications.reduce((prev, curr) => {
       if (curr.interest === 1) {
         prev.push(curr.company)        
@@ -65,21 +66,25 @@ class Dashboard extends Component {
           jobs={queueApply}
           onIncrement={moveAppUp}
           onDecrement={decrementCount}
+          openModal={openModal}
           onDestroy={destroyPosting}/>
         <MainSection
           header={"Phone"}
           jobs={queuePhone}
           onIncrement={moveAppUp}
           onDecrement={decrementCount}
+          openModal={openModal}
           onDestroy={destroyPosting}/>
         <MainSection
           header={"Code"}
           jobs={queueChallenge}
           onIncrement={moveAppUp}
           onDecrement={decrementCount}
+          openModal={openModal}
           onDestroy={destroyPosting}/>        
         <InfoModal 
           modalState={modalState}
+          openModal={openModal}
           openModal={openModal}
           activeJob={activeJob}/>
       </div>
@@ -96,11 +101,11 @@ Dashboard.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    applications: state.userjobs.jobapps,
+    applications: state.applications.applications,
     modalState: state.modal.modalState,
     activeJob: state.modal.activeJob
   }
 }
 
 export default connect(mapStateToProps, {
-  moveAppUp, decrementCount, destroyPosting, openModal})(Dashboard);
+  moveAppUp, decrementCount, destroyPosting, openModal, fetchUserJobs})(Dashboard);

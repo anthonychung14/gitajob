@@ -1,22 +1,19 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
-import EntryBox from 'components/EntryBox';
 import MainSection from 'components/MainSection';
-import Scoreboard from 'components/Scoreboard';
-import { InfoModal } from 'components/InfoModal'
+import InfoModal from 'components/InfoModal'
 
 import { createTopic, typing, addToQueue,
   decrementCount, destroyPosting, fetchTopics } from 'actions/topics';
 import { fetchUserJobs } from 'actions/apps'
 import { openModal } from 'actions/modals'
 
-
 import styles from 'css/components/vote';
 
 const cx = classNames.bind(styles);
 
-class Vote extends Component {
+class Postings extends Component {
 
   //Data that needs to be called before rendering the component
   //This is used for server side rending via the fetchComponentDataBeforeRender() method
@@ -27,10 +24,7 @@ class Vote extends Component {
   render() {
     const {newTopic, jobs, typing, activeJob, createTopic, destroyPosting, addToQueue, decrementCount, openModal, modalState } = this.props;    
     return (
-      <div className={cx('vote')}>
-        <EntryBox topic={newTopic}
-          onEntryChange={typing}
-          onEntrySave={createTopic} />
+      <div className={cx('vote')}>        
         <MainSection 
           header={"New Postings"}
           jobs={jobs}
@@ -48,7 +42,7 @@ class Vote extends Component {
   }
 }
 
-Vote.propTypes = {
+Postings.propTypes = {
   jobs: PropTypes.array.isRequired,
   typing: PropTypes.func.isRequired,
   createTopic: PropTypes.func.isRequired,
@@ -71,4 +65,4 @@ function mapStateToProps(state) {
 
 // Read more about where to place `connect` here:
 // https://github.com/rackt/react-redux/issues/75#issuecomment-135436563
-export default connect(mapStateToProps, { createTopic, typing, addToQueue, decrementCount, openModal, destroyPosting })(Vote);
+export default connect(mapStateToProps, { createTopic, typing, addToQueue, decrementCount, openModal, destroyPosting })(Postings);

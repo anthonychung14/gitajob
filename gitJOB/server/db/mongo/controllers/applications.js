@@ -20,7 +20,6 @@ export function all(req, res) {
  * INCREMENT INTEREST
  */
 export function moveUp(req, res) {
-  console.log("moved up")
   Application.update({'company._id': req.params.id}, {'$inc': {'interest': 1}}, (err) => {
     if (err) {
       console.log(err);
@@ -31,6 +30,16 @@ export function moveUp(req, res) {
     return res.status(200).send('OK');
   });
 }
+
+/**
+ * DECREMENT INTEREST
+ */
+
+
+
+
+
+
 
 /**
  * Update a topic

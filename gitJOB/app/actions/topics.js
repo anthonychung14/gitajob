@@ -42,9 +42,7 @@ export function increment(index) {
 
 export function addToQueue(id, job, index) {
   return dispatch => {
-    dispatch(destroy(id));
-    //TODO: Make sure that you have some input to indicate interest
-    //TODO: Server-side filtering as well
+    dispatch(destroy(id));    
     let application = {
       user: "anthonychung14@gmail.com",
       interest: 1,
@@ -54,9 +52,18 @@ export function addToQueue(id, job, index) {
       },
       company: job
     }
-    return makeJobRequest('post', id, application);    
+    return makeJobRequest('post', id, application)
+    .then(response => dispatch(receiveQueue(response)));    
   };
 }
+
+export function receiveQueue(data) {
+    return {
+      type: types.GET_USER_JOBS_SUCCESS,
+      req: {data: data.data}
+    }
+}
+
 
 export function destroy(id, job) {    
   return { 
@@ -69,7 +76,10 @@ export function destroy(id, job) {
 export function destroyPosting(id, job) {    
   return dispatch => {    
     dispatch(destroy(id, job));
-    return makeNopeRequest('post', id, job);    
+    return makeNopeRequest('post', id, job)
+    .then(res => {
+      console.log(res, "res complete with destroy")
+    });    
   };
 }
 

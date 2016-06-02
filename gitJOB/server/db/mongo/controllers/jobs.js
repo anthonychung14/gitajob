@@ -17,7 +17,6 @@ export function all(req, res) {
     let appHash = {}    
     Application.find({'user': 'anthonychung14@gmail.com'}).exec((err, apps) => {
       apps.forEach((element) => {
-        console.log("element", element)
         appHash[element.company._id] = element.company._id
       })      
       const result = data.filter((posting) => {
@@ -37,7 +36,14 @@ export function addQueue(req, res) {
       console.log(err);
       return res.status(400).send(err);
     }
-    return res.status(200).send('OK');
+    
+    Application.find({}).exec((err, data) => {
+      if(err) {
+        return res.status(400).send(err)
+      }
+
+      return res.status(200).send(data);    
+    })    
   });
 }
 
@@ -60,8 +66,6 @@ export function addNope(req, res) {
     if (err) {
       console.log("done goofed bro")
     }
-    
-    console.log('updated bro')
     return res.status(200).send('Updated successfully');
   })
 }
