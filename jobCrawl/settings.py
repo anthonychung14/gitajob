@@ -30,7 +30,7 @@ ELASTICSEARCH_LOG_LEVEL= logging.DEBUG
 # DOWNLOAD_DELAY=3
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-USER_AGENT = 'gitajob (+http://www.github.com/anthonychung14)'
+USER_AGENT = 'appq (+http://www.github.com/anthonychung14/appq)'
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS=32
