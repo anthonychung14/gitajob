@@ -1,6 +1,6 @@
 {
   "name": "react-webpack-node",
-  "version": "1.7.12", 
+  "version": "1.7.12",
   "main": "index.js",
   "scripts": {
     "babel": "babel --presets es2015,stage-0 --ignore node_modules,public",
@@ -110,6 +110,7 @@
     "react-router-redux": "^4.0.0",
     "react-transform-hmr": "^1.0.4",
     "redux": "^3.3.1",
+    "redux-form": "^5.2.5",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.0.1",
     "rimraf": "^2.5.2",

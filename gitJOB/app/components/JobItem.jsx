@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
+import {Popover, OverlayTrigger} from 'react-bootstrap'
 import styles from 'css/components/topic-item';
 import moment from 'moment'
 
@@ -11,7 +12,7 @@ import { Button, Glyphicon } from 'react-bootstrap'
 
 export default class JobItem extends Component {
   constructor(props) {
-    super(props);
+    super(props);1
     this.increment = this.increment.bind(this);    
     this.showData = this.showData.bind(this)
     this.onDestroyClick = this.onDestroyClick.bind(this)
@@ -33,22 +34,22 @@ export default class JobItem extends Component {
   }
 
   render() {
+    let popover = <Popover title={this.props.job.location}>{this.props.job.tagline}</Popover>;    
     return (
       <li className={cx('topic-item')} key={this.props.id}>        
-        <span className={cx('topic')}>{this.props.text}</span>                
-        <button
-          onClick={this.onDestroyClick}           
-          className={cx('button', 'destroy')}>          
-          x</button>
-        <button
-          onClick={this.showData}           
-          className={cx('button', 'increment')}>          
-          i</button>
+        <OverlayTrigger overlay={popover}>
+          <a href='#' onClick={this.showData} className={cx('topic')}>
+            {this.props.text}
+          </a>          
+        </OverlayTrigger>                                
         <button
           onClick={this.increment}           
           className={cx('button', 'increment')}>          
           +</button>
-        
+        <button
+          onClick={this.onDestroyClick}           
+          className={cx('button', 'destroy')}>          
+          x</button>
       </li>
     );
   }

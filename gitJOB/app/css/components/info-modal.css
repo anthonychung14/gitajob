@@ -1,0 +1,13 @@
+@value global-radius from '../settings.css';
+
+.modal_header {
+  display: flex;  
+
+}
+
+.left_column {
+  display: flex;  
+
+}
+
+
