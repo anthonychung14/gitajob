@@ -20,9 +20,9 @@ polyfill();
  */
 
 //FETCH JOBS LOGIC
-export function fetchTopics() {
+export function fetchPostings() {
   return {
-    type: types.GET_TOPICS,
+    type: types.GET_POSTING,
     promise: makeJobRequest('get')
   };
 }
@@ -83,12 +83,6 @@ export function destroyPosting(id, job) {
   };
 }
 
-export function decrement(index) {
-  return { type: types.DECREMENT_COUNT, index };
-}
-
-
-
 export function typing(text) {
   return {
     type: types.TYPING,
@@ -123,11 +117,7 @@ export function createTopicFailure(data) {
   };
 }
 
-export function createTopicDuplicate() {
-  return {
-    type: types.CREATE_TOPIC_DUPLICATE
-  };
-}
+
 
 // This action creator returns a function,
 // which will get executed by Redux-Thunk middleware
@@ -176,19 +166,3 @@ export function createTopic(text) {
   };
 }
 
-
-
-
-export function decrementCount(id, index) {
-  return dispatch => {
-    dispatch(decrement(index));
-    return makeJobRequest('put', id, {
-        isFull: false,
-        isIncrement: false
-      });
-    // do something with the ajax response
-    // You can also dispatch here
-    // E.g.
-    // .then(response => {});
-  };
-}

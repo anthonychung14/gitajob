@@ -7,7 +7,7 @@ import InfoModal from 'components/InfoModal'
 
 import styles from 'css/components/dashboard';
 
-import { decrementCount, destroyPosting} from 'actions/topics'
+import { destroyPosting} from 'actions/posting'
 import { moveAppUp, moveAppDown, fetchUserJobs } from 'actions/apps'
 import { openModal, closeModal } from 'actions/modals'
 
@@ -22,7 +22,7 @@ class Dashboard extends Component {
   
   render() {
     const { 
-      applications, moveAppUp, decrementCount, 
+      applications, moveAppUp, 
       destroyPosting, openModal, closeModal, 
       fetchUserJobs, modalState, activeJob } = this.props; 
     
@@ -61,7 +61,6 @@ class Dashboard extends Component {
           jobs={queueAdd}
           applications={applications}
           onIncrement={moveAppUp}
-          onDecrement={decrementCount}
           onDestroy={destroyPosting}
           openModal={openModal}
           modalState={modalState}/>
@@ -69,21 +68,18 @@ class Dashboard extends Component {
           header={"Apply"}
           jobs={queueApply}
           onIncrement={moveAppUp}
-          onDecrement={decrementCount}
           openModal={openModal}
           onDestroy={destroyPosting}/>
         <MainSection
           header={"Phone"}
           jobs={queuePhone}
           onIncrement={moveAppUp}
-          onDecrement={decrementCount}
           openModal={openModal}
           onDestroy={destroyPosting}/>
         <MainSection
           header={"Code"}
           jobs={queueChallenge}
           onIncrement={moveAppUp}
-          onDecrement={decrementCount}
           openModal={openModal}
           onDestroy={destroyPosting}/>        
         <InfoModal 
@@ -100,7 +96,7 @@ Dashboard.propTypes = {
   applications: PropTypes.array.isRequired,
   destroyPosting: PropTypes.func.isRequired,
   moveAppUp: PropTypes.func.isRequired,
-  decrementCount: PropTypes.func.isRequired
+  closeModal: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
@@ -112,4 +108,4 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {
-  moveAppUp, decrementCount, destroyPosting, openModal, closeModal, fetchUserJobs})(Dashboard);
+  moveAppUp, destroyPosting, openModal, closeModal, fetchUserJobs})(Dashboard);

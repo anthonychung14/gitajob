@@ -34,7 +34,7 @@ export default class JobItem extends Component {
   }
 
   render() {
-    let popover = <Popover title={this.props.job.location}>{this.props.job.tagline}</Popover>;    
+    let popover = <Popover id={this.props.job._id} title={this.props.job.location}>{this.props.job.tagline}</Popover>;    
     return (
       <li className={cx('topic-item')} key={this.props.id}>        
         <OverlayTrigger overlay={popover}>
