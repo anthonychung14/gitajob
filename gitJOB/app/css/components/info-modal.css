@@ -1,8 +1,35 @@
 @value global-radius from '../settings.css';
 
-.modal_header {
+.modal-header {
   display: flex;  
 
+}
+
+.modal-screen {
+  width: 100%;  
+  max-width: 1000px;
+
+}
+
+.action-bar {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  margin: 10px 20px 10px 20px;
+  border-style: dashed;
+}
+
+.line-divider {
+    width: 95%;
+    font-size: 1px;
+    color: rgba(0, 0, 0, 0);
+    line-height: 1px;
+
+    background-color: grey;
+    margin-top: -6px;
+    margin-bottom: 10px;
 }
 
 .left_column {

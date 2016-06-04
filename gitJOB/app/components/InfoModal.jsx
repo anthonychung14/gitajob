@@ -6,34 +6,33 @@ import moment from 'moment'
 
 const cx = classNames.bind(styles);
 
-const InfoModal = ({modalState, openModal, activeJob}) => {
-  constructor(props) {
-    super(props)
-  }
-  
-  render() {    
+const InfoModal = ({modalState, openModal, closeModal, activeJob}) => {        
     if (!modalState) { return ( <span/>) }    
     
 
     return (
-        <Modal bsSize="large" show={modalState} onHide={openModal}>
-          <Modal.Header className={cx('modal_header')} bsClass={cx('modal_header')}>
+        <Modal dialogClassName={cx("modal-screen")} show={modalState} onHide={closeModal}>
+          <Modal.Header className={cx('modal-header')} bsClass={cx('modal_header')}>
           <div>
             <Modal.Title>              
             {activeJob.job_title} 
             </Modal.Title>            
-            <Modal.Title>{activeJob.location}</Modal.Title>
-            <Button onClick={openModal}>Close</Button>
-            <Button onClick={this.Add}>Add</Button>          
+            <div className={cx('action-bar')}>
+            <button className={cx('button')} onClick={openModal}>Close</button>
+            <button className={cx('button')}onClick={console.log("hi")}>Add</button>                      
+            </div>
           </div>
+
+          <hr/>
           
           <div>
           <Modal.Body>          
-            {activeJob.tagline}<br/>
+          {activeJob.location}<br/>
             {activeJob.salary}
           </Modal.Body>                      
           </div>
           </Modal.Header>
+          <Modal.Footer></Modal.Footer>
 
           
           <Modal.Body>
@@ -61,5 +60,8 @@ const InfoModal = ({modalState, openModal, activeJob}) => {
         </Modal>
     )
   }
-}
+
+export default InfoModal
+
+
 

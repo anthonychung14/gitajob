@@ -1,5 +1,5 @@
 import {
-  OPEN_MODAL
+  OPEN_MODAL, CLOSE_MODAL
 } from 'types';
 
 const activeJob = {
@@ -23,6 +23,11 @@ export default function modal(state = {
       return {
         modalState: !state.modalState,
         activeJob: action.job
+      }
+    case CLOSE_MODAL:
+      return {
+        modalState: false,
+        activeJob
       }
     default:
       return state

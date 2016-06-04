@@ -6,3 +6,9 @@ export function openModal(job) {
     job    
   }
 }
+
+export function closeModal() {
+  return {
+    type: types.CLOSE_MODAL
+  }
+}

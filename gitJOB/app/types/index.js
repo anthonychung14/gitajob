@@ -41,3 +41,4 @@ export const LOGOUT_ERROR_USER = 'LOGOUT_ERROR_USER';
 
 //MODALS
 export const OPEN_MODAL = "OPEN_MODAL"
+export const CLOSE_MODAL = "CLOSE_MODAL"

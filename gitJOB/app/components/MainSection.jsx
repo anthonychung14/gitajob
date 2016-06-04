@@ -8,7 +8,7 @@ const cx = classNames.bind(styles);
 
 const MainSection = (
   {onIncrement, onDecrement, 
-    openModal, modalState, onDestroy, 
+    openModal, closeModal, modalState, onDestroy, 
     jobs, header, applications}) => {  
 
   const jobItems = jobs.map((job, key) => {    
@@ -37,7 +37,9 @@ MainSection.propTypes = {
   jobs: PropTypes.array.isRequired,
   onIncrement: PropTypes.func.isRequired,
   onDecrement: PropTypes.func.isRequired,
-  onDestroy: PropTypes.func.isRequired
+  onDestroy: PropTypes.func.isRequired,
+  openModal:PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired1
 };
 
 export default MainSection;

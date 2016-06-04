@@ -9,7 +9,7 @@ import styles from 'css/components/dashboard';
 
 import { decrementCount, destroyPosting} from 'actions/topics'
 import { moveAppUp, moveAppDown, fetchUserJobs } from 'actions/apps'
-import { openModal } from 'actions/modals'
+import { openModal, closeModal } from 'actions/modals'
 
 /*
  * Note: This is kept as a container-level component,
@@ -21,7 +21,11 @@ const cx = classNames.bind(styles)
 class Dashboard extends Component {
   
   render() {
-    const { applications, moveAppUp, decrementCount, destroyPosting, openModal, fetchUserJobs, modalState, activeJob } = this.props; 
+    const { 
+      applications, moveAppUp, decrementCount, 
+      destroyPosting, openModal, closeModal, 
+      fetchUserJobs, modalState, activeJob } = this.props; 
+    
     let queueAdd = applications.reduce((prev, curr) => {
       if (curr.interest === 1) {
         prev.push(curr.company)        
@@ -85,7 +89,7 @@ class Dashboard extends Component {
         <InfoModal 
           modalState={modalState}
           openModal={openModal}
-          openModal={openModal}
+          closeModal={closeModal}
           activeJob={activeJob}/>
       </div>
     )
@@ -108,4 +112,4 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {
-  moveAppUp, decrementCount, destroyPosting, openModal, fetchUserJobs})(Dashboard);
+  moveAppUp, decrementCount, destroyPosting, openModal, closeModal, fetchUserJobs})(Dashboard);

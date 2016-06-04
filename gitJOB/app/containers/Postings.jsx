@@ -1,13 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
+
 import MainSection from 'components/MainSection';
 import InfoModal from 'components/InfoModal'
 
 import { createTopic, typing, addToQueue,
   decrementCount, destroyPosting, fetchTopics } from 'actions/topics';
 import { fetchUserJobs } from 'actions/apps'
-import { openModal } from 'actions/modals'
+import { openModal, closeModal } from 'actions/modals'
 
 import styles from 'css/components/vote';
 
@@ -22,20 +23,26 @@ class Postings extends Component {
   ]
 
   render() {
-    const {newTopic, jobs, typing, activeJob, createTopic, destroyPosting, addToQueue, decrementCount, openModal, modalState } = this.props;    
+    const {
+      newTopic, jobs, typing, activeJob, 
+      createTopic, destroyPosting, addToQueue, decrementCount, 
+      openModal, closeModal, modalState } = this.props;    
+    
     return (
       <div className={cx('vote')}>        
         <MainSection 
           header={"New Postings"}
           jobs={jobs}
           openModal={openModal}
+          closeModal={closeModal}
           onIncrement={addToQueue}
           onDecrement={decrementCount}
           applications={jobs}
           onDestroy={destroyPosting} />
-        <InfoModal     
+        <InfoModal 
           modalState={modalState}
           openModal={openModal}
+          closeModal={closeModal}
           activeJob={activeJob}/>
       </div>
     );
@@ -48,6 +55,7 @@ Postings.propTypes = {
   createTopic: PropTypes.func.isRequired,
   destroyPosting: PropTypes.func.isRequired,
   openModal: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
   addToQueue: PropTypes.func.isRequired,
   decrementCount: PropTypes.func.isRequired,
   newTopic: PropTypes.string
@@ -65,4 +73,12 @@ function mapStateToProps(state) {
 
 // Read more about where to place `connect` here:
 // https://github.com/rackt/react-redux/issues/75#issuecomment-135436563
-export default connect(mapStateToProps, { createTopic, typing, addToQueue, decrementCount, openModal, destroyPosting })(Postings);
+export default connect(mapStateToProps, { createTopic, typing, addToQueue, decrementCount, closeModal, openModal, destroyPosting })(Postings);
+
+
+
+// <InfoModal     
+//           modalState={modalState}
+//           closeModal={closeModal}
+//           openModal={openModal}
+//           activeJob={activeJob}/>
