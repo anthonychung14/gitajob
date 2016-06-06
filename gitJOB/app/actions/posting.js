@@ -43,8 +43,7 @@ export function increment(index) {
 export function addToQueue(id, job, index) {
   return dispatch => {
     dispatch(destroy(id));    
-    let application = {
-      user: "anthonychung14@gmail.com",
+    let application = {      
       interest: 1,
       status: {
         queue: true,
@@ -78,8 +77,9 @@ export function destroyPosting(id, job) {
     dispatch(destroy(id, job));
     return makeNopeRequest('post', id, job)
     .then(res => {
-      console.log(res, "res complete with destroy")
-    });    
+      dispatch(receiveQueue(res)
+      )}
+    );    
   };
 }
 

@@ -37,7 +37,7 @@ class Postings extends Component {
           closeModal={closeModal}
           onIncrement={addToQueue}
           applications={jobs}
-          onDestroy={destroyPosting} />
+          deny={destroyPosting} />
         <InfoModal 
           modalState={modalState}
           openModal={openModal}

@@ -15,7 +15,7 @@ export function all(req, res) {
     }
     
     let appHash = {}    
-    Application.find({'user': 'anthonychung14@gmail.com'}).exec((err, apps) => {
+    Application.find({}).exec((err, apps) => {
       apps.forEach((element) => {
         appHash[element.company._id] = element.company._id
       })      
@@ -31,13 +31,16 @@ export function all(req, res) {
  * Interested! Queue it up
  */
 export function addQueue(req, res) {
-  Application.create(req.body, (err) => {
+  let app = req.body
+  app.user = req.user._id
+  
+  Application.create(app, (err) => {
     if (err) {
       console.log(err);
       return res.status(400).send(err);
     }
     
-    Application.find({}).exec((err, data) => {
+    Application.find({'user': req.user._id}).exec((err, data) => {
       if(err) {
         return res.status(400).send(err)
       }
@@ -51,24 +54,35 @@ export function addQueue(req, res) {
  * Update a topic
  */
 export function addNope(req, res) {
-  const query = { 'company._id' : req.params.id };
-  let job = req.body
-  job.status = {
+  const query = { 'company._id' : req.params.id, user: req.user._id};
+  console.log(query, "HERE IS THE QUERY")
+  let status = {
     queue: false,
     offer: false,
     phone: false,
-    apply: false,
+    apply: false,    
     nope: true,
     nopeDate: moment()  
   }
+  
+  //posting id
+  //date of nope
+  //any other info attached to it  
 
-  Application.update(query, {'$set': {'status.nope': true}, '$set': {'user': 'anthonychung14@gmail.com'}}, {upsert: true}, (err) => {
+  Application.update(query, {'$set': {'user': req.user._id}, '$set': {'interest': 0}}, {upsert: true}, (err, data) => {
     if (err) {
-      console.log("done goofed bro")
+      console.log("done goofed bro", err)
     }
-    return res.status(200).send('Updated successfully');
+    Application.find({'user': req.user._id, 'interest': {'$gt': 0}}).exec((err, data) => {
+      if(err) {
+        return res.status(400).send(err)
+      }
+      return res.status(200).send(data);    
+    })
   })
 }
+
+
 
 /**
  * Remove a topic

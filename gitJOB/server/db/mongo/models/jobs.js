@@ -9,6 +9,7 @@ const JobSchema = new mongoose.Schema({
   company: String,
   company_link: String,
   last_active: String,
+  img: String,
   url: String,
   desc: String,
   job_title: String,

@@ -5,6 +5,7 @@ class GitJobItem(scrapy.Item):
     company = scrapy.Field()
     company_link = scrapy.Field()
     desc = scrapy.Field()
+    img = scrapy.Field()
     longDescript = scrapy.Field()
     tag_data = scrapy.Field()
     job_title = scrapy.Field()

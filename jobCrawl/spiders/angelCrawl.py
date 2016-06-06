@@ -65,15 +65,25 @@ class angelCrawler(InitSpider):
     company = soup.findAll('div', attrs={'class': 'browse_startups_table_row'})        
     
     for row in company:      
-      item = GitJobItem()        
+      item = GitJobItem()              
+      
+      #METADATA
       item['company'] = row.find('a', attrs={'class': 'startup-link'}).text
       item['company_link'] = row.find('a', attrs={'class': 'website-link'}).text      
-      item['last_active'] = row.find('div', attrs={'class': 'footer-bar'}).find('div',attrs={'class': 'active'}).text            
+      item['last_active'] = row.find('div', attrs={'class': 'footer-bar'}).find('div',attrs={'class': 'active'}).text   
 
+      #IMG
+      image = row.find('div', attrs={'class': "browse-table-row-pic"})      
+      for tag in image.findAll('a'):        
+        for img in tag.findAll('img'):
+          item['img'] = img['src']
+      
+      #TAG
       tagline = row.find('div', attrs={'class': 'tagline'}).text
       if tagline is not None:
         item['tagline'] = tagline      
-      
+            
+      #TEXT
       try:
         item['desc'] = row.find('div', attrs={'class': 'details-row product'}).find('div', attrs={'class': 'description'}).text
       except:

@@ -37,6 +37,11 @@
   margin: 10px 20px 10px 20px;  
 }
 
+.star {
+  background-color: red;
+
+}
+
 .line-divider {
   width: 95%;
   font-size: 1px;
@@ -76,8 +81,8 @@
 .tag-container {
   display: flex;
   flex-direction: column;
-  max-height: 200px;
-  justify-content: space-around;  
+  max-height: 170px;
+  justify-content: flex-start;  
   flex-wrap: wrap;
 }
 

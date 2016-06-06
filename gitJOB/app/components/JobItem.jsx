@@ -7,8 +7,8 @@ import moment from 'moment'
 const cx = classNames.bind(styles);
 
 // Buttons
+import { ButtonCircle } from 'rebass'
 import Icon from 'react-geomicons'
-import { Button, Glyphicon } from 'react-bootstrap'
 
 export default class JobItem extends Component {
   constructor(props) {
@@ -24,8 +24,8 @@ export default class JobItem extends Component {
   }
 
   onDestroyClick() {    
-    const { id, job, onDestroy } = this.props;    
-    onDestroy(id, job);
+    const { id, job, deny } = this.props;    
+    deny(id, job);
   }
 
   showData() {
@@ -34,23 +34,31 @@ export default class JobItem extends Component {
   }
 
   render() {
-    let popover = <Popover id={this.props.job._id} title={this.props.job.location}>{this.props.job.tagline}</Popover>;    
+    let popover = <Popover id={this.props.job._id} placement="top" title={this.props.job.location}>{this.props.job.tagline}</Popover>;    
     return (
+      <OverlayTrigger overlay={popover}>
       <li className={cx('topic-item')} key={this.props.id}>        
-        <OverlayTrigger overlay={popover}>
           <a href='#' onClick={this.showData} className={cx('topic')}>
             {this.props.text}
-          </a>          
-        </OverlayTrigger>                                
-        <button
-          onClick={this.increment}           
-          className={cx('button', 'increment')}>          
-          +</button>
-        <button
-          onClick={this.onDestroyClick}           
-          className={cx('button', 'destroy')}>          
-          x</button>
-      </li>
+          </a>                
+        <div className={cx('circle')}>
+        <ButtonCircle backgroundColor="red" onClick={this.onDestroyClick} title="Remove">
+          <Icon                
+            fill="currentColor"
+            height="1em"
+            name="close"
+            width="2em"/>                
+        </ButtonCircle>        
+        <ButtonCircle backgroundColor="green" onClick={this.increment} title="Add">
+          <Icon                
+            fill="currentColor"
+            height="1em"
+            name="star"
+            width="2em"/>                
+        </ButtonCircle>      
+        </div>
+      </li>      
+      </OverlayTrigger>                                
     );
   }
 }
@@ -59,5 +67,5 @@ JobItem.propTypes = {
   text: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   onIncrement: PropTypes.func.isRequired,
-  onDestroy: PropTypes.func.isRequired
+  deny: PropTypes.func.isRequired
 };

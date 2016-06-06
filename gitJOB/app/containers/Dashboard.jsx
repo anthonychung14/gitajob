@@ -60,33 +60,33 @@ class Dashboard extends Component {
           header={"Queued"}
           jobs={queueAdd}
           applications={applications}
-          onIncrement={moveAppUp}
-          onDestroy={destroyPosting}
           openModal={openModal}
-          modalState={modalState}/>
+          onIncrement={moveAppUp}
+          deny={destroyPosting}/>
         <MainSection
           header={"Apply"}
           jobs={queueApply}
           onIncrement={moveAppUp}
           openModal={openModal}
-          onDestroy={destroyPosting}/>
+          deny={destroyPosting}/>
         <MainSection
           header={"Phone"}
           jobs={queuePhone}
           onIncrement={moveAppUp}
           openModal={openModal}
-          onDestroy={destroyPosting}/>
+          deny={destroyPosting}/>
         <MainSection
           header={"Code"}
           jobs={queueChallenge}
           onIncrement={moveAppUp}
           openModal={openModal}
-          onDestroy={destroyPosting}/>        
+          deny={destroyPosting}/>        
         <InfoModal 
           modalState={modalState}
           openModal={openModal}
           closeModal={closeModal}
-          activeJob={activeJob}/>
+          activeJob={activeJob}
+          deny={destroyPosting}/>
       </div>
     )
   }

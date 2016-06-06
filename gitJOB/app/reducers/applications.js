@@ -22,7 +22,6 @@ export default function applications(state = {
       return Object.assign({}, state, {
         isFetching: false
       });
-
     case DECREMENT_COUNT:
       let decApps = state.applications.slice().map((element) => {
         if(element.company._id === action.company._id) {

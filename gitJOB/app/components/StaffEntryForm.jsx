@@ -10,21 +10,16 @@ import { styles } from 'css/components/staff-entry-form';
 
 class StaffEntryForm extends Component {    
 
-  bark(){
-    console.log("woof")
-
+  submitForm(props){
+    let finish = this.props.previousPage.bind(this)
+    addEntry(props, this.props.companyId, finish)
   }
 
   render() {
-    const { fields: {name, email, linkedin, title}, submitting, addEntry, companyId, previousPage, handleSubmit } = this.props;
+    const { fields: {name, email, linkedin, title}, submitting, companyId, previousPage, handleSubmit } = this.props;
     return (              
-        <section className={`${styles}`}>
-        <form onSubmit={data =>{
-          console.log("IN THE ADD FORM ENTRY", this.props, companyId)
-          addEntry(props, companyId)
-
-          }}>          
-
+        <section>
+        <form onSubmit={handleSubmit(this.submitForm.bind(this))}>          
           <div className="form-group">
             <label>Name</label>
             <input type="text" className="form-control" {...name} />
@@ -44,29 +39,19 @@ class StaffEntryForm extends Component {
             <label>Title</label>
             <input type="text" className="form-control" {...title} />
           </div>
+
+          <button type="button" disabled={submitting} onClick={previousPage}>
+            <i/> Cancel
+          </button>
           
-        <ButtonCircle disabled={submitting} onClick={previousPage} title="tag">
-        <Icon                
-          fill="currentColor"
-          height="1em"
-          name="close"
-          width="1em"/>                
-        </ButtonCircle>
-        <ButtonCircle type="submit" title="tag" disabled={submitting}>
-        <Icon                
-          fill="currentColor"
-          height="1em"
-          name="check"
-          width="1em"/>                
-        </ButtonCircle>      
+          <button type="submit" disabled={submitting}>
+            {submitting ? <i/> : <i/>} Submit
+          </button>          
         </form>
         </section>
     );
   }
 }
-
-//connect's first arg is mapState to props, mapDispatch to Props
-//redux: 1 form config, last two etc.
 
 export default reduxForm({
   form: 'staffEntryForm',

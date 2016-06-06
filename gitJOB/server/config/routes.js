@@ -8,6 +8,7 @@ import { controllers, passport as passportConfig } from '../db';
 const usersController = controllers && controllers.users;
 const jobsController = controllers && controllers.jobs;
 const appController = controllers && controllers.applications
+const companyController = controllers && controllers.company
 
 export default (app) => {
   // user routes
@@ -24,6 +25,7 @@ export default (app) => {
     // Redirect the user to Google for authentication. When complete, Google
     // will redirect the user back to the application at
     // /auth/google/return
+    
     // Authentication with google requires an additional scope param, for more info go
     // here https://developers.google.com/identity/protocols/OpenIDConnect#scope-param
     app.get('/auth/google', passport.authenticate('google', {
@@ -59,6 +61,11 @@ export default (app) => {
     app.post('/apps/:id', appController.moveUp);
   } else {
     console.warn(unsupportedMessage('app routes'))
+  }
+
+  if (companyController) {
+    app.get('/company/:id', companyController.getContacts)
+    app.post('/company/:id', companyController.addContact)
   }
 };
 

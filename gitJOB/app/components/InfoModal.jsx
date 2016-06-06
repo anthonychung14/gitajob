@@ -7,12 +7,13 @@ import moment from 'moment'
 import { ButtonCircle } from 'rebass'
 import Icon from 'react-geomicons'
 
-import StaffCard from 'components/StaffCard'
+import StaffWrapper from 'components/StaffWrapper'
 
 const cx = classNames.bind(styles);
 
-const InfoModal = ({modalState, openModal, closeModal, deny, affirm, activeJob}) => {        
+const InfoModal = ({modalState, openModal, closeModal, deny, affirm, activeJob}) => {            
     if (!modalState) { return ( <span/>) }    
+    
     
     const denyAndClose = () => {
       deny(activeJob._id, activeJob)
@@ -59,7 +60,7 @@ const InfoModal = ({modalState, openModal, closeModal, deny, affirm, activeJob})
 
     const generateTagIcon = (tag, index) => {
       return (
-      <div index={index} className={cx('button')}>
+      <div key={index} index={index} className={cx('button')}>
         <ButtonCircle title="tag">
           <Icon                
             fill="currentColor"
@@ -79,22 +80,20 @@ const InfoModal = ({modalState, openModal, closeModal, deny, affirm, activeJob})
       <Tooltip id="yes">Add</Tooltip>
     );
 
-    console.log(activeJob, "THIS IS ACTIVE")
-
     return (
         <Modal dialogClassName={cx("modal-screen")} show={modalState} onHide={closeModal}>
           <Modal.Header className={cx('modal-header')} bsClass={cx('modal_header')}>
           <div>
             <Modal.Title className={cx('modal-title')}>              
-            {activeJob.job_title} 
+            {activeJob.job_title}
             </Modal.Title>            
             <div className={cx('action-bar')}>
               <OverlayTrigger placement="bottom" overlay={tooltipNo}>
                 <div className={cx('button')}>
-                <ButtonCircle onClick={denyAndClose} title="No!">
+                <ButtonCircle backgroundColor="red" onClick={denyAndClose} title="No!">
                   <Icon                
                     fill="currentColor"
-                    height="1em"
+                    height="2em"
                     name="close"
                     width="2em"/>                
               </ButtonCircle>
@@ -103,10 +102,10 @@ const InfoModal = ({modalState, openModal, closeModal, deny, affirm, activeJob})
 
               <OverlayTrigger placement="bottom" overlay={tooltipYes}>
               <div className={cx('button')}>
-              <ButtonCircle onClick={affirmAndClose} title="Add">
+              <ButtonCircle backgroundColor="green" onClick={affirmAndClose} title="Add">
                 <Icon                
                   fill="currentColor"
-                  height="1em"
+                  height="2em"
                   name="star"
                   width="2em"/>                
               </ButtonCircle>
@@ -147,7 +146,7 @@ const InfoModal = ({modalState, openModal, closeModal, deny, affirm, activeJob})
             </div>
             <div className={cx('contacts-column')}>
               <h4>Engineers/Staff</h4>
-              <StaffCard companyId={activeJob._id} staff={[]}/>
+              <StaffWrapper companyId={activeJob._id} staff={[]}/>
             </div>
           </Modal.Body>
 
@@ -161,5 +160,6 @@ const InfoModal = ({modalState, openModal, closeModal, deny, affirm, activeJob})
 
 export default InfoModal
 
+// <span><img src={activeJob.img}/>
 
 

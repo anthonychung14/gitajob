@@ -7,8 +7,8 @@ import styles from 'css/components/main-section';
 const cx = classNames.bind(styles);
 
 const MainSection = (
-  {onIncrement, onDecrement, 
-    openModal, modalState, onDestroy, 
+  {onIncrement, deny, 
+    openModal, modalState, 
     jobs, header, applications}) => {  
 
   const jobItems = jobs.map((job, key) => {    
@@ -22,7 +22,7 @@ const MainSection = (
         openModal={openModal}
         text={job.job_title}                
         onIncrement={onIncrement}
-        onDestroy={onDestroy}/>);
+        deny={deny}/>);
     });  
   return (
     <div className={cx('main-section')}>
@@ -35,7 +35,7 @@ const MainSection = (
 MainSection.propTypes = {
   jobs: PropTypes.array.isRequired,
   onIncrement: PropTypes.func.isRequired,
-  onDestroy: PropTypes.func.isRequired,
+  deny: PropTypes.func.isRequired,
   openModal:PropTypes.func.isRequired  
 };
 

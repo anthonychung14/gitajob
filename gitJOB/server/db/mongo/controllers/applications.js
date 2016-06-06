@@ -7,7 +7,7 @@ import Application from '../models/apps'
  * GET ALL
  */
 export function all(req, res) {
-  Application.find({user: "anthonychung14@gmail.com", 'status.nope': {'$ne': true}}).exec((err, data) => {
+  Application.find({'status.nope': {'$ne': true}}).exec((err, data) => {
     if (err) {
       console.log('Error in first query');
       return res.status(500).send('Something went wrong getting the data');
@@ -20,7 +20,7 @@ export function all(req, res) {
  * INCREMENT INTEREST
  */
 export function moveUp(req, res) {
-  Application.update({'company._id': req.params.id}, {'$inc': {'interest': 1}}, (err) => {
+  Application.update({'user':req.user._id, 'company._id': req.params.id}, {'$inc': {'interest': 1}}, (err) => {
     if (err) {
       console.log(err);
       return res.status(400).send(err);
