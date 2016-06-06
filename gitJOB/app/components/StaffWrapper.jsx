@@ -29,20 +29,18 @@ export default class StaffWrapper extends Component {
     this.setState({ page: this.state.page - 1 })
   }
 
-  renderStaffData(){
+  addEntryForm(){
     return (
-      <div className={cx('contact-card')}>      
+      <div className={cx('add-form')}>      
       <ButtonCircle onClick={this.nextPage} title="tag">
           <Icon                
             fill="currentColor"
             height="2em"
-            name="user"
+            name="compose"
             width="2em"/>                
       </ButtonCircle>        
       <div className={cx('staff-data')}>
-        <p>Bob Dole</p>
-        <p>Technical Recruiter</p>
-        <p>Talked to 3 days ago</p>        
+        Add Contact
       </div>
       </div>
     )
@@ -50,7 +48,10 @@ export default class StaffWrapper extends Component {
 
   renderStaffEntryCard() {
     return (
+      <div>
+      {this.addEntryForm()}
       <StaffEntryCard staff={[1,2,3,4]} />
+      </div>
     )
   }
 
