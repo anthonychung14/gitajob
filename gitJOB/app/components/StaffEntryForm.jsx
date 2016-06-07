@@ -3,23 +3,26 @@ import { reduxForm } from 'redux-form'
 import { ButtonCircle } from 'rebass'
 import Icon from 'react-geomicons'
 
-import { addEntry } from 'actions/staff'
+import { addEntry } from 'actions/modals'
 
 /* component styles */
 import { styles } from 'css/components/staff-entry-form';
 
 class StaffEntryForm extends Component {    
 
-  submitForm(props){
+  onSubmit(props){
     let finish = this.props.previousPage.bind(this)
-    addEntry(props, this.props.companyId, finish)
+    
+    this.props.addEntry(props, this.props.companyId, finish)
+    .then(() => { console.log("back from the promise") 
+    })
   }
 
   render() {
     const { fields: {name, email, linkedin, title}, submitting, companyId, previousPage, handleSubmit } = this.props;
     return (              
         <section>
-        <form onSubmit={handleSubmit(this.submitForm.bind(this))}>          
+        <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>          
           <div className="form-group">
             <label>Name</label>
             <input type="text" className="form-control" {...name} />

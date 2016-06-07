@@ -22,6 +22,7 @@ const AppSchema = new mongoose.Schema({
   company: {
     _id: String,
     company_link: String,
+    company: String,
     company_contacts: Array,
     last_active: String,
     url: String,

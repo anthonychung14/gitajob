@@ -4,9 +4,9 @@ import User from '../models/user';
 import Company from '../models/company'
 
 export function getContacts(req, res) {
-  const companyId = req.params.id
-  Company.find({'_id': companyId}).exec((err, data) => {
-    console.log(data, "here is the data I was able to find")
+  const companyName = req.params.id
+  Company.findOne({'company': companyName}).exec((err, data) => {        
+    res.json(data.company_contacts)
   })
 }
 
@@ -19,7 +19,7 @@ export function addContact(req, res) {
       {'$push': {'company_contacts': req.body}
     })
     .exec((err, company) => {              
-      Company.findOne({'company': data.company}).exec((err, comp) => {
+      Company.findOne({'company': data.company}).exec((err, comp) => {        
         res.status(200).send(comp.company_contacts)  
       })        
     })

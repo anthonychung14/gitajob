@@ -24,7 +24,7 @@ class Postings extends Component {
 
   render() {
     const {
-      newTopic, jobs, typing, activeJob, 
+      newTopic, jobs, typing, activeJob, activeStaff,
       createTopic, destroyPosting, addToQueue, decrementCount, 
       openModal, closeModal, modalState } = this.props;    
     
@@ -43,6 +43,7 @@ class Postings extends Component {
           openModal={openModal}
           closeModal={closeModal}
           affirm={addToQueue}
+          staff={activeStaff}
           deny={destroyPosting}
           activeJob={activeJob}/>
       </div>
@@ -65,7 +66,8 @@ function mapStateToProps(state) {
   return {
     jobs: state.postings.jobs,
     modalState: state.modal.modalState,
-    activeJob: state.modal.activeJob
+    activeJob: state.modal.activeJob,
+    activeStaff: state.modal.activeStaff,
   };
 }
 

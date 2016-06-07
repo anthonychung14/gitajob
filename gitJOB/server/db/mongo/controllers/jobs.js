@@ -21,8 +21,9 @@ export function all(req, res) {
       })      
       const result = data.filter((posting) => {
         return !appHash[posting._id]
-      })            
-      return res.json(result.slice(0,30));
+      })
+            
+       return res.json(result.slice(0,30))
     })    
   });
 }
@@ -55,7 +56,6 @@ export function addQueue(req, res) {
  */
 export function addNope(req, res) {
   const query = { 'company._id' : req.params.id, user: req.user._id};
-  console.log(query, "HERE IS THE QUERY")
   let status = {
     queue: false,
     offer: false,

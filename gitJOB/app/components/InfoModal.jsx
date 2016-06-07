@@ -1,20 +1,19 @@
 import React, { Component, PropTypes } from 'react';
-import {Modal, OverlayTrigger, Button, Popover, Tooltip } from 'react-bootstrap'
+import { OverlayTrigger, Button, Popover, Tooltip } from 'react-bootstrap'
+import { Modal, Header, Title, Footer, Body } from 'react-bootstrap'
 import classNames from 'classnames/bind';
 import styles from 'css/components/info-modal';
 import QueueIcon from 'css/icons/queue'
 import moment from 'moment'
 import { ButtonCircle } from 'rebass'
 import Icon from 'react-geomicons'
-
 import StaffWrapper from 'components/StaffWrapper'
 
 const cx = classNames.bind(styles);
 
-const InfoModal = ({modalState, openModal, closeModal, deny, affirm, activeJob}) => {            
+const InfoModal = ({modalState, openModal, closeModal, staff, deny, affirm, activeJob}) => {            
     if (!modalState) { return ( <span/>) }    
-    
-    
+        
     const denyAndClose = () => {
       deny(activeJob._id, activeJob)
       closeModal()
@@ -122,7 +121,6 @@ const InfoModal = ({modalState, openModal, closeModal, deny, affirm, activeJob})
           
           </Modal.Header>
           <Modal.Footer></Modal.Footer>
-
           
           <Modal.Body className={cx('main-body')}>
             <div className={cx('left-column')}>              
@@ -146,7 +144,7 @@ const InfoModal = ({modalState, openModal, closeModal, deny, affirm, activeJob})
             </div>
             <div className={cx('contacts-column')}>
               <h4>Engineers/Staff</h4>
-              <StaffWrapper companyId={activeJob._id} staff={[]}/>
+              <StaffWrapper companyId={activeJob._id} staff={staff}/>
             </div>
           </Modal.Body>
 

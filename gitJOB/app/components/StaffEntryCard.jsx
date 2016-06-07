@@ -10,7 +10,7 @@ const StaffEntryCard = ({ staff }) => {
   const staffItems = staff.map((element, index) => {
     return (
       <div key={index} className={cx('contact-card')}>      
-      <ButtonCircle className={cx('person-icon')} title="tag">
+      <ButtonCircle href={element.linkedin} className={cx('person-icon')} title="tag">
           <Icon                
             fill="currentColor"
             height="2em"
@@ -18,9 +18,9 @@ const StaffEntryCard = ({ staff }) => {
             width="2em"/>                
       </ButtonCircle>        
       <div className={'staff-data'}>
-        <p><strong>Bob Dole</strong></p>
-        <p>Recruiter/Engineer/Warm</p>
-        <p>Talked to 3 days ago</p>        
+        <p><strong>Name: {element.name}</strong></p>
+        <p>Title: {element.title}</p>
+        <p>Email: {element.email}</p>        
       </div>
       </div>
     )

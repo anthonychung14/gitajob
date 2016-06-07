@@ -46,21 +46,22 @@ export default class StaffWrapper extends Component {
     )
   }
 
-  renderStaffEntryCard() {
+  renderStaffEntryCard(staff) {
     return (
       <div>
       {this.addEntryForm()}
-      <StaffEntryCard staff={[1,2,3,4]} />
+      <StaffEntryCard 
+        staff={staff} />
       </div>
     )
   }
 
   render() {
     const { page } = this.state
-    const { companyId } = this.props
+    const { companyId, staff } = this.props
     return (
       <div>      
-        {page === 1 && this.renderStaffEntryCard()}        
+        {page === 1 && this.renderStaffEntryCard(staff)}        
         {page === 2 && <StaffEntryForm companyId={companyId} 
           previousPage={this.previousPage} onSubmit={this.nextPage}/>}
       </div>

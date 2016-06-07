@@ -24,8 +24,10 @@ class Dashboard extends Component {
     const { 
       applications, moveAppUp, 
       destroyPosting, openModal, closeModal, 
-      fetchUserJobs, modalState, activeJob } = this.props; 
+      fetchUserJobs, modalState, activeJob, activeStaff } = this.props; 
     
+    console.log(activeStaff)
+
     let queueAdd = applications.reduce((prev, curr) => {
       if (curr.interest === 1) {
         prev.push(curr.company)        
@@ -85,6 +87,8 @@ class Dashboard extends Component {
           modalState={modalState}
           openModal={openModal}
           closeModal={closeModal}
+          affirm={moveAppUp}
+          staff={activeStaff}
           activeJob={activeJob}
           deny={destroyPosting}/>
       </div>
@@ -103,7 +107,8 @@ function mapStateToProps(state) {
   return {
     applications: state.applications.applications,
     modalState: state.modal.modalState,
-    activeJob: state.modal.activeJob
+    activeJob: state.modal.activeJob,
+    activeStaff: state.modal.activeStaff
   }
 }
 

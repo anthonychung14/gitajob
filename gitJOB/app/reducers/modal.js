@@ -20,16 +20,16 @@ const activeJob = {
 
 export default function modal(state = {
   modalState: false,
-  activeJob
-}, action = {}) {
-  console.log("CHECKING MODAL REDUCER TO SEE IF FIRES")
-  console.log(action, "action taken")
+  activeJob,
+  activeStaff: []
+}, action = {}) {  
   switch (action.type) {
-
     case OPEN_MODAL:
+      let activeJob = action.job      
       return {
         modalState: !state.modalState,
-        activeJob: action.job
+        activeJob: activeJob,
+        activeStaff: [].concat(state.activeStaff)
       }
     case CLOSE_MODAL:
       return {
@@ -40,12 +40,12 @@ export default function modal(state = {
       return Object.assign({}, state, {
         isFetching: true
       });
-    case GET_STAFF_SUCCESS:      
-      console.log("$$$$$$$$$$$$$ SUCCESS")
+    case GET_STAFF_SUCCESS:            
+      console.log(action, "action from success")
       let finalState = Object.assign({}, state, {
-        isFetching: false
+        isFetching: false,
+        activeStaff: action.payload
       });
-      finalState.activeJob = finalState.activeJob.concat(action.payload.data)
       return finalState      
     case GET_STAFF_FAILURE:
       return Object.assign({}, state, {

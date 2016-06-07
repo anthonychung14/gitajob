@@ -4,8 +4,7 @@ import {
   GET_STAFF_FAILURE
 } from 'types';
 
-export function staffReducer(state = {}, action) {
-  console.log("CHECKING STAFF REDUCER TO SEE IF FIRES")
+export default function staffReducer(state = {}, action) {
   switch(action.type) {
     case GET_STAFF_FAILURE:
       return Object.assign({}, state, {
@@ -16,10 +15,9 @@ export function staffReducer(state = {}, action) {
         isFetching: true
       });
     case GET_STAFF_SUCCESS:
-      console.log('inside of staff JS reducer', action.payload)
       return Object.assign({}, state, {
         isFetching: false,
-        entries: action.payload.data
+        entries: action.payload
       });    
     default:
       return state;
