@@ -1,6 +1,6 @@
 {
-  "name": "react-webpack-node",
-  "version": "1.7.12",
+  "name": "app-q",
+  "version": "0.0.1",
   "main": "index.js",
   "scripts": {
     "babel": "babel --presets es2015,stage-0 --ignore node_modules,public",

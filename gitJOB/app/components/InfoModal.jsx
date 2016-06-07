@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { OverlayTrigger, Button, Popover, Tooltip } from 'react-bootstrap'
-import { Modal, Header, Title, Footer, Body } from 'react-bootstrap'
+import { Modal } from 'react-bootstrap'
 import classNames from 'classnames/bind';
 import styles from 'css/components/info-modal';
 import QueueIcon from 'css/icons/queue'
@@ -10,6 +10,13 @@ import Icon from 'react-geomicons'
 import StaffWrapper from 'components/StaffWrapper'
 
 const cx = classNames.bind(styles);
+const { Header: ModalHeader, 
+        Title: ModalTitle,
+        Body: ModalBody,
+        Footer: ModalFooter
+         } = Modal
+
+
 
 const InfoModal = ({modalState, openModal, closeModal, staff, deny, affirm, activeJob}) => {            
     if (!modalState) { return ( <span/>) }    
@@ -81,11 +88,11 @@ const InfoModal = ({modalState, openModal, closeModal, staff, deny, affirm, acti
 
     return (
         <Modal dialogClassName={cx("modal-screen")} show={modalState} onHide={closeModal}>
-          <Modal.Header className={cx('modal-header')} bsClass={cx('modal_header')}>
+          <ModalHeader className={cx('modal-header')} bsClass={cx('modal_header')}>
           <div>
-            <Modal.Title className={cx('modal-title')}>              
+            <ModalTitle className={cx('modal-title')}>              
             {activeJob.job_title}
-            </Modal.Title>            
+            </ModalTitle>            
             <div className={cx('action-bar')}>
               <OverlayTrigger placement="bottom" overlay={tooltipNo}>
                 <div className={cx('button')}>
@@ -119,10 +126,10 @@ const InfoModal = ({modalState, openModal, closeModal, staff, deny, affirm, acti
             <div className={cx('modal-salary')}>{needToMoveBackend(activeJob.salary)}</div>                                    
           </div>
           
-          </Modal.Header>
-          <Modal.Footer></Modal.Footer>
+          </ModalHeader>
+          <ModalFooter></ModalFooter>
           
-          <Modal.Body className={cx('main-body')}>
+          <ModalBody className={cx('main-body')}>
             <div className={cx('left-column')}>              
               
               <div className={cx('column-section')}>
@@ -146,12 +153,12 @@ const InfoModal = ({modalState, openModal, closeModal, staff, deny, affirm, acti
               <h4>Engineers/Staff</h4>
               <StaffWrapper companyId={activeJob._id} staff={staff}/>
             </div>
-          </Modal.Body>
+          </ModalBody>
 
-          <Modal.Footer>
+          <ModalFooter>
             <h4>{activeJob.last_active}</h4>
             <h4><a href={'http://'+activeJob.company_link} target="_newtab">{activeJob.company_link}</a></h4>            
-          </Modal.Footer>
+          </ModalFooter>
         </Modal>
     )
   }
