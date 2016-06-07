@@ -14,11 +14,9 @@ export function makeStaffRequest(method, id, data, api = '/company') {
 export function openModal(job) {    
   //something to signal that you're getting
   return dispatch => {
-    console.log(job, "you think this job is here?!<<<<<<<<<<")
     let companyName = job.company
     return makeStaffRequest('get', companyName)
       .then((data) => {
-        console.log(data, "data got")
         dispatch(receiveEntry(data))        
         dispatch(realModal(job))
     })

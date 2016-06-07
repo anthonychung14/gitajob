@@ -5,6 +5,7 @@ import Company from '../models/company'
 
 export function getContacts(req, res) {
   const companyName = req.params.id
+
   Company.findOne({'company': companyName}).exec((err, data) => {        
     res.json(data.company_contacts)
   })

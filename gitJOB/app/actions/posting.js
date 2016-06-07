@@ -53,7 +53,6 @@ export function addToQueue(id, job, index) {
     }
     return makeJobRequest('post', id, application)
     .then(response => {
-      console.log(response, "RESPONSE IS WHAT")
       dispatch(receiveQueue(response))
     });    
   };
