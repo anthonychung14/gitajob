@@ -15,8 +15,10 @@ class GitJobItem(scrapy.Item):
     salary = scrapy.Field() 
     why = scrapy.Field()    
     last_active = scrapy.Field()
-    
-    # job_link = scrapy.Field()
-    # email = scrapy.Field()
-    # size = scrapy.Field()
-    # why = scrapy.Field()
+
+class GitStaffItem(scrapy.Item):
+    picture_url = scrapy.Field()
+    linkedin = scrapy.Field()
+    name = scrapy.Field()
+    title = scrapy.Field()
+    region = scrapy.Field()
