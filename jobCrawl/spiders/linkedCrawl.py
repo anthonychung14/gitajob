@@ -15,6 +15,9 @@ from lxml import etree
 
 from jobCrawl.items import GitStaffItem
 
+from pymongo import MongoClient
+
+
 class linkedCrawler(InitSpider):
   name = 'linkedCrawler'
 
@@ -31,7 +34,7 @@ class linkedCrawler(InitSpider):
     self.driver = webdriver.Chrome(chromedriver)
     self.driver.implicitly_wait(30)
 
-  def init_request(self):
+  
     print('================INITIALIZE REQUEST==================')
     self.driver.get(self.login_page)
     time.sleep(2)
@@ -46,28 +49,38 @@ class linkedCrawler(InitSpider):
     time.sleep(2)
 
     print("<<<<<<<<<<<<< FINISH REQUEST >>>>>>>>>>>>>>>")
-    self.driver.get(self.search_page)
-    time.sleep(4)
-
-    keyword = self.driver.find_element_by_id('advs-keywords')    
-    company = self.driver.find_element_by_id('advs-company')
-    keyword.send_keys("talent")
-    company.send_keys("khan academy")
-
-    self.driver.find_element_by_xpath("//input[@name='submit']").click()
-    self.driver.implicitly_wait(30)
-
-    self.start_urls.append(self.driver.current_url)
-
     return self.initialized()
 
-  def parse(self, response):      
-    elem = self.driver.find_element_by_id('results-container')
-    soup = BeautifulSoup(elem.get_attribute('innerHTML'), 'lxml')
+    #We are going to get a lot of search pages in a row,     
+    def parse(self, response):
+      for i in range(0,5):
+        self.driver.get(self.search_page)
+        print("$$$$$$$$$$$$$$$$$$$$$$$$$$$ iiiii", i)
+        time.sleep(4)
+
+        keyword = self.driver.find_element_by_id('advs-keywords')    
+        company = self.driver.find_element_by_id('advs-company')
+        keyword.send_keys("talent")
+        company.send_keys("khan academy")      
+
+        self.driver.find_element_by_xpath("//input[@name='submit']").click()
+        self.driver.implicitly_wait(30)
+
+        self.start_urls.append(self.driver.current_url)
+
+        elem = self.driver.find_element_by_id('results-container')
+        soup = BeautifulSoup(elem.get_attribute('innerHTML'), 'lxml')        
+        contacts = soup.findAll('li')
+        for contact in contacts[0:5]:
+            print(contact, "texttsss <<<<<<<<<<<<<<<", i)
+
     
-    contacts = soup.findAll('li')
-    for contact in contacts:
-      print(contact, "texttsss <<<<<<<<<<<<<<<")
+
+
+  
+    
+    
+  
 
 
 
