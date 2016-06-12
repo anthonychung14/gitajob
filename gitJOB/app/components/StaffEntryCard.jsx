@@ -11,16 +11,11 @@ const StaffEntryCard = ({ staff }) => {
     return (
       <div key={index} className={cx('contact-card')}>      
       <ButtonCircle href={element.linkedin} className={cx('person-icon')} title="tag">
-          <Icon                
-            fill="currentColor"
-            height="2em"
-            name="user"
-            width="2em"/>                
+          <img className={cx('person-img')} src={element.img_url}/>
       </ButtonCircle>        
       <div className={'staff-data'}>
         <p><strong>Name: {element.name}</strong></p>
-        <p>Title: {element.title}</p>
-        <p>Email: {element.email}</p>        
+        <p>Title: {element.title}</p>                
       </div>
       </div>
     )

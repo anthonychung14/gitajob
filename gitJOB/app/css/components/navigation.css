@@ -3,13 +3,14 @@
 
 .navigation {
   padding: 0 28px;
+  background-color: black;
 }
 
 .item {
   display: inline-block;
   text-decoration: none;
   padding: 16px 32px;
-  color: color-black;
+  color: white;
 }
 
 .logo {
@@ -18,4 +19,8 @@
 
 .active {
   color: color-dodger-blue;
+}
+
+.popover {
+  height: 200px;
 }

@@ -24,6 +24,11 @@
   # }
 
 
+##TODO: NEEDS TO BE IMMEDIATELY AFTER SCRAPY'S ANGELCRAWLER RUNS
+# ANGEL CRAWLS FOR POSTINGS
+# WE TAKE A DISTINCT SET OF COMPANIES
+
+# LOOP THROUGH THEM AS WE LOOKUP IN COMPANY DB
 from pymongo import MongoClient
 client = MongoClient()
 db = client.gitjob
@@ -33,11 +38,20 @@ companyProfiles = db.company
 #create new list of companies
 uniqCompany = collection.distinct('company')
 
-print(len(uniqCompany))
 for company in uniqCompany:  
-  comp = collection.find_one({'company': company}, {'desc': 1})
-  item = {
-    'company': company,
-    'desc': comp['desc']
-  }
-  companyProfiles.update({'company': company}, item, upsert=True)
+  #IF IT EXISTS IN THE COMPANY DATABASE, DO NOTHING
+  if companyProfiles.find_one({'company': company}):
+    pass;
+  #ELSE, MAKE IT AND THEN ADD IT TO A LIST THAT YOU WRITE TO A TXT FILE OR SOMETHING
+  #THESE ONES YOU WILL NEED TO SEARCH FOR LATER
+  else:
+    comp = collection.find_one({'company': company})
+    item = comp
+    del item['_id']
+    del item['salary']
+    del item['job_title']
+    del item['url']  
+
+    companyProfiles.update({'company': company}, item, upsert=True)
+  
+

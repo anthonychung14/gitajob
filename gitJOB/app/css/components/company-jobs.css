@@ -1,0 +1,23 @@
+.company-jobs {
+  background-color: #e9eaec;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 10px 10px 10px;
+  margin: 10px 10px 10px 10px;
+}
+
+.list {
+  list-style: none;
+  padding: 16px 5px 16px 5px;
+  width: 30vw;
+  max-height: 100px;
+  overflow-y: scroll;
+  color: black;    
+  background-color: white;  
+}
+
+.company-img {
+  height: 100px;
+  width: auto;
+}

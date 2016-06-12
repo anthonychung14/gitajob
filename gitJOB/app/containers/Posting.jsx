@@ -4,11 +4,14 @@ import classNames from 'classnames/bind';
 
 import MainSection from 'components/MainSection';
 import InfoModal from 'components/InfoModal'
+import FilterLink from 'components/FilterLink'
 
 import { createTopic, typing, addToQueue,
   decrementCount, destroyPosting, fetchPostings } from 'actions/posting';
 import { fetchUserJobs } from 'actions/apps'
 import { openModal, closeModal } from 'actions/modals'
+import { findFront, findBack, findFull, findData } from 'actions/filter'
+
 
 import styles from 'css/components/vote';
 
@@ -22,21 +25,55 @@ class Postings extends Component {
     fetchPostings, fetchUserJobs
   ]
 
+  getPostings ( postings, filter ){    
+    switch(filter) {
+      case 'SHOW_ALL':
+        return postings
+      case 'SHOW_FRONT':        
+        return postings.filter(
+          t => findFront(t)        
+        )        
+      case 'SHOW_BACK':
+        return postings.filter(
+          t => findBack(t)
+        )       
+      case 'SHOW_FULL':
+        return postings.filter(
+          t => findFull(t)
+        )        
+      case 'SHOW_DATA':
+        return postings.filter(
+          t => findData(t)
+        ) 
+      }
+  }
+
   render() {
     const {
       newTopic, jobs, typing, activeJob, activeStaff,
       createTopic, destroyPosting, addToQueue, decrementCount, 
-      openModal, closeModal, modalState } = this.props;    
+      openModal, closeModal, modalState, filter } = this.props;    
     
+    const filteredJobs = this.getPostings(jobs, filter)
+    console.log(filteredJobs[0])
+
     return (
       <div className={cx('vote')}>        
+        <div className={cx('filters')}>
+          {' '}<FilterLink currentFilter={filter} type={'All'} filter={"SHOW_ALL"}/>{' '}
+          {' '}<FilterLink currentFilter={filter} type={'Frontend'} filter={"SHOW_FRONT"}/>{' '}
+          {' '}<FilterLink currentFilter={filter} type={'Backend'} filter={"SHOW_BACK"}/>{' '}
+          {' '}<FilterLink currentFilter={filter} type={'Fullstack'} filter={"SHOW_FULL"}/>{' '}
+          {' '}<FilterLink currentFilter={filter} type={'Data'} filter={"SHOW_DATA"}/>{' '}
+        </div>        
+
         <MainSection 
           header={"New Postings"}
-          jobs={jobs}
+          jobs={filteredJobs}
           openModal={openModal}
           closeModal={closeModal}
           onIncrement={addToQueue}
-          applications={jobs}
+          applications={filteredJobs}
           deny={destroyPosting} />
         <InfoModal 
           modalState={modalState}
@@ -66,6 +103,7 @@ function mapStateToProps(state) {
   return {
     jobs: state.postings.jobs,
     modalState: state.modal.modalState,
+    filter: state.visFilter,
     activeJob: state.modal.activeJob,
     activeStaff: state.modal.activeStaff,
   };

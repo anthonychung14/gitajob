@@ -8,6 +8,9 @@ from scrapy.http import Request, FormRequest
 
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
 
 import requests
 import re, time, os
@@ -31,10 +34,13 @@ class linkedCrawler(InitSpider):
   def __init__(self):
     chromedriver = "/Users/ACKeepingItCoo/Downloads/chromedriver"
     os.environ["webdriver.chrome.driver"] = chromedriver
+    client = MongoClient()
+    db = client.gitjob    
+    self.company = db.company  
     self.driver = webdriver.Chrome(chromedriver)
     self.driver.implicitly_wait(30)
 
-  
+  def init_request(self):
     print('================INITIALIZE REQUEST==================')
     self.driver.get(self.login_page)
     time.sleep(2)
@@ -49,46 +55,99 @@ class linkedCrawler(InitSpider):
     time.sleep(2)
 
     print("<<<<<<<<<<<<< FINISH REQUEST >>>>>>>>>>>>>>>")
-    return self.initialized()
-
     #We are going to get a lot of search pages in a row,     
-    def parse(self, response):
-      for i in range(0,5):
-        self.driver.get(self.search_page)
-        print("$$$$$$$$$$$$$$$$$$$$$$$$$$$ iiiii", i)
-        time.sleep(4)
-
-        keyword = self.driver.find_element_by_id('advs-keywords')    
-        company = self.driver.find_element_by_id('advs-company')
-        keyword.send_keys("talent")
-        company.send_keys("khan academy")      
-
-        self.driver.find_element_by_xpath("//input[@name='submit']").click()
-        self.driver.implicitly_wait(30)
-
-        self.start_urls.append(self.driver.current_url)
-
-        elem = self.driver.find_element_by_id('results-container')
-        soup = BeautifulSoup(elem.get_attribute('innerHTML'), 'lxml')        
-        contacts = soup.findAll('li')
-        for contact in contacts[0:5]:
-            print(contact, "texttsss <<<<<<<<<<<<<<<", i)
-
     
+    for company in self.company.find({}):
+      if company:
+        try:
+          self.driver.get(self.search_page)
+          time.sleep(4)
 
+          keyword = self.driver.find_element_by_id('advs-keywords')    
+          company_input = self.driver.find_element_by_id('advs-company')
+                
+          keyword.send_keys("talent")      
+          company_input.send_keys(company['company'])      
 
-  
+          self.driver.find_element_by_xpath("//input[@name='submit']").click()
+          self.driver.implicitly_wait(30)
+          
+          time.sleep(4)
+        
+          elem = self.driver.find_element_by_id('results-container')
+          soup = BeautifulSoup(elem.get_attribute('innerHTML'), 'lxml')
+
+          #push to
+          contacts = soup.find('ol', attrs=({'id': 'results'})) 
+
+          for contact in contacts:                
+              #name        
+              try:
+                info = {
+                'name': contact.find('a', attrs={'class': 'title main-headline'}).text,
+                'linkedin': contact.find('a', attrs={'class': 'title main-headline'})['href'].split("&")[0], 
+                'title': contact.find('p', attrs={'class': 'title'}).text,
+                'img_url': contact.find('img', attrs={'class': 'entity-img'})['src'],
+                'past': []
+                }
+                past = contact.findAll('p', attrs={'class': 'abstract-trunc'})
+                for event in past:
+                  info['past'].append(event.text)
+
+                self.company.update(
+                  {'company': company['company']}, 
+                  {'$push': {'company_contacts': info}
+               })      
+              except:
+                print("failed with ", contact)
+                pass
+        except:
+          print("failed searching for talent and company")
+
+              
+        try:
+          self.driver.get(self.search_page)
+          time.sleep(4)
+          
+          company_input = self.driver.find_element_by_id('advs-company')        
+          company_input.send_keys(company['company'])      
+
+          self.driver.find_element_by_xpath("//input[@name='submit']").click()
+          self.driver.implicitly_wait(30)
+        
+          time.sleep(4)
+          time.sleep(4)
+
+          elem = self.driver.find_element_by_id('results-container')
+          soup = BeautifulSoup(elem.get_attribute('innerHTML'), 'lxml')
+          contacts = soup.find('ol', attrs=({'id': 'results'}))            
     
-    
-  
+          for contact in contacts:                
+            #name        
+            try:
+              info = {
+              'name': contact.find('a', attrs={'class': 'title main-headline'}).text,
+              'linkedin': contact.find('a', attrs={'class': 'title main-headline'})['href'].split("&")[0], 
+              'title': contact.find('p', attrs={'class': 'title'}).text,
+              'img_url': contact.find('img', attrs={'class': 'entity-img'})['src'],
+              'past': []
+              }
+              past = contact.findAll('p', attrs={'class': 'abstract-trunc'})
+              for event in past:
+                info['past'].append(event.text)
 
+              self.company.update(
+                {'company': company['company']}, 
+                {'$push': {'company_contacts': info}
+             })      
+            except:
+              print("failed with searching just for company", contact)
+              pass   
+        except:
+          print("failed searching for talent and company")                 
+          
 
-
-#download data from the results page into mongodb
-
-  #company_contacts underneath the company collection
-    # Picture(linkedIn CDN)
-    # Name
-    # Title
-    # LI profile URL
-    #
+      
+        
+        
+        

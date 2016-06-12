@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import {Popover, OverlayTrigger} from 'react-bootstrap'
-import styles from 'css/components/topic-item';
+import styles from 'css/components/job-item';
 import moment from 'moment'
 
 const cx = classNames.bind(styles);
@@ -34,12 +34,16 @@ export default class JobItem extends Component {
   }
 
   render() {
-    let popover = <Popover id={this.props.job._id} placement="top" title={this.props.job.location}>{this.props.job.tagline}</Popover>;    
     return (
-      <OverlayTrigger overlay={popover}>
-      <li className={cx('topic-item')} key={this.props.id}>        
-          <a href='#' onClick={this.showData} className={cx('topic')}>
-            {this.props.text}
+      <div className={cx('job-row')}>                    
+      <li className={cx('job-item')} key={this.props.id}>                  
+          <Icon                
+        fill="currentColor"
+        height="1em"
+        name="triangleRight"
+        width="1em"/> 
+          <a href='#' onClick={this.showData} className={cx('job')}>
+            {this.props.text.split(" at ")[0]}
           </a>                
         <div className={cx('circle')}>
         <ButtonCircle backgroundColor="red" onClick={this.onDestroyClick} title="Remove">
@@ -47,18 +51,18 @@ export default class JobItem extends Component {
             fill="currentColor"
             height="1em"
             name="close"
-            width="2em"/>                
+            width="1em"/>                
         </ButtonCircle>        
         <ButtonCircle backgroundColor="green" onClick={this.increment} title="Add">
           <Icon                
             fill="currentColor"
             height="1em"
             name="star"
-            width="2em"/>                
+            width="1em"/>                
         </ButtonCircle>      
         </div>
-      </li>      
-      </OverlayTrigger>                                
+      </li>
+      </div>      
     );
   }
 }

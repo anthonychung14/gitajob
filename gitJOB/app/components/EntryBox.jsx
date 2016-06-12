@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import TopicTextInput from 'components/TopicTextInput';
+import FilterLink from 'components/FilterLink';
 import classNames from 'classnames/bind';
 import styles from 'css/components/entrybox';
 
@@ -14,7 +14,7 @@ const EntryBox = ({onEntryChange, onEntrySave, topic}) => {
   return (
     <div className={cx('entrybox')}>
       <h1 className={cx('header')}>Find your job</h1>
-      <TopicTextInput
+      <FilterLink
         className={cx('input')}
         value={topic}
         placeholder="Search for jobs . . ."

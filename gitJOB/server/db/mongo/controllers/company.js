@@ -6,7 +6,10 @@ import Company from '../models/company'
 export function getContacts(req, res) {
   const companyName = req.params.id
 
-  Company.findOne({'company': companyName}).exec((err, data) => {        
+  Company.findOne({'company': companyName}).exec((err, data) => {            
+    if(err) {
+      console.log(companyName, "lookup failed here")
+    }
     res.json(data.company_contacts)
   })
 }

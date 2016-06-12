@@ -1,16 +1,21 @@
 @value font-medium from '../settings.css';
 @value color-salem, color-dodger-blue, color-punch from '../common/colors.css';
 
-.topic-item {
+.job-item {
   display: flex;
   justify-content: space-between;
+  background-color: white;  
 
 }
 
-.topic {
+.job {
   composes: flexNotMoreThan200 from '../common/layout';
-  font-size: font-medium;  
+  font-size: 130%;
   flex: 0 0 70%;
+}
+
+.job-row {
+  width: 100%;  
 }
 
 .circle {

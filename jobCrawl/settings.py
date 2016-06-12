@@ -16,9 +16,9 @@ MONGODB_COLLECTION = "postings"
 
 ITEM_PIPELINES = {
    # 'scrapy.contrib.pipeline.images.ImagesPipeline': 100,   
-   'jobCrawl.pipelines.GitJobPipeline': 200,
-   'jobCrawl.pipelines.MongoDBPipeline': 300,
-   'scrapyelasticsearch.scrapyelasticsearch.ElasticSearchPipeline': 500,
+   # 'jobCrawl.pipelines.GitJobPipeline': 200,
+   # 'jobCrawl.pipelines.MongoDBPipeline': 300,
+   # 'scrapyelasticsearch.scrapyelasticsearch.ElasticSearchPipeline': 500,
 }
 
 ELASTICSEARCH_SERVERS = 'localhost:9200' 

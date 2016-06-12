@@ -3,9 +3,9 @@ import Navigation from 'containers/Navigation';
 import Message from 'containers/Message';
 import classNames from 'classnames/bind';
 import styles from 'css/main';
+import Profile from 'containers/Profile'
 
 const cx = classNames.bind(styles);
-
 
 /*
  * React-router's <Router> component renders <Route>'s
@@ -20,8 +20,10 @@ const App = ({children}) => {
   return (
     <div className={cx('app')}>
       <Navigation />
-      <Message />
+      <Message />      
+        <Profile />
         {children}
+      
     </div>
   );
 };
