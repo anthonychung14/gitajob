@@ -13,8 +13,19 @@ body {
 
 .app {
   composes: box from './common/layout.css';
-
   font-family: montserrat;
   font-weight: normal;
   font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
+
+.data {
+  display: flex;
+  flex-direction: row;
+  padding: 1%;
+
+}
+
+

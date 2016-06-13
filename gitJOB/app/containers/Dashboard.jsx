@@ -10,6 +10,8 @@ import styles from 'css/components/dashboard';
 import { destroyPosting} from 'actions/posting'
 import { moveAppUp, moveAppDown, fetchUserJobs } from 'actions/apps'
 import { openModal, closeModal } from 'actions/modals'
+import Collapsible from 'react-collapsible'
+
 
 /*
  * Note: This is kept as a container-level component,
@@ -58,31 +60,54 @@ class Dashboard extends Component {
 
     return (
       <div className={cx('dashboard')}>
+        <Collapsible 
+          classParentString={cx('Collapsible')}
+          triggerText="Queued"
+          easing="ease"
+          open={true}
+          transitionTime={200}>
         <MainSection
-          header={"Queued"}
           jobs={queueAdd}
           applications={applications}
           openModal={openModal}
           onIncrement={moveAppUp}
           deny={destroyPosting}/>
-        <MainSection
-          header={"Apply"}
+        </Collapsible>
+        <Collapsible 
+          classParentString={cx('Collapsible')}
+          triggerText="Applied"
+          easing="ease"
+          transitionTime={200}>
+        <MainSection          
           jobs={queueApply}
           onIncrement={moveAppUp}
           openModal={openModal}
           deny={destroyPosting}/>
+        </Collapsible>
+        <Collapsible 
+          classParentString={cx('Collapsible')}
+          triggerText="Phone"
+          easing="ease"
+          transitionTime={200}>
         <MainSection
           header={"Phone"}
           jobs={queuePhone}
           onIncrement={moveAppUp}
           openModal={openModal}
           deny={destroyPosting}/>
+        </Collapsible>
+        <Collapsible 
+          classParentString={cx('Collapsible')}
+          triggerText="Code"
+          easing="ease"
+          transitionTime={200}>
         <MainSection
           header={"Code"}
           jobs={queueChallenge}
           onIncrement={moveAppUp}
           openModal={openModal}
           deny={destroyPosting}/>        
+        </Collapsible>
         <InfoModal 
           modalState={modalState}
           openModal={openModal}

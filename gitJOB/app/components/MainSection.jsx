@@ -31,10 +31,10 @@ const MainSection = (
     <div className={cx('main-section')}>
       {allCompany.arr.map((company, idx) => {                
         return (
-          <div>
+          <div key={idx}>
           <h3 className={cx('header-company')}>{company}</h3>
           <CompanyJobs
-            idx={idx}
+            key={idx}
             company={allCompany.hash[company]}
             onIncrement={onIncrement}
             deny={deny}

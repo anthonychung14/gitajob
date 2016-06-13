@@ -13,7 +13,7 @@ import { openModal, closeModal } from 'actions/modals'
 import { findFront, findBack, findFull, findData } from 'actions/filter'
 
 
-import styles from 'css/components/vote';
+import styles from 'css/components/postings';
 
 const cx = classNames.bind(styles);
 
@@ -58,11 +58,11 @@ class Postings extends Component {
     console.log(filteredJobs[0])
 
     return (
-      <div className={cx('vote')}>        
+      <div className={cx('postings')}>        
         <div className={cx('filters')}>
           {' '}<FilterLink currentFilter={filter} type={'All'} filter={"SHOW_ALL"}/>{' '}
-          {' '}<FilterLink currentFilter={filter} type={'Frontend'} filter={"SHOW_FRONT"}/>{' '}
-          {' '}<FilterLink currentFilter={filter} type={'Backend'} filter={"SHOW_BACK"}/>{' '}
+          {' '}<FilterLink currentFilter={filter} type={'Front'} filter={"SHOW_FRONT"}/>{' '}
+          {' '}<FilterLink currentFilter={filter} type={'Back'} filter={"SHOW_BACK"}/>{' '}
           {' '}<FilterLink currentFilter={filter} type={'Fullstack'} filter={"SHOW_FULL"}/>{' '}
           {' '}<FilterLink currentFilter={filter} type={'Data'} filter={"SHOW_DATA"}/>{' '}
         </div>        

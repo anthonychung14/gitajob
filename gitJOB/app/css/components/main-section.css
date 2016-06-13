@@ -2,13 +2,12 @@
 
 .main-section {
   composes: card from '../common/card';
-  width: 40%;
-  border-radius: global-radius;
+  width: 65%;
+  border-radius: global-radius;  
+  margin: 3%;
   align-self: center;
-  margin-top: 30px;
-  margin-bottom: 20px;
   padding: 15px 10px 15px 10px;  
-  background-color: white;
+  background-color: #e9eaec;
 }
 
 .header {
@@ -21,11 +20,15 @@
   justify-content: space-between;
 }
 
-.header-company {
-  background: silver;
+.header-company { 
   padding: 10px 10px 10px 10px;
   margin: 5px 5px 5px 5px;
+}
 
+.header-top {
+  background-color: #2196F3;
+  padding: 2%;
+  
 
 }
 

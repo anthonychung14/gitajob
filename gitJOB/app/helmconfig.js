@@ -13,12 +13,11 @@
 import chromecon from 'images/chrome-ninja192-precomposed.png';
 import applecon from 'images/apple-ninja152-precomposed.png';
 import mscon from 'images/ms-ninja144-precomposed.png';
-import favicon from 'images/favicon.png';
 
 const config = {
   link: [
     // Add to homescreen for Chrome on Android
-    { rel: 'icon', href: favicon },
+    { rel: 'icon', href: chromecon },
     { rel: 'icon', sizes: '192x192', href: chromecon },
     // Add to homescreen for Safari on IOS
     { rel: 'apple-touch-icon', sizes: '152x152', applecon },
@@ -43,7 +42,7 @@ const config = {
     // Add to homescreen for Safari on IOS
     { name: 'apple-mobile-web-app-capable', content: 'yes' },
     { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
-    { name: 'apple-mobile-web-app-title', content: 'GitJob' },
+    { name: 'apple-mobile-web-app-title', content: 'App Q' },
     // Tile icon for Win8 (144x144 + tile color)
     { name: 'msapplication-TileImage', content: mscon },
     { name: 'msapplication-TileColor', content: '#3372DF' }

@@ -1,0 +1,18 @@
+.active-span {  
+  background-color: black;
+  color: white;
+  width: 15%;
+  height: 5vh;
+  align: center;
+  display: flex;
+  justify-content: center;   
+}
+
+.inactive-anchor {  
+  background-color: white;  
+  width: 15%;
+  height: 5vh;
+  align: center;
+  display: flex;
+  justify-content: center; 
+}

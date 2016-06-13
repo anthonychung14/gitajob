@@ -21,8 +21,10 @@ const App = ({children}) => {
     <div className={cx('app')}>
       <Navigation />
       <Message />      
-        <Profile />
+      <div className={cx('data')}>
+        <Profile className={cx('profile')}/>
         {children}
+      </div>
       
     </div>
   );

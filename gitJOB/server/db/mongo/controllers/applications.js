@@ -7,7 +7,7 @@ import Application from '../models/apps'
  * GET ALL
  */
 export function all(req, res) {
-  Application.find({'status.nope': {'$ne': true}}).exec((err, data) => {
+  Application.find({'user': req.user._id}).exec((err, data) => {
     if (err) {
       console.log('Error in first query');
       return res.status(500).send('Something went wrong getting the data');

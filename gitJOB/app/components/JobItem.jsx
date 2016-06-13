@@ -36,12 +36,7 @@ export default class JobItem extends Component {
   render() {
     return (
       <div className={cx('job-row')}>                    
-      <li className={cx('job-item')} key={this.props.id}>                  
-          <Icon                
-        fill="currentColor"
-        height="1em"
-        name="triangleRight"
-        width="1em"/> 
+      <li className={cx('job-item')} key={this.props.id}>                            
           <a href='#' onClick={this.showData} className={cx('job')}>
             {this.props.text.split(" at ")[0]}
           </a>                

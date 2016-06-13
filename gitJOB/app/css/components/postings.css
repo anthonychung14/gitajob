@@ -1,0 +1,23 @@
+.postings {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  width: 90%;
+
+}
+.filters {
+  display: flex;
+  justify-content: space-around;
+  margin: 1%;  
+
+}
+
+.filters > a {
+  font-size: x-large;    
+}
+
+.filters > span {
+  font-size: x-large;
+
+}
+

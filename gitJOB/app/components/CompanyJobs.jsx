@@ -3,7 +3,6 @@ import JobItem from 'components/JobItem';
 import classNames from 'classnames/bind';
 import {Popover, OverlayTrigger} from 'react-bootstrap'
 import styles from 'css/components/company-jobs';
-import Collapsible from 'react-collapsible'
 
 const cx = classNames.bind(styles);
 

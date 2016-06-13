@@ -1,6 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { filterPosition } from 'actions/filter';
+import styles from 'css/components/filter-link';
+import classNames from 'classnames/bind';
+
+
+const cx = classNames.bind(styles);
 
 let createHandlers = function(dispatch) {
   let onClick = function(node, data) {
@@ -8,6 +13,7 @@ let createHandlers = function(dispatch) {
   };
 
   return {
+    
     onClick,    
   };
 }
@@ -22,10 +28,11 @@ class FilterLink extends Component {
   render() {
     const { type, filter, currentFilter, children } = this.props
     if (filter === currentFilter) {
-      return <span>{type}</span>
+      return <span className={cx('active-span')}>{type}</span>
     }
     return (
       <a href='#'
+      className={cx('inactive-anchor')}
         onClick={ (e, data) => {
           e.preventDefault()
           this.handlers.onClick(filter)          
@@ -34,4 +41,4 @@ class FilterLink extends Component {
   }
 }
 
-export default connect()(FilterLink);
+export default connect()( FilterLink );

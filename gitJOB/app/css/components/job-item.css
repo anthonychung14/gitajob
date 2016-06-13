@@ -10,7 +10,7 @@
 
 .job {
   composes: flexNotMoreThan200 from '../common/layout';
-  font-size: 130%;
+  font-size: x-large;
   flex: 0 0 70%;
 }
 

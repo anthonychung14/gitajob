@@ -55,7 +55,7 @@ class angelCrawler(InitSpider):
   def parse(self, response):            
     # add in logic to customize the search terms
 
-    for i in range(1,40): 
+    for i in range(1,90): 
       self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
       time.sleep(4)
 
