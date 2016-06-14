@@ -4,14 +4,13 @@ import classNames from 'classnames/bind';
 
 import MainSection from 'components/MainSection';
 import InfoModal from 'components/InfoModal'
+import FilterLink from 'components/FilterLink'
 
 import styles from 'css/components/dashboard';
 
 import { destroyPosting} from 'actions/posting'
 import { moveAppUp, moveAppDown, fetchUserJobs } from 'actions/apps'
 import { openModal, closeModal } from 'actions/modals'
-import Collapsible from 'react-collapsible'
-
 
 /*
  * Note: This is kept as a container-level component,
@@ -22,92 +21,73 @@ const cx = classNames.bind(styles)
 
 class Dashboard extends Component {
   
+  getUserApps ( apps, filter ) {    
+    switch(filter) {
+      case 'SHOW_ALL':
+        return apps
+      case 'SHOW_QUEUE':        
+        return apps.filter(
+          t => t.interest === 1
+        )        
+        return apps
+      case 'SHOW_APPLY':
+        return apps.filter(
+          t => t.interest === 2
+        )        
+        return apps
+      case 'SHOW_PHONE':
+        return apps.filter(
+          t => t.interest === 3
+        )        
+        return apps
+      case 'SHOW_CODE':
+        return apps.filter(
+          t => t.interest === 4
+        )        
+        return apps
+      case 'SHOW_SITE':
+        return apps.filter(
+          t => t.interest === 5
+        )        
+        return apps
+      case 'SHOW_OFFER':
+        return apps.filter(
+          t => t.interest === 6
+        )        
+        return apps
+      }
+  }
+
   render() {
     const { 
       applications, moveAppUp, 
       destroyPosting, openModal, closeModal, 
-      fetchUserJobs, modalState, activeJob, activeStaff } = this.props; 
+      fetchUserJobs, modalState, activeJob, filter, activeStaff } = this.props; 
+
+    console.log("filtered should be show all", filter)
     
-    console.log(activeStaff)
+    const filteredJobs = this.getUserApps(applications, filter).map((app, idx) => {
+      return app.company
+    })
 
-    let queueAdd = applications.reduce((prev, curr) => {
-      if (curr.interest === 1) {
-        prev.push(curr.company)        
-      }
-      return prev
-    }, [])
-        
-    const queueApply = applications.reduce((prev, curr) => {
-      if(curr.interest === 2) {
-        prev.push(curr.company)
-      } 
-      return prev
-    }, [])
-
-    const queuePhone = applications.reduce((prev, curr) => {
-      if(curr.interest === 3) {
-        prev.push(curr.company)
-      } 
-      return prev
-    }, [])
-
-    const queueChallenge = applications.reduce((prev, curr) => {
-      if(curr.interest === 4) {
-        prev.push(curr.company)
-      } 
-      return prev
-    }, [])
+    console.log(filteredJobs, "these are the filtered jobs")
 
     return (
       <div className={cx('dashboard')}>
-        <Collapsible 
-          classParentString={cx('Collapsible')}
-          triggerText="Queued"
-          easing="ease"
-          open={true}
-          transitionTime={200}>
+        <div className={cx('filters')}>
+          {' '}<FilterLink currentFilter={filter} type={'All'} filter={"SHOW_ALL"}/>{' '}
+          {' '}<FilterLink currentFilter={filter} type={'Queue'} filter={"SHOW_QUEUE"}/>{' '}
+          {' '}<FilterLink currentFilter={filter} type={'Apply'} filter={"SHOW_APPLY"}/>{' '}
+          {' '}<FilterLink currentFilter={filter} type={'Phone'} filter={"SHOW_PHONE"}/>{' '}
+          {' '}<FilterLink currentFilter={filter} type={'Code'} filter={"SHOW_CODE"}/>{' '}
+        </div>        
+
         <MainSection
-          jobs={queueAdd}
-          applications={applications}
+          jobs={filteredJobs}
+          applications={filteredJobs}
           openModal={openModal}
           onIncrement={moveAppUp}
           deny={destroyPosting}/>
-        </Collapsible>
-        <Collapsible 
-          classParentString={cx('Collapsible')}
-          triggerText="Applied"
-          easing="ease"
-          transitionTime={200}>
-        <MainSection          
-          jobs={queueApply}
-          onIncrement={moveAppUp}
-          openModal={openModal}
-          deny={destroyPosting}/>
-        </Collapsible>
-        <Collapsible 
-          classParentString={cx('Collapsible')}
-          triggerText="Phone"
-          easing="ease"
-          transitionTime={200}>
-        <MainSection
-          header={"Phone"}
-          jobs={queuePhone}
-          onIncrement={moveAppUp}
-          openModal={openModal}
-          deny={destroyPosting}/>
-        </Collapsible>
-        <Collapsible 
-          classParentString={cx('Collapsible')}
-          triggerText="Code"
-          easing="ease"
-          transitionTime={200}>
-        <MainSection
-          header={"Code"}
-          jobs={queueChallenge}
-          onIncrement={moveAppUp}
-          openModal={openModal}
-          deny={destroyPosting}/>        
-        </Collapsible>
         <InfoModal 
           modalState={modalState}
           openModal={openModal}
@@ -132,6 +112,7 @@ function mapStateToProps(state) {
   return {
     applications: state.applications.applications,
     modalState: state.modal.modalState,
+    filter: state.visFilter,
     activeJob: state.modal.activeJob,
     activeStaff: state.modal.activeStaff
   }

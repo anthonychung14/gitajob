@@ -50,12 +50,11 @@ class Postings extends Component {
 
   render() {
     const {
-      newTopic, jobs, typing, activeJob, activeStaff,
+      newTopic, jobs, activeJob, activeStaff,
       createTopic, destroyPosting, addToQueue, decrementCount, 
       openModal, closeModal, modalState, filter } = this.props;    
     
     const filteredJobs = this.getPostings(jobs, filter)
-    console.log(filteredJobs[0])
 
     return (
       <div className={cx('postings')}>        
@@ -89,14 +88,11 @@ class Postings extends Component {
 }
 
 Postings.propTypes = {
-  jobs: PropTypes.array.isRequired,
-  typing: PropTypes.func.isRequired,
-  createTopic: PropTypes.func.isRequired,
+  jobs: PropTypes.array.isRequired,  
   destroyPosting: PropTypes.func.isRequired,
   openModal: PropTypes.func.isRequired,
   closeModal: PropTypes.func.isRequired,
   addToQueue: PropTypes.func.isRequired,
-
 };
 
 function mapStateToProps(state) {
@@ -112,4 +108,4 @@ function mapStateToProps(state) {
 // Read more about where to place `connect` here:
 // https://github.com/rackt/react-redux/issues/75#issuecomment-135436563
 export default connect(mapStateToProps, 
-  { createTopic, typing, addToQueue, closeModal, openModal, destroyPosting })(Postings);
+  { addToQueue, closeModal, openModal, destroyPosting })(Postings);

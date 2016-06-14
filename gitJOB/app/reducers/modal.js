@@ -41,7 +41,6 @@ export default function modal(state = {
         isFetching: true
       });
     case GET_STAFF_SUCCESS:            
-      console.log(action, "action from success")
       let finalState = Object.assign({}, state, {
         isFetching: false,
         activeStaff: action.payload

@@ -1,14 +1,11 @@
 .dashboard {
-  display: flex;  
-  flex-direction: column;
-  justify-content: center;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
   width: 90%;
-  margin: 1%;
-  padding: 1%;
-
 }
 
-.Collapsible {    
+/*.Collapsible {    
   display: flex;
   flex-direction: column;
   padding: 1%;  
@@ -27,5 +24,20 @@
   background-color: silver;
   color: black;
 
+}*/
+
+.filters {
+  display: flex;
+  justify-content: space-around;
+  margin: 1%;  
+
 }
 
+.filters > a {
+  font-size: x-large;    
+}
+
+.filters > span {
+  font-size: x-large;
+
+}

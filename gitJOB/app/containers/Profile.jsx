@@ -11,7 +11,10 @@ import styles from 'css/components/profile';
 const cx = classNames.bind(styles);
 
 class Profile extends Component {
-  
+  static need = [  // eslint-disable-line
+    fetchUserJobs
+  ]
+
   filterQueue(app){
     return app.interest === 1
   }
@@ -32,41 +35,22 @@ class Profile extends Component {
     const { 
       applications, fetchUserJobs
     } = this.props
-    return (
-      <div>
-      <h3>{applications.filter(e => this.filterQueue(e)).length}</h3>
-      <ButtonCircle backgroundColor="blue" onClick={this.increment} title="Queue">
-          <Icon                
-            fill="currentColor"
-            height="1em"
-            name="clock"
-            width="2em"/>                
-        </ButtonCircle>     
-      </div>
+    
+    return (      
+      <h3>{applications.filter(e => this.filterQueue(e)).length} queue</h3>            
     )
   }
 
-
   render() {    
     const { 
-      applications, fetchUserJobs
+      applications, fetchUserJobs, user
     } = this.props
-
-    console.log(applications, "THESE ARE THE APPLICATIONS. ARE THEY FILTERED BY USER")
 
     return (
       <div className={cx('info')}>
         <img className={cx('picture')} src='https://gravatar.com/avatar/7c18743922ab826d83cc40ef0493c5cb?d=https://hackaday.io/img/default-gravatar.png&r=x&s=400'/>
-        <h3>Username</h3>
-        <table>
-          <tbody>
-          <tr className={cx('row')}>
-            <td>{this.renderButton()}</td>
-            <td><h3>{applications.filter(e => this.filterApply(e)).length}</h3>Applied</td>
-          </tr>          
-          </tbody>
-        </table>
-        
+        <h3>{user}</h3>            
+        {this.renderButton()}              
       </div>
     )  
   }
@@ -80,7 +64,8 @@ Profile.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    applications: state.applications.applications
+    applications: state.applications.applications,
+    user: state.applications.userName
   }
 }
 

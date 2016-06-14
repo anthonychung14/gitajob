@@ -23,6 +23,7 @@ const MainSection = (
     }
     return prev
   }, {hash: {}, arr: []})
+  
   if (applications === undefined) {
     applications = []
   }

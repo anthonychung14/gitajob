@@ -7,6 +7,8 @@ import About from 'containers/About';
 import LoginOrRegister from 'containers/LoginOrRegister';
 import Dashboard from 'containers/Dashboard';
 
+import { filterPosition } from 'actions/filter'
+
 /*
  * @param {Redux Store}
  * We require store as an argument here because we wish to get
@@ -28,17 +30,23 @@ export default (store) => {
     const { user: { authenticated }} = store.getState();
     if (authenticated) {
       replace({
-        pathname: '/'
+        pathname: '/postings'
       });
     }
     callback();
+  }
+
+  const changeFilter = (nextState, replace, callback) => {
+    const { visFilter } = store.getState()    
+    store.dispatch(filterPosition('SHOW_ALL'))    
   };
   return (
-    <Route path="/" component={App}>
-      <IndexRoute component={Posting} onEnter={requireAuth} />
-      <Route path="login" component={LoginOrRegister} onEnter={redirectAuth} />
-      <Route path="dashboard" component={Dashboard} onEnter={requireAuth} />
+    <Route path="/" component={App}>      
+      <IndexRoute component={LoginOrRegister}/>      
+      <Route path="login" component={LoginOrRegister} />
       <Route path="about" component={About} />
+      <Route path="dashboard" component={Dashboard} onEnter={requireAuth} onLeave={changeFilter} />
+      <Route path="postings" component={Posting} onEnter={requireAuth} onLeave={changeFilter} />
     </Route>
   );
 };

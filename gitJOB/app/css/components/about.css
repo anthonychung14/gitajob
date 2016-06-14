@@ -1,12 +1,85 @@
-.header {
-  composes: heading from '../common/typography';
-  text-align: center;
+.neal-team-member-description {
+  font-size: x-large !important;
+
 }
 
-.description {
-  composes: normal from '../common/typography';
+.container > h1 {
+  color: #2196F3;
 }
 
-.contribute {
-  composes: small from '../common/typography';
+.icon-saying {
+  display: flex;
+
+  justify-content: space-between;  
+}
+
+.hero-img {
+  background-size: 100% 100%;
+  height: 85vh;
+  background-image: url('images/switches.jpg');
+  color: white;
+}
+
+
+.hero-img2 {
+  background-color: #2196F3;
+  color: white;
+  margin-top: 2%;
+}
+
+.hero-img3 {
+  margin-top: 1%;
+  background-color: #96f321;
+  color: black;
+}
+
+.hero-img-action {
+  background-color: #f37e21;
+  color: white;
+}
+
+.display-4 {
+  color: white;  
+}
+
+.resume {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+img {
+  height: auto; 
+  width: auto; 
+  max-width: 400px; 
+  max-height: 200px;
+  margin-right: 10%
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+ul li {
+  margin: 3%;
+
+}
+
+.gif-accent {
+  display: flex;  
+  justify-content: center;
+  background-color: black;
+  padding: 2%;
+}
+
+.resume-work {
+  list-style: none !important;
+
+}
+
+svg {
+  height: 8em;
+  width: 8em;
+  fill: white;  
 }

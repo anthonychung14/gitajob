@@ -32,3 +32,11 @@ export function findData(item) {
             return word === "data"
           })
 }
+
+
+export function findQueue(item) {    
+  return item.job_title.toLowerCase().split(" ")
+          .some(word => {
+            return word === "data"
+          })
+}

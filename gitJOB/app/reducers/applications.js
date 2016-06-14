@@ -16,7 +16,8 @@ export default function applications(state = {
     case GET_USER_JOBS_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
-        applications: action.req.data
+        applications: action.req.data.data,
+        userName: action.req.data.userId
       });
     case GET_USER_JOBS_FAILURE:
       return Object.assign({}, state, {

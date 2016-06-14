@@ -9,6 +9,7 @@ const usersController = controllers && controllers.users;
 const jobsController = controllers && controllers.jobs;
 const appController = controllers && controllers.applications
 const companyController = controllers && controllers.company
+const feedbackController = controllers && controllers.feedback
 
 export default (app) => {
   // user routes
@@ -66,6 +67,10 @@ export default (app) => {
   if (companyController) {
     app.get('/company/:id', companyController.getContacts)
     app.post('/company/:id', companyController.addContact)
+  }
+  
+  if (feedbackController) {
+    app.post('/feedback', feedbackController.postFeedback)    
   }
 };
 

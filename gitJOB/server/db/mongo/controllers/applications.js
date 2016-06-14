@@ -7,12 +7,27 @@ import Application from '../models/apps'
  * GET ALL
  */
 export function all(req, res) {
-  Application.find({'user': req.user._id}).exec((err, data) => {
+  //if user id is not given, check their session token, 
+  const id = req.user._id
+  Application.find({'user': id, 'interest': {'$gt': 0}}).exec((err, data) => {
     if (err) {
       console.log('Error in first query');
       return res.status(500).send('Something went wrong getting the data');
     }    
-    return res.json(data);
+    
+    User.findOne(({'_id': id})).exec((error, user) => {
+      if (err) {
+      console.log('Error in first query');
+      return res.status(500).send('Something went wrong getting the data');
+    }            
+      let response = {}
+      let username = user.email.split("@")[0]
+
+      response.userId = username
+      response.data = data
+      return res.json(response);
+    })
+
   });
 }
 

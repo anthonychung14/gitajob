@@ -16,13 +16,13 @@ const cx = classNames.bind(styles);
  * A better explanation of react-router is available here:
  * https://github.com/rackt/react-router/blob/latest/docs/Introduction.md
  */
+
 const App = ({children}) => {
   return (
     <div className={cx('app')}>
       <Navigation />
       <Message />      
-      <div className={cx('data')}>
-        <Profile className={cx('profile')}/>
+      <div className={cx('data')}>        
         {children}
       </div>
       
