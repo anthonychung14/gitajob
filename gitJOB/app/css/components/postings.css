@@ -21,3 +21,22 @@
 
 }
 
+.two-column {
+  display: flex;  
+
+}
+
+.left-column {
+  margin: 5%;
+  flex: 0 0 30%;
+
+}
+
+.picture {
+  width: auto;
+  height: 400px;
+}
+
+.right-column {  
+  width: 80%;
+}

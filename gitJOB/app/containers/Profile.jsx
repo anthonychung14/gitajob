@@ -10,63 +10,44 @@ import styles from 'css/components/profile';
 
 const cx = classNames.bind(styles);
 
-class Profile extends Component {
-  static need = [  // eslint-disable-line
-    fetchUserJobs
-  ]
-
-  filterQueue(app){
+const Profile = ({applications, user}) => {  
+  applications = applications || []
+  const filterQueue = (app) => {
     return app.interest === 1
   }
 
-  filterApply(app){
+  const filterApply = (app) => {
     return app.interest === 2
   }
 
-  filterPhone(app){
+  const filterPhone = (app) => {
     return app.interest === 3
   }
 
-  filterTech(app){
+  const filterTech = (app) => {
     return app.interest === 4
   }
 
-  renderButton() {
-    const { 
-      applications, fetchUserJobs
-    } = this.props
-    
+  const renderButton = () => {    
     return (      
-      <h3>{applications.filter(e => this.filterQueue(e)).length} queue</h3>            
+      <div>
+      <h3>{applications.filter(e => filterQueue(e)).length} queue</h3>            
+      <h3>{applications.filter(e => filterApply(e)).length} apply</h3>            
+      <h3>{applications.filter(e => filterPhone(e)).length} phone calls</h3>            
+      <h3>{applications.filter(e => filterTech(e)).length} tech screens</h3>            
+      </div>
     )
   }
-
-  render() {    
-    const { 
-      applications, fetchUserJobs, user
-    } = this.props
-
     return (
       <div className={cx('info')}>
         <img className={cx('picture')} src='https://gravatar.com/avatar/7c18743922ab826d83cc40ef0493c5cb?d=https://hackaday.io/img/default-gravatar.png&r=x&s=400'/>
         <h3>{user}</h3>            
-        {this.renderButton()}              
+        {renderButton()}              
       </div>
-    )  
-  }
-  
+    )    
 }
 
-Profile.propTypes = {
-  applications: PropTypes.array.isRequired,
-  fetchUserJobs: PropTypes.func.isRequired
-}
 
-function mapStateToProps(state) {
-  return {
-    applications: state.applications.applications,
-    user: state.applications.userName
-  }
-}
 
-export default connect(mapStateToProps, {fetchUserJobs})(Profile);
+
+export default Profile;

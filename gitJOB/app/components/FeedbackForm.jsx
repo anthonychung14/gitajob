@@ -34,8 +34,9 @@ class FeedbackForm extends Component {
     return (
       <div className="neal-signup-inline">
         <form className="form-inline row" onSubmit={this.handleSubmit}>            
+          <h1>Leave Specific feedback below!</h1>
           <fieldset>
-            <legend>Which one?</legend>
+            <legend>Role?</legend>
             <p>              
               <input type = "radio"
                      name = "demographic"
@@ -73,13 +74,13 @@ class FeedbackForm extends Component {
           
           <fieldset>                       
             <legend>What went well?</legend>
-            <textarea maxlength="100" type="positive" required className="form-control" name="positive" placeholder="Color schme on fleek"
+            <textarea maxlength="100" type="positive" size="40" required className="form-control" name="positive" placeholder="Color scheme on fleek. I love orange"
               onChange={this.handleChange}/>              
           </fieldset>
 
           <fieldset>            
             <h4>What can I do more of, less of, or add/remove?</h4>
-            <textarea type="better" required className="form-control" name="better" placeholder="You should have this. Or not have that."
+            <textarea type="better" required size="40" className="form-control" name="better" placeholder="You should have this. Or not have that."
               onChange={this.handleChange}/>
           </fieldset>
 

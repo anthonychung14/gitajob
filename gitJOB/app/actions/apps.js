@@ -28,7 +28,7 @@ export function decrement(id) {
 export function moveAppDown(id, job) {
   return dispatch => {
     dispatch(decrement(id))
-    return makeUserJobRequest('put', id, job)
+    return makeUserJobRequest('post', id, job)
     .then(res => {
       return res
     });    
@@ -44,6 +44,3 @@ export function moveAppUp(id, job) {
     });    
   }  
 }
-
-
-//Move up the chain logic

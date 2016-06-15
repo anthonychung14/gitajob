@@ -1,6 +1,10 @@
 .neal-team-member-description {
   font-size: x-large !important;
+}
 
+.container {
+  height: 85vh;
+  width: 85vw;
 }
 
 .container > h1 {
@@ -8,44 +12,110 @@
 }
 
 .icon-saying {
-  display: flex;
+  display: flex;  
+  width: 70vw;  
+}
 
-  justify-content: space-between;  
+.icon-column {
+  display: flex;
+  position: relative;
+  top: 50px;
+  right: 250px;
+  margin-left: 10%;
+  margin-right: 10%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.feature-column {
+  display: flex;
+  justify-content: space-around;
+  margin: 3%;
+}
+
+.feature-single {  
+  display: flex;
+  max-width: 25%;
+  margin: 3%;
+  padding: 1%;
+  font-size: 25px;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-color: #d3d3d3;
+  border-style: solid;
+  border-width: thin;
 }
 
 .hero-img {
   background-size: 100% 100%;
   height: 85vh;
   background-image: url('images/switches.jpg');
-  color: white;
+  color: white;  
 }
 
+.hero-img-items {
+  height: 75vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;  
+  position: relative;
+  justify-content: space-between;
+}
+
+.hero-img-heading {
+  font-size: 350%;
+}
+
+.hero-img-bottom {
+  position: absolute;
+  bottom: 0;
+}
 
 .hero-img2 {
   background-color: #2196F3;
   color: white;
-  margin-top: 2%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  margin-top: 1%;
+  margin-bottom: 1%;  
+  padding-right: .5%;
+  text-align: center;
+  
 }
 
-.hero-img3 {
-  margin-top: 1%;
+.hero-img3 {  
   background-color: #96f321;
   color: black;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  padding-left: .5%;
+  padding-right: .5%;
+  text-align: center;
 }
 
 .hero-img-action {
   background-color: #f37e21;
   color: white;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  padding-left: .5%;
+  padding-right: .5%;
+  text-align: center;
 }
 
 .display-4 {
   color: white;  
 }
 
-.resume {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+.app-explain {
+  text-align: center;
+  font-size: xx-large
 }
 
 img {
@@ -65,6 +135,12 @@ ul li {
   margin: 3%;
 
 }
+.lead {
+  width: 250px;
+  font-size: x-large;
+  margin-top: 3%;
+  text-align:center;
+}
 
 .gif-accent {
   display: flex;  
@@ -79,7 +155,6 @@ ul li {
 }
 
 svg {
-  height: 8em;
-  width: 8em;
-  fill: white;  
+  height: 10em;
+  width: 10em;  
 }

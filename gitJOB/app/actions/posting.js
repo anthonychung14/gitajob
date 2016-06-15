@@ -53,9 +53,34 @@ export function addToQueue(id, job, index) {
     }
     return makeJobRequest('post', id, application)
     .then(response => {
-      dispatch(receiveQueue(response))
+      dispatch(receiveQueueData(response))
     });    
   };
+}
+
+export function removeFromQueue(id, job, index) {
+  return dispatch => {
+    dispatch(destroy(id));    
+    let application = {      
+      interest: 0,
+      status: {
+        queue: false,
+        queueDate: moment()
+      },
+      company: job
+    }
+    return makeJobRequest('post', id, application)
+    .then(response => {
+      dispatch(receiveQueueData(response))
+    });    
+  };
+}
+
+export function receiveQueueData(resp) {  
+  return {
+    type: types.RECEIVE_USER_APPS,
+    payload: resp.data
+  }
 }
 
 export function receiveQueue(data) {
@@ -80,7 +105,7 @@ export function destroyPosting(id, job) {
     return makeNopeRequest('post', id, job)
     .then(res => {
       dispatch(receiveQueue(res)
-      )}
+    )}
     );    
   };
 }

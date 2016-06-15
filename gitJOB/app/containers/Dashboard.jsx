@@ -5,10 +5,9 @@ import classNames from 'classnames/bind';
 import MainSection from 'components/MainSection';
 import InfoModal from 'components/InfoModal'
 import FilterLink from 'components/FilterLink'
+import Profile from 'containers/Profile'
 
 import styles from 'css/components/dashboard';
-
-import { destroyPosting} from 'actions/posting'
 import { moveAppUp, moveAppDown, fetchUserJobs } from 'actions/apps'
 import { openModal, closeModal } from 'actions/modals'
 
@@ -61,18 +60,17 @@ class Dashboard extends Component {
   render() {
     const { 
       applications, moveAppUp, 
-      destroyPosting, openModal, closeModal, 
-      fetchUserJobs, modalState, activeJob, filter, activeStaff } = this.props; 
-
-    console.log("filtered should be show all", filter)
+      moveAppDown, openModal, closeModal, 
+      fetchUserJobs, modalState, activeJob, filter, activeStaff, user } = this.props;     
     
     const filteredJobs = this.getUserApps(applications, filter).map((app, idx) => {
       return app.company
     })
 
-    console.log(filteredJobs, "these are the filtered jobs")
-
     return (
+      <div className={cx('two-columns')}>      
+      <Profile applications={applications} user={user} />
+      <div className={cx('right-column')} >
       <div className={cx('dashboard')}>
         <div className={cx('filters')}>
           {' '}<FilterLink currentFilter={filter} type={'All'} filter={"SHOW_ALL"}/>{' '}
@@ -87,7 +85,7 @@ class Dashboard extends Component {
           applications={filteredJobs}
           openModal={openModal}
           onIncrement={moveAppUp}
-          deny={destroyPosting}/>
+          deny={moveAppDown}/>
         <InfoModal 
           modalState={modalState}
           openModal={openModal}
@@ -95,7 +93,9 @@ class Dashboard extends Component {
           affirm={moveAppUp}
           staff={activeStaff}
           activeJob={activeJob}
-          deny={destroyPosting}/>
+          deny={moveAppDown}/>
+      </div>
+      </div>
       </div>
     )
   }
@@ -103,7 +103,7 @@ class Dashboard extends Component {
 
 Dashboard.propTypes = {
   applications: PropTypes.array.isRequired,
-  destroyPosting: PropTypes.func.isRequired,
+  moveAppDown: PropTypes.func.isRequired,
   moveAppUp: PropTypes.func.isRequired,
   closeModal: PropTypes.func.isRequired
 }
@@ -114,9 +114,10 @@ function mapStateToProps(state) {
     modalState: state.modal.modalState,
     filter: state.visFilter,
     activeJob: state.modal.activeJob,
-    activeStaff: state.modal.activeStaff
+    activeStaff: state.modal.activeStaff,
+    user: state.applications.userName
   }
 }
 
 export default connect(mapStateToProps, {
-  moveAppUp, destroyPosting, openModal, closeModal, fetchUserJobs})(Dashboard);
+  moveAppUp, moveAppDown, openModal, closeModal, fetchUserJobs})(Dashboard);

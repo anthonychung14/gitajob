@@ -41,3 +41,12 @@
   font-size: x-large;
 
 }
+
+.two-columns {
+  display: flex;  
+
+}
+
+.right-column {  
+  width: 80%;
+}

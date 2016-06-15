@@ -42,7 +42,7 @@ export default (store) => {
   };
   return (
     <Route path="/" component={App}>      
-      <IndexRoute component={LoginOrRegister}/>      
+      <IndexRoute component={About}/>      
       <Route path="login" component={LoginOrRegister} />
       <Route path="about" component={About} />
       <Route path="dashboard" component={Dashboard} onEnter={requireAuth} onLeave={changeFilter} />
@@ -50,3 +50,5 @@ export default (store) => {
     </Route>
   );
 };
+
+// <Route path="about" component={About} />

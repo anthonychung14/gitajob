@@ -46,7 +46,11 @@ export function addQueue(req, res) {
         return res.status(400).send(err)
       }
 
-      return res.status(200).send(data);    
+      return res.status(200).send(
+        data.filter((ele) => { 
+          return ele.interest > 0
+        })
+      );    
     })    
   });
 }
@@ -77,10 +81,14 @@ export function addNope(req, res) {
       if(err) {
         return res.status(400).send(err)
       }
-      return res.status(200).send(data);    
-    })
+      res.status(200).send(data.filter((ele) => { 
+          return ele.interest > 0
+        })    
+      )
   })
-}
+  }
+)}
+
 
 
 
