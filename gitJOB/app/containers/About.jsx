@@ -41,9 +41,11 @@ class About extends Component {
         <Hero          
           className={cx("hero-img")}>         
           <div className={cx("hero-img-items")}>         
-          <div>
-            <h1 className={cx("hero-img-heading")}>Switches, like engineers</h1>
-          <div className={cx("icon-saying")}>
+          <div className={cx('hero-img-text')}>
+            <h1 className={cx("hero-img-heading")}>Switches, like engineers...</h1>
+          
+          <div className={cx("icon-saying")}>            
+            
             <div className={cx("icon-column")}>
               <GoTools className={cx('cab')} />              
               <h4 className={cx("lead")}>Use and create tools</h4>              
@@ -53,15 +55,12 @@ class About extends Component {
               <GoFileBinary className={cx('cab')} />
               <h4 className={cx("lead")}>All made up of smaller switches!</h4>              
             </div>
-
-            <div className={cx("icon-column")}>
-              <MdMotorcycle className={cx('cab')} /> 
-              <h4 className={cx("lead")}>So since this app focuses on managing the job search...?</h4>                            
-            </div>                    
+                
           </div>
           </div>                             
+          
           <h4 className={cx('hero-img-bottom')}>
-            And. SWCH.io was an available domain. Sounds sleek. Could be cool. Idk. Stay with me.
+            And. SWCH.io was an available domain.
           </h4>        
           </div>           
         </Hero>
@@ -69,20 +68,16 @@ class About extends Component {
           <div          
             className={cx("hero-img2")}> 
             <h1 className={cx("display-4")}>
-              SWCH tracks your job status with multiple companies. 
+              SWCH lets you manage and fill your application/networking pipeline 
             </h1><br/>
             <h1 className={cx("display-4")}>
-            Like Lever, but from the applicant's perspective!
+              Add to and manage collections based on recent job postings
             </h1>                 
           </div>
           
-          <div className={cx("hero-img3")}>
-            <h4 className={cx("app-explain")}>This a proof of concept I made for the job search</h4><br/>
-            <h4 className={cx("app-explain")}>Look for three things!</h4>
-          </div>    
-          
-          <div className={cx("feature-column")}>              
-              <div className={cx("feature-single")}> 
+          <div className={cx("hero-img3")}>                                    
+            <h4 className={cx("app-explain")}>Proof of concept</h4>
+            <div className={cx("feature-single")}> 
                 <GoDatabase />
                 { "Fresh, home-harvested data! Wrote Python/Scrapy/Redis to distribute crawlers throughout LinkedIn and AngelList" }
               </div>          
@@ -96,7 +91,8 @@ class About extends Component {
                 <GoOrganization className={cx('cab')}/>
                 {"Combine and grow your network in the job hunt"}
               </div>                
-          </div>            
+          </div>    
+        
 
           <div className={cx("hero-img-action")}>
             <Section>

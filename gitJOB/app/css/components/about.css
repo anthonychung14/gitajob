@@ -1,7 +1,3 @@
-.neal-team-member-description {
-  font-size: x-large !important;
-}
-
 .container {
   height: 85vh;
   width: 85vw;
@@ -13,23 +9,29 @@
 
 .icon-saying {
   display: flex;  
-  width: 70vw;  
+  margin-left: 15%;
+  flex-wrap: wrap;  
+  width: 90vw;  
+  height: 65vh;
+}
+
+.hero-img-text {
+  display: flex;
+  flex-direction: column;
 }
 
 .icon-column {
+  margin: 2%;  ;
   display: flex;
-  position: relative;
-  top: 50px;
-  right: 250px;
-  margin-left: 10%;
-  margin-right: 10%;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
 .feature-column {
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: column
   justify-content: space-around;
   margin: 3%;
 }
@@ -39,7 +41,7 @@
   max-width: 25%;
   margin: 3%;
   padding: 1%;
-  font-size: 25px;
+  font-size: 1.05vw;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
@@ -49,8 +51,9 @@
 }
 
 .hero-img {
-  background-size: 100% 100%;
-  height: 85vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   background-image: url('images/switches.jpg');
   color: white;  
 }
@@ -155,6 +158,6 @@ ul li {
 }
 
 svg {
-  height: 10em;
-  width: 10em;  
+  height: 40%;
+  width: 50%;  
 }
