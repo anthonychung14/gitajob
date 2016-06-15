@@ -9,7 +9,7 @@
 
 .icon-saying {
   display: flex;  
-  margin-left: 15%;
+  margin-left: 10%;
   flex-wrap: wrap;  
   width: 90vw;  
   height: 65vh;
@@ -17,31 +17,31 @@
 
 .hero-img-text {
   display: flex;
-  flex-direction: column;
+  flex-direction: column;  
 }
 
-.icon-column {
-  margin: 2%;  ;
-  display: flex;
+.icon-column {  
+  flex-wrap:wrap;
+  display: flex;  
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 }
 
-.feature-column {
+.hero-icon-column {
   display: flex;
-  flex-wrap: wrap;
+  margin-left: 4%;
+  max-width: 400px;  
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
   margin: 3%;
 }
 
 .feature-single {  
-  display: flex;
-  max-width: 25%;
+  display: flex;  
   margin: 3%;
-  padding: 1%;
-  font-size: 1.05vw;
+  padding: 1%;  
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
@@ -84,18 +84,31 @@
   margin-top: 1%;
   margin-bottom: 1%;  
   padding-right: .5%;
+  max-width: 100%;
   text-align: center;
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.hero-img2 > h2 {
+  font-size: 4vw;
+  font-size: 16px; 
+
 }
 
 .hero-img3 {  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   background-color: #96f321;
   color: black;
+  font-size: 1.0vw;
   padding-top: 3%;
   padding-bottom: 3%;
   margin-top: 1%;
   margin-bottom: 1%;
-  padding-left: .5%;
+  padding-left: .5%;  
   padding-right: .5%;
   text-align: center;
 }
@@ -113,7 +126,9 @@
 }
 
 .display-4 {
-  color: white;  
+  color: white;
+  text-align:center;
+  max-width: 700px;  
 }
 
 .app-explain {
@@ -158,6 +173,15 @@ ul li {
 }
 
 svg {
-  height: 40%;
+  height: 200px;
   width: 50%;  
+}
+
+.hero-img-icon {
+  height: auto; 
+  width: auto; 
+  max-width: 500px; 
+  max-height: 200px;
+  margin-right: 10%
+
 }

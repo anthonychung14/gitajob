@@ -41,7 +41,7 @@ class About extends Component {
         <Hero          
           className={cx("hero-img")}>         
           <div className={cx("hero-img-items")}>         
-          <div className={cx('hero-img-text')}>
+            <div className={cx('hero-img-text')}>
             <h1 className={cx("hero-img-heading")}>Switches, like engineers...</h1>
           
           <div className={cx("icon-saying")}>            
@@ -76,21 +76,25 @@ class About extends Component {
           </div>
           
           <div className={cx("hero-img3")}>                                    
-            <div className={cx("feature-single")}> 
-                <GoDatabase />
-                { "Fresh, home-harvested data! Wrote Python/Scrapy/Redis to distribute crawlers throughout LinkedIn and AngelList" }
-              </div>          
+                <div className={cx("hero-icon-column")}>                                    
+                <GoDatabase cx={("hero-img-icon")}/>
+                <h2>Data engineering:</h2><br/>
+                <h3>Python/Scrapy/Redis to distribute crawlers throughout LinkedIn and AngelList</h3>
+              </div>    
               
-              <div className={cx("feature-single")}> 
-                <GoTelescope />
-                {"Add and track and interact with companies in your pipeline"}
-              </div>              
+              <div className={cx("hero-icon-column")}>                                    
+                <GoTelescope cx={("hero-img-icon")}/>
+                <h2>Redux:</h2><br/> 
+                <h3>Add and track and interact with companies in your pipeline</h3>
+              </div>
               
-              <div className={cx("feature-single")}> 
-                <GoOrganization className={cx('cab')}/>
-                {"Combine and grow your network in the job hunt"}
-              </div>                
-          </div>    
+              <div className={cx("hero-icon-column")}>                                    
+                <GoOrganization cx={("hero-img-icon")}/>
+                <h2>Intel over time:</h2><br/>
+                <h3>Combine and grow your network in the job hunt</h3>        
+                </div>
+              
+          </div>
         
 
           <div className={cx("hero-img-action")}>
@@ -210,7 +214,7 @@ class About extends Component {
         </div>
 
         <div className={cx("hero-img2")}>
-          <h1>anthonychung14@gmail.com / 925 818 7564</h1>          
+          <h2>anthonychung14@gmail.com / 925 818 7564</h2>          
         </div>
 
         <div className={cx("hero-img-action")}>
