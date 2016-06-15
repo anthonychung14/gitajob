@@ -31,7 +31,7 @@
 .feature-column {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column
+  flex-direction: column;
   justify-content: space-around;
   margin: 3%;
 }

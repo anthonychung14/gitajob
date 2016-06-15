@@ -76,7 +76,6 @@ class About extends Component {
           </div>
           
           <div className={cx("hero-img3")}>                                    
-            <h4 className={cx("app-explain")}>Proof of concept</h4>
             <div className={cx("feature-single")}> 
                 <GoDatabase />
                 { "Fresh, home-harvested data! Wrote Python/Scrapy/Redis to distribute crawlers throughout LinkedIn and AngelList" }
