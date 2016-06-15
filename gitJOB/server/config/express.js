@@ -27,10 +27,13 @@ export default (app) => {
   app.use(express.static(path.join(__dirname, '../..', 'public')));
 
   // I am adding this here so that the Heroku deploy will work
+  
   // Indicates the app is behind a front-facing proxy,
   // and to use the X-Forwarded-* headers to determine the connection and the IP address of the client.
+  
   // NOTE: X-Forwarded-* headers are easily spoofed and the detected IP addresses are unreliable.
   // trust proxy is disabled by default.
+
   // When enabled, Express attempts to determine the IP address of the client connected through the front-facing proxy, or series of proxies.
   // The req.ips property, then, contains an array of IP addresses the client is connected through.
   // To enable it, use the values described in the trust proxy options table.
@@ -72,7 +75,7 @@ export default (app) => {
     // If secure is set, and you access your site over HTTP, the cookie will not be set
     cookie: {
       httpOnly: true,
-      secure: false,
+      secure: true,
     },
     store: sessionStore
   };
