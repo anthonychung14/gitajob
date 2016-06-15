@@ -28,7 +28,7 @@ export function decrement(id) {
 export function moveAppDown(id, job) {
   return dispatch => {
     dispatch(decrement(id))
-    return makeUserJobRequest('post', id, job)
+    return makeUserNopeRequest('post', id, job)
     .then(res => {
       return res
     });    
@@ -37,10 +37,19 @@ export function moveAppDown(id, job) {
 
 export function moveAppUp(id, job) {  
   return dispatch => {
-    dispatch(increment(id))
-    return makeUserJobRequest('post', id, job)
+    dispatch(increment(id))    
+    return makeUserJobRequest('post', id, job)    
     .then(res => {
+      console.log(res, "THIS IS THE RES YOU GET")
       return res
     });    
   }  
+}
+
+export function makeUserJobRequest(method, id, data, api = '/apps') {
+  return request[method](api + (id ? ('/' + id) : ''), data);
+}
+
+export function makerUserNopeRequest(method, id, data, api = '/posting/nope') {
+  return request[method](api + (id ? ('/' + id) : ''), data);
 }

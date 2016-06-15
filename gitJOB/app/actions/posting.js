@@ -69,7 +69,7 @@ export function removeFromQueue(id, job, index) {
       },
       company: job
     }
-    return makeJobRequest('post', id, application)
+    return makeNopeRequest('post', id, application)
     .then(response => {
       dispatch(receiveQueueData(response))
     });    

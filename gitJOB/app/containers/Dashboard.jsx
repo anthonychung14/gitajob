@@ -23,7 +23,9 @@ class Dashboard extends Component {
   getUserApps ( apps, filter ) {    
     switch(filter) {
       case 'SHOW_ALL':
-        return apps
+        return apps.filter(
+          t => t.interest > 0
+        )
       case 'SHOW_QUEUE':        
         return apps.filter(
           t => t.interest === 1
