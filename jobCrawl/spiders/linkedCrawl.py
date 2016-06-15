@@ -51,16 +51,25 @@ class linkedCrawler(InitSpider):
     
     self.driver.find_element_by_xpath("//input[@name='submit']").click()
     
-    time.sleep(2)
+    self.driver.implicitly_wait(30)
+    time.sleep(2)    
     time.sleep(2)
 
     print("<<<<<<<<<<<<< FINISH REQUEST >>>>>>>>>>>>>>>")
     #We are going to get a lot of search pages in a row,     
     
-    for company in self.company.find({}):
+    for company in self.company.find({"company_contacts": null}):
       if company:
         try:
+          self.driver.implicitly_wait(30)
+          time.sleep(4)    
+          time.sleep(4)
+
           self.driver.get(self.search_page)
+          time.sleep(4)
+
+          self.driver.implicitly_wait(30)
+          time.sleep(4)    
           time.sleep(4)
 
           keyword = self.driver.find_element_by_id('advs-keywords')    
@@ -80,7 +89,7 @@ class linkedCrawler(InitSpider):
           #push to
           contacts = soup.find('ol', attrs=({'id': 'results'})) 
 
-          for contact in contacts:                
+          for contact in contacts[0:5]:                
               #name        
               try:
                 info = {
@@ -122,7 +131,7 @@ class linkedCrawler(InitSpider):
           soup = BeautifulSoup(elem.get_attribute('innerHTML'), 'lxml')
           contacts = soup.find('ol', attrs=({'id': 'results'}))            
     
-          for contact in contacts:                
+          for contact in contacts[0:5]:                
             #name        
             try:
               info = {
