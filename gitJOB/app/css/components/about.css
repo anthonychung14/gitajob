@@ -1,7 +1,4 @@
-.container {
-  height: 85vh;
-  width: 85vw;
-}
+
 
 .container > h1 {
   color: #2196F3;
@@ -9,10 +6,12 @@
 
 .icon-saying {
   display: flex;  
-  margin-left: 10%;
+  margin-left: 4%;
+  margin-bottom: 10%;
+  justify-content: center;
   flex-wrap: wrap;  
   width: 90vw;  
-  height: 65vh;
+  height: 75vh;
 }
 
 .hero-img-text {
@@ -29,9 +28,10 @@
 }
 
 .hero-icon-column {
-  display: flex;
-  margin-left: 4%;
+  display: flex;  
   max-width: 400px;  
+  padding-left: 5%;
+  padding-right: 5%;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
@@ -58,9 +58,7 @@
   color: white;  
 }
 
-.hero-img-items {
-  height: 75vh;
-  width: 100vw;
+.hero-img-items {  
   display: flex;
   flex-direction: column;  
   position: relative;
@@ -68,7 +66,7 @@
 }
 
 .hero-img-heading {
-  font-size: 350%;
+  font-size: 300%;
 }
 
 .hero-img-bottom {
@@ -172,9 +170,10 @@ ul li {
 
 }
 
-svg {
-  height: 200px;
-  width: 50%;  
+.icon-column > svg {
+  margin: 5%;  
+  height: 240px;
+  width: 60%;  
 }
 
 .hero-img-icon {

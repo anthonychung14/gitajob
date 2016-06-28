@@ -17,9 +17,7 @@ import { filterPosition } from 'actions/filter'
 export default (store) => {
   const requireAuth = (nextState, replace, callback) => {
     const { user: { authenticated }} = store.getState();
-    console.log(store.getState(), "SAY, WHO IS THE USER ANYHOW")
     if (!authenticated) {
-    console.log("<<<<< THE USER IS not AUTHENTICATED AT LEAST >>>>>>>")      
       replace({
         pathname: '/login',
         state: { nextPathname: nextState.location.pathname }

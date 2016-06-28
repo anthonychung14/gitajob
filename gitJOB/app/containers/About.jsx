@@ -12,6 +12,8 @@ import { Page, Hero, Section, SignupInline, ImageList, ImageListItem, Team, Team
 import GoTools from 'react-icons/lib/go/tools'
 import GoFileBinary from 'react-icons/lib/go/file-binary'
 import MdMotorcycle from 'react-icons/lib/md/motorcycle'
+import TiChartLineOutline from 'react-icons/lib/ti/chart-line-outline'
+import FaAngellist from 'react-icons/lib/fa/angellist'
 import GoOrganization from 'react-icons/lib/go/organization'
 import GoTelescope from 'react-icons/lib/go/telescope'
 import GoDatabase from 'react-icons/lib/go/database'
@@ -24,46 +26,52 @@ class About extends Component {
     this.props.postFeedback(form)
   }
 
-  // render() {
-  //   return <div><h2>hi</h2></div>
+//   render() {
+//     return <div><h2>hi</h2></div>
 
-  // }
+//   }
+// }
   render() {
     return(    
       <Page>
         <div          
             className={cx("hero-img2")}> 
             <h1 className={cx("display-4")}>
-              The personal website application resume that also tracks jobs in your pipeline. Thing.
-            </h1>                      
+              Job postings. Meet workflow.
+            </h1>                                  
         </div>
 
-        <Hero          
+        <div          
           className={cx("hero-img")}>         
           <div className={cx("hero-img-items")}>         
-            <div className={cx('hero-img-text')}>
-            <h1 className={cx("hero-img-heading")}>Switches, like engineers...</h1>
-          
-          <div className={cx("icon-saying")}>            
-            
-            <div className={cx("icon-column")}>
-              <GoTools className={cx('cab')} />              
-              <h4 className={cx("lead")}>Use and create tools</h4>              
-            </div>
+            <div className={cx('hero-img-text')}>            
+            <div className={cx("icon-saying")}>                                      
 
-            <div className={cx("icon-column")}>
-              <GoFileBinary className={cx('cab')} />
-              <h4 className={cx("lead")}>All made up of smaller switches!</h4>              
-            </div>
+              <div className={cx("icon-column")}>
+                <FaAngellist className={cx('cab')} />              
+                <h4 className={cx("lead")}>Discover new companies and jobs</h4>              
+              </div>
+
+              <div className={cx("icon-column")}>
+                <TiChartLineOutline className={cx('cab')} />              
+                <h4 className={cx("lead")}>Track your application history</h4>              
+              </div>
+
+              <div className={cx("icon-column")}>
+                  <GoOrganization cx={("hero-img-icon")}/>
+                  <h4 className={cx("lead")}>Grow your network within companies</h4>              
+              </div>
                 
           </div>
+          
+          
           </div>                             
           
           <h4 className={cx('hero-img-bottom')}>
             And. SWCH.io was an available domain.
           </h4>        
           </div>           
-        </Hero>
+        </div>
 
           <div          
             className={cx("hero-img2")}> 
