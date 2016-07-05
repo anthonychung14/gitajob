@@ -13,7 +13,8 @@ class LandingForm extends Component {
   };
 
   handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault();    
+    console.log(this.props)
     if (this.props.onSubmit) { this.props.onSubmit(this.state); }
   };
 

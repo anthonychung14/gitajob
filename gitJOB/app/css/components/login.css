@@ -2,11 +2,12 @@
 @value color-athens-gray, color-mercury, color-white, color-dodger-blue, color-crimson, color-bombay from '../common/colors.css';
 
 .login {    
-  flex: 0 1 auto;
+  flex: 0 1 35%;  
   background-color: color-athens-gray;
   border: 2px solid color-mercury;
-  border-radius: global-radius;
-  color: black;  
+  border-radius: global-radius;  
+  color: black; 
+  margin-left: 12%;  
 }
 
   .waiting {
@@ -37,12 +38,14 @@
   }
 
   .email-container {
+    position: relative;
     padding: 16px 12px;
     border-bottom: 2px solid color-mercury;
   }
 
   .google-container {
     padding: 16px 12px;
+    position: relative;
   }
 
   .header {}
@@ -50,7 +53,7 @@
   .heading {
     composes: subheading from '../common/typography';
 
-    padding: 16px 12px;
+    padding: 2%;
     text-align: center;
   }
 

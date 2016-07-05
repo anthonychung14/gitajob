@@ -7,20 +7,16 @@
 .hero-img {
   background-image: url('images/mirror-light-black-glass.jpg');
   background-size: cover;
-  height: 80vh;
+  height: 100vh;
   background-position: center;
   background-repeat: no-repeat;    
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-around;
 }
 
-.splash-image {  
-  margin: 1%;
-  flex-direction: row;
-  display: flex;  
-  justify-content: flex-start;
-  flex-wrap: wrap;
+.splash-image {    
+  height: 100vh;  
 }
 
 .hero-img-items {    
@@ -28,11 +24,12 @@
   display: flex;
   flex-direction: row;  
   flex-wrap: wrap;  
-  flex: 0 1 100%;
+  flex: 0 1 100%;  
   align-items: center;
+  justify-content: flex-start;  
 }
 
-.icon-column {  
+.icon-column {    
   margin: 1%;
   flex-wrap:wrap;
   display: flex;  
@@ -46,11 +43,9 @@
   width: 80%;  
 }
 
-.login-page {
-  flex: 0 1 50%;    
-  display: flex;
-  justify-content: space-around;
-  flex-direction: row;
+.login-page {        
+  display: flex;  
+    
 }
 
 .container > h1 {
@@ -59,29 +54,11 @@
 
 .display-4 {
   color: white;
-  font-size: 4em;
+  font-size: x-large;
   text-align:center;  
 }
 
-video { 
-  display: block; 
-  width: 100%; 
-  height: auto; 
-}
-
-.fullsize-video-bg {   
-  height: 75%; 
-  overflow: hidden; 
-}
-
-.video-viewport {   
-  width: 100%; 
-  height: auto;
-  overflow: hidden; 
-}
-
-.hero-img-icon > svg {
-  margin: 5%;  
+.hero-img-icon > svg {  
   height: 100px;
   width: 70%;  
 }
@@ -89,7 +66,7 @@ video {
 .icon-saying {
   display: flex;  
   margin-left: 4%;
-  margin-bottom: 10%;
+  margin-bottom: 5%;
   justify-content: center;
   flex-wrap: wrap;  
   width: 90vw;  
@@ -114,19 +91,6 @@ video {
   margin: 3%;
 }
 
-.feature-single {  
-  display: flex;  
-  margin: 3%;
-  padding: 1%;  
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  border-color: #d3d3d3;
-  border-style: solid;
-  border-width: thin;
-}
-
-
 
 .hero-img-heading {
   font-size: 300%;
@@ -140,8 +104,8 @@ video {
 .hero-img-banner {
   background-color: #2196F3;
   color: white;
-  padding-top: 3%;
-  padding-bottom: 3%;
+  padding-top: 1%;
+  padding-bottom: 1%;
   margin-top: 1%;
   margin-bottom: 1%;  
   padding-right: .5%;

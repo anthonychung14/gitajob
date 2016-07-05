@@ -21,16 +21,16 @@ export function postFeedback(props) {
     .then((res) => {
       if (res.status === 200) {
         alert("Thank you!")
-        dispatch(push('/login'))
+        dispatch(push('/about'))
       }
       else {
         alert('Something went wrong! I will fix it. Email me about it and try signing in instead')
-        dispatch(push('/login'))
+        dispatch(push('/about'))
       }
     })
     .catch(err => {
       alert('Something went wrong! Please email me about it and I will fix it. Try logging in instead')
-      dispatch(push('/login'))
+      dispatch(push('/about'))
     })
   }
 }

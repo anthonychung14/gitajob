@@ -26,7 +26,8 @@ const buttons = [
     icon: <FaBolt />,
     color: '#000',
     seen: true,
-    overlay: 'Fast'
+    overlay: 'Fast',
+    header: 'Rapid onboarding, contribute quickly'
   },
   {
     id: 1,
@@ -34,7 +35,8 @@ const buttons = [
     icon: <TiCode />,
     color: '#2196F3',
     seen: false,
-    overlay: 'Skills'
+    overlay: 'Skills',
+    header: 'Technical proficiency'
   }, 
   {
     id: 2,
@@ -42,7 +44,8 @@ const buttons = [
     icon: <FaGithubAlt />,
     color: '#2196F3',
     seen: false,
-    overlay: 'Team'
+    overlay: 'Team',
+    header: 'Autonomous and collaborative'
   }, 
   {
     id: 3,
@@ -50,7 +53,8 @@ const buttons = [
     icon: <FaRocket />,
     color: '#2196F3',
     seen: false,
-    overlay: 'Mission'
+    overlay: 'Mission',
+    header: 'Product matters'
   },  
   {
     id: 4,
@@ -58,8 +62,14 @@ const buttons = [
     icon: <GoFlame />,
     color: '#2196F3',
     seen: false,
-    overlay: 'Why'
+    overlay: 'Why',
+    header: 'Motivation'
   },  
+  {
+    id: 5,
+    header: "Thanks for contacting me!"
+  }
+
 ]
 
 //Assets
@@ -137,6 +147,7 @@ class Recruiters extends Component {
     let that = this        
     let count = 5
     let bar = genAsync()
+    let buttons = that.state.buttons.slice(0)
     let time = 650          
     
     function* genAsync() {                                                  
@@ -151,7 +162,6 @@ class Recruiters extends Component {
     }        
     
     function asyncFill(count, cb) {          
-      let buttons = that.state.buttons.slice(0)
       buttons[count].color = that.state.bgColor['pink']
             
       setTimeout(function() {                                                
@@ -161,7 +171,10 @@ class Recruiters extends Component {
         ))
       }, time *= .9)                                                                
     }
-    bar.next(count).value()
+    this.setState(Object.assign({}, this.state, {        
+        curr: 5,        
+      }))    
+    
   }
 
   renderAll(ele, index) {                    
@@ -192,7 +205,7 @@ class Recruiters extends Component {
     return (
       <section>
         <div className={cx("hero-summary")}>
-          <h4 className={cx("display-4")}>Thanks for stopping by!</h4>           
+          <h4 className={cx("display-4")}>{buttons[this.state.curr]['header']}</h4>           
         </div>
     
         <div className={cx('hero-content')}>
@@ -209,14 +222,17 @@ class Recruiters extends Component {
           </div>
           
           <div className={cx("swipe-view")}>
-            <SwiperView curr={this.state.curr}/>          
+            <SwiperView 
+              postFeedback={this.props.postFeedback}
+              curr={this.state.curr}/>          
           </div>                  
           
           <div className={cx("intro-para")}>
               <h4>Why</h4>
               <div ref="pushHandler" className={cx('why-me')}>
               {buttons.map((ele, index) => {
-                return this.renderAll(ele, index)})}    
+                if (index !== 5) {
+                return this.renderAll(ele, index)}})}    
               </div>
               
               <div 
@@ -245,4 +261,4 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, 
-  { })(Recruiters);
+  { postFeedback })(Recruiters);

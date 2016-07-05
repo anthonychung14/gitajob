@@ -5,7 +5,19 @@ import SwipeableViews from 'react-swipeable-views';
 import LandingForm from 'components/LandingForm'
 import FeedbackForm from 'components/FeedbackForm'
 
-import Redis from 'images/redis.png'
+import Redis from 'images/tech/redis.png'
+import ReactIcon from 'images/tech/react.png'
+import AWS from 'images/tech/aws.jpg'
+import Babel from 'images/tech/babel.png'
+import Django from 'images/tech/django.jpg'
+import Elastic from 'images/tech/elastic.png'
+import MochaChaiIcon from 'images/tech/mochaChai.png'
+import Mongo from 'images/tech/mongoDB.png'
+import MochaChai from 'images/tech/mochaChai.png'
+import Node from 'images/tech/nodeExpress.png'
+import PostGres from 'images/tech/postgres.png'
+import Webpack from 'images/tech/webpack.png'
+
 
 import classNames from 'classnames/bind';
 import styles from 'css/components/slide.css'
@@ -14,21 +26,26 @@ const cx = classNames.bind(styles);
 
 class SwiperView extends Component {      
   constructor(props) {
-    super(props)    
+    super(props)
+    this.submitFeedback = this.submitFeedback.bind(this)    
   }
 
-  render() {        
+  submitFeedback(form){                    
+    this.props.postFeedback(form)
+  }
+
+  render() {            
     const buttons = [
       {
-        value: '1. Ready to hit the ground running yesterday',
+        value: 'Here are examples of problems I can solve',
         explanation: 'Two warrants: History and technology',
         more: '',
         photos:  [ <img src={Redis} />, <img src={Redis} />, <img src={Redis} />, <img src={Redis} />]
       },
       {
         value: 'Technical skills', 
-        explanation: 'Here are problems, big and small, that I have either solved, prototyped, or thought really long and hard about.',
-        photos:  [ <img src={Redis} />, <img src={Redis} />, <img src={Redis} />, <img src={Redis} />, <img src={Redis} />]
+        explanation: 'Preferred dev stack for full stack JS',
+        photos:  [ <img src={ReactIcon} />, <img src={Node} />, <img src={Mongo} />, <img src={Webpack} />, <img src={Babel} />]
       },
       {
         value: 'Teamwork', 
@@ -64,8 +81,8 @@ class SwiperView extends Component {
               </div>          
             </div>       
           )}
-        )}
-        <LandingForm />
+        )}        
+        <LandingForm key={5} onSubmit={this.submitFeedback} />
       </SwipeableViews>
       </section>
     )
@@ -73,11 +90,4 @@ class SwiperView extends Component {
     
 }
 
-
-
-function mapStateToProps(state) {
-  return {    
-  };
-}
-export default connect(mapStateToProps, 
-  { })(SwiperView);
+export default SwiperView;

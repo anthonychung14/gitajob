@@ -77,8 +77,7 @@ section .column {
 
   transform: scale(1) translateZ(0px);
   transform-origin: top right;
-  backface-visibility: hidden;          
-  
+  backface-visibility: hidden;            
 }
 
 .shiftUp { 

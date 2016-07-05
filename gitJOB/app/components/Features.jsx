@@ -27,15 +27,13 @@ const Features = () => {
         <div className={cx("icon-column")}>
             <GoOrganization cx={("cab")}/>
             <h4 className={cx("lead")}>Maintain and grow your network</h4>              
-        </div>       
-                                 
+        </div>                                       
       </div>
-      
-      <div className={cx("login-page")}>
-      <LoginOrRegister />                    
+            
+      <div className={cx('login-page')}>
+        <LoginOrRegister />
+        <div></div>                    
       </div>
-      
-    
     </section>
   )
 }
