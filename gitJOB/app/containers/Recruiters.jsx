@@ -112,11 +112,8 @@ class Recruiters extends Component {
     //   //i > index ? ele.classList.add('shiftDown') : ele.classList.add('shiftUp')
     //   if (index !== i) { ele.classList.add('shiftUp')}
     // })
-    // console.log("handled the MUP, ")
-    if (index === undefined) {
-      this.setState()
-      alert("yup")
-    }
+    // console.log("handled the MUP, ")    
+      
   }
 
   changeView(event, text, idx) {                    

@@ -20,17 +20,19 @@
   width: 100%;
   padding: 1%;
   background-color: #2196F3;
+  border-style: solid;  
   text-align: center;
-  font-size: x-large;
+  font-size: large;
   color: white;    
 }
 
 .intro-para > h4 {
   width: 100%;
   padding: 1%;
-  background-color: #2196F3;
+  background-color: #2196F3;  
+  border-style: solid;
   text-align: center;
-  font-size: x-large;
+  font-size: large;
   color: white;        
 }
 
@@ -140,8 +142,7 @@ section .column:hover .overlay {
   align-items: center;
   flex-direction: column;
   height: 65vh;
-  margin: 1%;
-  
+  margin: 1%;  
 }
 
 .profile > img {  
