@@ -53,7 +53,9 @@
 
 section .column:hover {  
   background-color: #f22195 !important;
-  transform: translate3d(-100px, 0, 0);
+/*  transform: translate3d(-100px, 0, 0); */
+transform: scale(1.1);
+
 }
 
 section .column {      
@@ -90,6 +92,9 @@ section .column {
   top: .01%;  
   height: 8vh;
   width: 10vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: black;
   color: white;
   opacity: 0;
@@ -97,10 +102,14 @@ section .column {
   transition: opacity 1s;
 }
 
+.overlay > svg {
+  height: 4vh;
+  width: 4vw;
+}
+
 section .column:hover .overlay {
   opacity: 1;
-  touch-action: auto;    
-  transform: scale(1);  
+  touch-action: auto;      
 }
 
 .hero-content {
@@ -123,13 +132,16 @@ section .column:hover .overlay {
   height: 20vh;
 }
 
+
 .profile {
   color: white;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-direction: column;
   height: 65vh;
   margin: 1%;
+  
 }
 
 .profile > img {  
@@ -150,7 +162,7 @@ section .column:hover .overlay {
 
 svg {
   height: 4vh;
-  width: 3vw;
+  width: 4vw;
 }
 
 .contact {
@@ -161,9 +173,27 @@ svg {
   flex-direction: column;  
   align-items: center;  
   border-style: solid;
-  height: 8vh;
+  height: 10vh;
   width: 10vw;
   margin-top: 15%;
+
+  transition: 1s transform;
+  -webkit-transition: 1s -webkit-transform;
+  -webkit-transform-origin: 0px 0px;
+
+  transform: scale(1) translateZ(0px);
+  transform-origin: top right;
+  backface-visibility: hidden;          
+}
+
+.contact:hover {  
+  transform: scale(1.1) !important;
+  background-color: #2196F3 !important;
+}
+
+.contact > svg {
+  height: 4vh;
+  width: 4vw;
 }
 
 .swipe-view {
@@ -173,3 +203,4 @@ svg {
   flex: 0 1 auto;
 }
 
+  

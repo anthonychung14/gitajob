@@ -55,7 +55,7 @@ class applyAngelist():
     except:
         print("Failed to apply. Please log me properly")
 
-applyAngelist()
+# applyAngelist()
 
   #if there is a prompt, go to the DB to figure out which "note" to do
 

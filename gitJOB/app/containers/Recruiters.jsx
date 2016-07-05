@@ -22,27 +22,27 @@ const cx = classNames.bind(styles);
 const buttons = [
   {
     id: 0,
-    title: 'Gogogo',
+    title: 'Fast',
     icon: <FaBolt />,
     color: '#000',
     seen: true,
-    overlay: 'Rapid Onboarding'
+    overlay: 'Fast'
   },
   {
     id: 1,
-    title: 'Srs skillz',
+    title: 'Skills',
     icon: <TiCode />,
     color: '#2196F3',
     seen: false,
-    overlay: 'Technical'
+    overlay: 'Skills'
   }, 
   {
     id: 2,
-    title: 'Autonomous',
+    title: 'Team',
     icon: <FaGithubAlt />,
     color: '#2196F3',
     seen: false,
-    overlay: 'Autodidact, automatic'
+    overlay: 'Team'
   }, 
   {
     id: 3,
@@ -50,11 +50,11 @@ const buttons = [
     icon: <FaRocket />,
     color: '#2196F3',
     seen: false,
-    overlay: 'Believe in the product'
+    overlay: 'Mission'
   },  
   {
     id: 4,
-    title: 'FIYA',
+    title: 'Why',
     icon: <GoFlame />,
     color: '#2196F3',
     seen: false,
@@ -106,13 +106,17 @@ class Recruiters extends Component {
 
   }
 
-  handleMove(e, index){
-    const allIcons = this.refs.pushHandler.childNodes
-    allIcons.forEach((ele, i) => {
-      //i > index ? ele.classList.add('shiftDown') : ele.classList.add('shiftUp')
-      if (index !== i) { ele.classList.add('shiftUp')}
-    })
-    console.log("handled the MUP, ")
+  handleMove(e, index){    
+    // const allIcons = this.refs.pushHandler.childNodes
+    // allIcons.forEach((ele, i) => {
+    //   //i > index ? ele.classList.add('shiftDown') : ele.classList.add('shiftUp')
+    //   if (index !== i) { ele.classList.add('shiftUp')}
+    // })
+    // console.log("handled the MUP, ")
+    if (index === undefined) {
+      this.setState()
+      alert("yup")
+    }
   }
 
   changeView(event, text, idx) {                    
@@ -164,14 +168,22 @@ class Recruiters extends Component {
   }
 
   renderAll(ele, index) {                    
+    const renderTitle = (idx) => {
+      if (this.state.curr === idx) {
+        return (
+          <h4>{ele.title}</h4>
+        )
+      }
+    }
     return (         
      <section key={index} className={cx('column')}          
         style={{ backgroundColor: ele.color}} 
         onMouseEnter={ (e) => this.handleMove(e, index)} 
         onClick={val => this.changeView(val, ele, index)}>                
       {ele.icon}
-      {ele.title}
-    <div className={cx('overlay')}>
+      {renderTitle(index)}
+    <div className={cx('overlay')}>        
+        {ele.icon}
         {ele.overlay}
     </div>             
     </section>          
@@ -210,7 +222,10 @@ class Recruiters extends Component {
                 return this.renderAll(ele, index)})}    
               </div>
               
-              <div className={cx('contact')} onClick={this.sendContact.bind(this)}>
+              <div 
+                  className={cx('contact')} 
+                  onClick={this.sendContact.bind(this)}
+                  onMouseEnter={ (e) => this.handleMove(e)}>
                 <TiHeart/>              
                 <h4>Contact</h4>              
               </div>            
