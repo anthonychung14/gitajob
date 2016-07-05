@@ -18,11 +18,12 @@ const Navigation = ({ user, logOut }) => {
             <Link onClick={logOut}
               className={cx('item')} to="/">Logout</Link>
           ) : (
-            <Link className={cx('item')} to="/login">Login</Link>
+            <Link className={cx('item')} to="/about">Login</Link>
           )}
-          <Link className={cx('item')} to="/postings">Postings</Link>
-          <Link className={cx('item')} to="/dashboard">Dashboard</Link>
           <Link to="/about" className={cx('item')} activeClassName={cx('active')}>About</Link>
+          <Link className={cx('item')} to="/postings">Postings</Link>
+          <Link className={cx('item')} to="/dashboard">Dashboard</Link>          
+          <Link className={cx('itemPlus')} to="/recruiters">Employers</Link>
       </nav>
     );
 };

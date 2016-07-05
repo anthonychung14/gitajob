@@ -1,7 +1,89 @@
+.about-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;    
+}
 
+.hero-img {
+  background-image: url('images/mirror-light-black-glass.jpg');
+  background-size: cover;
+  height: 80vh;
+  background-position: center;
+  background-repeat: no-repeat;    
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.splash-image {  
+  margin: 1%;
+  flex-direction: row;
+  display: flex;  
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.hero-img-items {    
+  color: #FFF;
+  display: flex;
+  flex-direction: row;  
+  flex-wrap: wrap;  
+  flex: 0 1 100%;
+  align-items: center;
+}
+
+.icon-column {  
+  margin: 1%;
+  flex-wrap:wrap;
+  display: flex;  
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-column > svg {
+  height: 10vh;
+  width: 80%;  
+}
+
+.login-page {
+  flex: 0 1 50%;    
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
 
 .container > h1 {
   color: #2196F3;
+}
+
+.display-4 {
+  color: white;
+  font-size: 4em;
+  text-align:center;  
+}
+
+video { 
+  display: block; 
+  width: 100%; 
+  height: auto; 
+}
+
+.fullsize-video-bg {   
+  height: 75%; 
+  overflow: hidden; 
+}
+
+.video-viewport {   
+  width: 100%; 
+  height: auto;
+  overflow: hidden; 
+}
+
+.hero-img-icon > svg {
+  margin: 5%;  
+  height: 100px;
+  width: 70%;  
 }
 
 .icon-saying {
@@ -19,13 +101,7 @@
   flex-direction: column;  
 }
 
-.icon-column {  
-  flex-wrap:wrap;
-  display: flex;  
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-}
+
 
 .hero-icon-column {
   display: flex;  
@@ -50,20 +126,7 @@
   border-width: thin;
 }
 
-.hero-img {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: url('images/switches.jpg');
-  color: white;  
-}
 
-.hero-img-items {  
-  display: flex;
-  flex-direction: column;  
-  position: relative;
-  justify-content: space-between;
-}
 
 .hero-img-heading {
   font-size: 300%;
@@ -74,7 +137,7 @@
   bottom: 0;
 }
 
-.hero-img2 {
+.hero-img-banner {
   background-color: #2196F3;
   color: white;
   padding-top: 3%;
@@ -94,6 +157,7 @@
   font-size: 16px; 
 
 }
+
 
 .hero-img3 {  
   display: flex;
@@ -123,24 +187,13 @@
   text-align: center;
 }
 
-.display-4 {
-  color: white;
-  text-align:center;
-  max-width: 700px;  
-}
 
 .app-explain {
   text-align: center;
   font-size: xx-large
 }
 
-img {
-  height: auto; 
-  width: auto; 
-  max-width: 400px; 
-  max-height: 200px;
-  margin-right: 10%
-}
+
 
 ul {
   display: flex;
@@ -149,8 +202,8 @@ ul {
 
 ul li {
   margin: 3%;
-
 }
+
 .lead {
   width: 250px;
   font-size: x-large;
@@ -170,11 +223,6 @@ ul li {
 
 }
 
-.icon-column > svg {
-  margin: 5%;  
-  height: 240px;
-  width: 60%;  
-}
 
 .hero-img-icon {
   height: auto; 
@@ -182,5 +230,9 @@ ul li {
   max-width: 500px; 
   max-height: 200px;
   margin-right: 10%
-
 }
+
+
+
+/*h1 { font-family: "Raleway", sans-serif; font-size: 3em; line-height: .9; font-weight: 900; letter-spacing: -.025em; text-transform: uppercase; margin-bottom: .5em; }
+h1 + p { font-family: "Shadows Into Light Two", cursive; font-size: 1.5em;  }*/

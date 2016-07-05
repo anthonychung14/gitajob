@@ -28,7 +28,13 @@ var commonLoaders = [
         limit: 10000,
     }
   },
-  { test: /\.html$/, loader: 'html-loader' }
+  {
+      test: /\.html$/,
+      loader: 'html-loader?attrs[]=video:src'
+    }, {
+      test: /\.mp4$/,
+      loader: 'url?limit=10000&mimetype=video/mp4'
+  }
 ];
 
 module.exports = {

@@ -28,7 +28,7 @@ var commonLoaders = [
         limit: 10000,
     }
   },
-  { test: /\.html$/, loader: 'html-loader' }
+  { test: /\.html$/, loader: 'html-loader?attrs[]=video:src' }
 ];
 
 var postCSSConfig = function() {
@@ -81,7 +81,7 @@ module.exports = {
     // Multiple entry with hot loader
     // https://github.com/glenjamin/webpack-hot-middleware/blob/master/example/webpack.config.multientry.js
     entry: {
-      app: ['./client', hotMiddlewareScript]
+      app: ['babel-polyfill', './client', hotMiddlewareScript, 'babel-polyfill']
     },
     output: {
       // The output directory as absolute path

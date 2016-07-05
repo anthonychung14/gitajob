@@ -1,0 +1,21 @@
+.slide {
+ height: 100vh;
+ display: flex;
+ flex-direction: column; 
+}
+
+.tech-container {
+  display: flex;  
+  overflow-x: scroll;
+
+}
+
+.tech-container > img {      
+  max-height: 150px;
+  max-width: 150px;     
+}
+
+.meta-app {
+  height: 100vh;
+
+}

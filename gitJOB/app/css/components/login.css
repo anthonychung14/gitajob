@@ -1,13 +1,12 @@
 @value global-radius, font-large, font-medium, font-small from '../settings';
 @value color-athens-gray, color-mercury, color-white, color-dodger-blue, color-crimson, color-bombay from '../common/colors.css';
 
-.login {
-  width: 420px;
-  margin: 0 auto;
+.login {    
+  flex: 0 1 auto;
   background-color: color-athens-gray;
   border: 2px solid color-mercury;
   border-radius: global-radius;
-  color: black;
+  color: black;  
 }
 
   .waiting {

@@ -21,13 +21,13 @@
 .greenButton {
   composes: button;
 
-  background: color-salem;
-  border-color: color-salem;
+  background: #f22195;
+  border-color: gray;
 
-  color: color-white;
+  color: color-white;  
+}
 
-  &:hover {
+.greenButton &:hover {
     background: darker-color-salem;
     border-color: darker-color-salem;
   }
-}

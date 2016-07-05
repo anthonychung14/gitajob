@@ -6,6 +6,7 @@ import Posting from 'containers/Posting';
 import About from 'containers/About';
 import LoginOrRegister from 'containers/LoginOrRegister';
 import Dashboard from 'containers/Dashboard';
+import Recruiters from 'containers/Recruiters'
 
 import { filterPosition } from 'actions/filter'
 
@@ -19,7 +20,7 @@ export default (store) => {
     const { user: { authenticated }} = store.getState();
     if (!authenticated) {
       replace({
-        pathname: '/login',
+        pathname: '/',
         state: { nextPathname: nextState.location.pathname }
       });
     }
@@ -47,6 +48,7 @@ export default (store) => {
       <Route path="about" component={About} />
       <Route path="dashboard" component={Dashboard} onEnter={requireAuth} onLeave={changeFilter} />
       <Route path="postings" component={Posting} onEnter={requireAuth} onLeave={changeFilter} />
+      <Route path="recruiters" component={Recruiters} />
     </Route>
   );
 };
