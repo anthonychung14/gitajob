@@ -30,7 +30,7 @@ class angelCrawler(InitSpider):
   )
 
   def __init__(self):
-    chromedriver = "/Users/ACKeepingItCoo/Downloads/chromedriver"
+    chromedriver = "/usr/bin/chromedriver"
     os.environ["webdriver.chrome.driver"] = chromedriver
     self.driver = webdriver.Chrome(chromedriver)
     self.driver.implicitly_wait(30)
