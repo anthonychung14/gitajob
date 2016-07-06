@@ -60,7 +60,7 @@ const buttons = [
       {
         value: 'I have thrived across high-stakes environments with minimal resourcing and direction',
         explanation: "",
-        more: ["Solo skydive 5x in 1 week with 2 days of training", "Learned client's investment accounting system w/in one week","Mastered it to become subject-matter expert in 3 months", "Plot twist. Not an accountant", "Drove 7th grade classroom to double their state test pass scores in math (1 yr)"],
+        more: ["Solo skydive 5x in 2 weeks with 4 days of training", "Learned client's investment accounting system w/in one week","Mastered it to become subject-matter expert in 3 months", "Plot twist. Not an accountant", "Drove 7th grade classroom to double their state test pass scores in math (1 yr)"],
         photos:  [ <iframe src={Skydive} width="480" height="266" frameBorder="0"></iframe> ]
       },      
     ]
