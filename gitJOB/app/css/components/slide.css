@@ -5,17 +5,34 @@
 }
 
 .tech-container {
-  display: flex;  
-  overflow-x: scroll;
-
+  display: flex;    
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
 }
 
 .tech-container > img {      
+  margin: 2%;
+  max-height: 10vh;
+  max-width: auto;     
+}
+
+.describe > img {      
   max-height: 150px;
   max-width: 150px;     
 }
 
-.meta-app {
-  height: 100vh;
+.meta-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;  
+}
 
+.describe {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }

@@ -10,6 +10,12 @@
   flex-wrap: wrap;    
 }
 
+.why-me {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;  
+}
+
 .my-values {    
   display: flex;
   flex-direction: row;
@@ -115,8 +121,8 @@ section .column:hover .overlay {
 
 .hero-content {
   background-color: black;
-  padding-top: 2%;
-  padding-bottom: 3%;  
+  padding-top: 1%;
+  padding-bottom: 1%;  
   margin-bottom: 1%;  
   padding-right: .5%;
   max-width: 100%;
@@ -128,11 +134,21 @@ section .column:hover .overlay {
   justify-content: space-between;      
 }
 
+.right-content {
+  width: 75vw;  
+  display: flex;
+  justify-content: center;
+  flex-direction: column;  
+}
+
+.mini-nav {
+  margin: 1%;
+}
+
 .hero-highlight {
   background-color: #f22195;
   height: 20vh;
 }
-
 
 .profile {
   color: white;
@@ -155,7 +171,7 @@ section .column:hover .overlay {
   color: white;
   display: flex;
   justify-content: space-between;
-  flex-direction: column;
+  flex-direction: row;
   height: 65vh;
   margin: 1%;  
 }
@@ -166,16 +182,20 @@ svg {
 }
 
 .contact {
+  top: 1%;  
+  height: 8vh;
+  width: 10vw;
+  border-style: solid;
+  color: white;    
+
   background-color: #f22195;
   display: flex;
-  color: white;    
-  padding: 2%;
   flex-direction: column;  
-  align-items: center;  
-  border-style: solid;
-  height: 10vh;
-  width: 10vw;
-  margin-top: 15%;
+  justify-content: center;
+  align-items: center;
+  color: white;    
+  
+  border-style: solid;  
 
   transition: 1s transform;
   -webkit-transition: 1s -webkit-transform;
@@ -192,14 +212,14 @@ svg {
 }
 
 .contact > svg {
-  height: 4vh;
-  width: 4vw;
+  height: 5vh;
+  width: 5vw;
 }
 
 .swipe-view {
   background-color: white;
   height: 100%;
-  width: 60vw;
+  width: 70vw;
   flex: 0 1 auto;
 }
 

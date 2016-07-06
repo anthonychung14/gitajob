@@ -23,7 +23,7 @@ const Navigation = ({ user, logOut }) => {
           <Link to="/about" className={cx('item')} activeClassName={cx('active')}>About</Link>
           <Link className={cx('item')} to="/postings">Postings</Link>
           <Link className={cx('item')} to="/dashboard">Dashboard</Link>          
-          <Link className={cx('itemPlus')} to="/recruiters">Employers</Link>
+          <Link className={cx('itemPlus')} to="/recruiters">Why you should hire me</Link>
       </nav>
     );
 };

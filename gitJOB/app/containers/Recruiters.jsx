@@ -19,16 +19,7 @@ import GoFlame from 'react-icons/lib/go/flame'
 
 
 const cx = classNames.bind(styles);
-const buttons = [
-  {
-    id: 0,
-    title: 'Fast',
-    icon: <FaBolt />,
-    color: '#000',
-    seen: true,
-    overlay: 'Fast',
-    header: 'Rapid onboarding, contribute quickly'
-  },
+const buttons = [  
   {
     id: 1,
     title: 'Skills',
@@ -36,7 +27,7 @@ const buttons = [
     color: '#2196F3',
     seen: false,
     overlay: 'Skills',
-    header: 'Technical proficiency'
+    header: 'React/Redux + Python'
   }, 
   {
     id: 2,
@@ -45,7 +36,7 @@ const buttons = [
     color: '#2196F3',
     seen: false,
     overlay: 'Team',
-    header: 'Autonomous and collaborative'
+    header: 'Autonomy, empathy, collaboration'
   }, 
   {
     id: 3,
@@ -54,20 +45,33 @@ const buttons = [
     color: '#2196F3',
     seen: false,
     overlay: 'Mission',
-    header: 'Product matters'
+    header: 'Trajectory matters'
   },  
   {
     id: 4,
-    title: 'Why',
+    title: 'Drive',
     icon: <GoFlame />,
     color: '#2196F3',
     seen: false,
-    overlay: 'Why',
+    overlay: 'Drive',
     header: 'Motivation'
   },  
   {
+    id: 0,
+    title: 'Speed',
+    icon: <FaBolt />,
+    color: '#2196F3',
+    seen: true,
+    overlay: 'Speed',
+    header: 'Consulting, teaching, military'
+  },
+  {
     id: 5,
     header: "Thanks for contacting me!"
+  },
+  {
+    id: 6,
+    header: "Click the buttons to find out why!"
   }
 
 ]
@@ -78,7 +82,7 @@ class Recruiters extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      curr: 0,      
+      curr: 6,      
       count: 0,
       seen: [],
       bgColor: {blue: '#2196F3', black: '#000', pink: '#f22195'},
@@ -190,13 +194,13 @@ class Recruiters extends Component {
         style={{ backgroundColor: ele.color}} 
         onMouseEnter={ (e) => this.handleMove(e, index)} 
         onClick={val => this.changeView(val, ele, index)}>                
-      {ele.icon}
-      {renderTitle(index)}
-    <div className={cx('overlay')}>        
         {ele.icon}
-        {ele.overlay}
-    </div>             
-    </section>          
+        {renderTitle(index)}
+        <div className={cx('overlay')}>        
+          {ele.icon}
+          {ele.overlay}
+        </div>             
+      </section>          
    )
   }             
             
@@ -220,35 +224,32 @@ class Recruiters extends Component {
             <h6>Contact</h6>
             <h5>anthonychung14@gmail.com</h5>
           </div>
-          
-          <div className={cx("swipe-view")}>
+                    
+          <div className={cx('right-content')}>
+          <div className={cx('mini-nav')}>           
+              <div ref="pushHandler" className={cx('why-me')}>
+                {buttons.map((ele, index) => {
+                  if (index <5) {return this.renderAll(ele, index)}
+                  else if (index === 5) {
+                    return (
+                      <div className={cx('contact')} 
+                        onClick={this.sendContact.bind(this)}
+                        onMouseEnter={ (e) => this.handleMove(e)}>
+                      <TiHeart/>              
+                      <h4>Contact</h4>              
+                      </div> 
+                    )                     
+                  }
+                })}    
+              </div>                                                                    
+          </div>
+          <div className={cx("swipe-view")}>            
             <SwiperView 
               postFeedback={this.props.postFeedback}
-              curr={this.state.curr}/>          
-          </div>                  
-          
-          <div className={cx("intro-para")}>
-              <h4>Why</h4>
-              <div ref="pushHandler" className={cx('why-me')}>
-              {buttons.map((ele, index) => {
-                if (index !== 5) {
-                return this.renderAll(ele, index)}})}    
-              </div>
-              
-              <div 
-                  className={cx('contact')} 
-                  onClick={this.sendContact.bind(this)}
-                  onMouseEnter={ (e) => this.handleMove(e)}>
-                <TiHeart/>              
-                <h4>Contact</h4>              
-              </div>            
-            
-          </div>
+              curr={this.state.curr}/>                      
+          </div>                                                
         </div>
-
-        <div className={cx("hero-summary")}>
-          <h4 className={cx("display-4")}>Thanks for stopping by my meta-application!</h4>          
-        </div>        
+        </div>
       </section>    
     )
   }
