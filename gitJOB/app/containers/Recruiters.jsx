@@ -141,31 +141,31 @@ class Recruiters extends Component {
   sendContact(e) {            
     let that = this        
     let count = 5
-    let bar = genAsync()
-    let buttons = that.state.buttons.slice(0)
-    let time = 650          
+    // let bar = genAsync()
+    // let buttons = that.state.buttons.slice(0)
+    // let time = 650          
     
-    function* genAsync() {                                                  
-      while(count > 0) {        
-        count--
-        yield asyncFill(count, function() {                                      
-          that.setState({
-            'count': count,             
-          }, bar.next(count).value)
-        })
-      }
-    }        
+    // function* genAsync() {                                                  
+    //   while(count > 0) {        
+    //     count--
+    //     yield asyncFill(count, function() {                                      
+    //       that.setState({
+    //         'count': count,             
+    //       }, bar.next(count).value)
+    //     })
+    //   }
+    // }        
     
-    function asyncFill(count, cb) {          
-      buttons[count].color = that.state.bgColor['pink']
+    // function asyncFill(count, cb) {          
+    //   buttons[count].color = that.state.bgColor['pink']
             
-      setTimeout(function() {                                                
-        that.setState(Object.assign({}, this.state, {
-          buttons           
-        }, cb(count)
-        ))
-      }, time *= .9)                                                                
-    }
+    //   setTimeout(function() {                                                
+    //     that.setState(Object.assign({}, this.state, {
+    //       buttons           
+    //     }, cb(count)
+    //     ))
+    //   }, time *= .9)                                                                
+    // }
     this.setState(Object.assign({}, this.state, {        
         curr: 5,        
       }))    
