@@ -14,7 +14,6 @@ class LandingForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();    
-    console.log(this.props)
     if (this.props.onSubmit) { this.props.onSubmit(this.state); }
   };
 
@@ -24,25 +23,25 @@ class LandingForm extends Component {
         <form className="form-inline row" onSubmit={this.handleSubmit}>
           <div className="form-group" size={["xs-12", "lg-5"]}>
             <label className="sr-only" htmlFor="email">Name</label>
-            <input type="name" required className="form-control" name="name" placeholder="Erlich Bachman"
+            <input type="name" required className="form-control" name="name" placeholder="Your awesome name"
               onChange={this.handleChange}/>
           </div>
 
           <div className="form-group" size={["xs-12", "lg-5"]}>
             <label className="sr-only" htmlFor="company">Company</label>
-            <input type="company" required className="form-control" name="company" placeholder="Pied Piper"
+            <input type="company" required className="form-control" name="company" placeholder="Company"
               onChange={this.handleChange}/>
           </div>
 
           <div className="form-group" size={["xs-12", "lg-5"]}>
             <label className="sr-only" htmlFor="email">Email address</label>
-            <input type="email" required className="form-control" name="email" placeholder="Erlich@piedpiper.io"
+            <input type="email" required className="form-control" name="email" placeholder="richard@piedpiper.com"
               onChange={this.handleChange}/>
           </div>
 
           <div className="form-group" size={["xs-12", "lg-5"]}>
             <label className="sr-only" htmlFor="phone">Phone Number</label>
-            <input className="form-control" name="phone" placeholder="digits only!"
+            <input type="text" pattern="\d*" className="form-control" name="phone" placeholder="numbers only! (optional)"
               onChange={this.handleChange}/>
           </div>
           

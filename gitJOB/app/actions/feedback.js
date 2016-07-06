@@ -18,10 +18,11 @@ export function postFeedback(props) {
       method: 'POST',
       body: JSON.stringify(props)
     })
-    .then((res) => {
-      if (res.status === 200) {
-        alert("Thank you!")
-        dispatch(push('/about'))
+    .then((res) => {      
+      if (res.status === 200) {        
+        console.log("ATTEMPTING THE THING")
+        dispatch(reDirect("Thank you! Enjoy the rest of the app! :)"))
+        dispatch(push('about'))
       }
       else {
         alert('Something went wrong! I will fix it. Email me about it and try signing in instead')
@@ -32,5 +33,12 @@ export function postFeedback(props) {
       alert('Something went wrong! Please email me about it and I will fix it. Try logging in instead')
       dispatch(push('/about'))
     })
+  }
+}
+
+export function reDirect(message) {  
+  return {
+    type: types.LOGIN_SUCCESS_USER,
+    message
   }
 }

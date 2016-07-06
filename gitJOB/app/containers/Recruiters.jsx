@@ -90,7 +90,6 @@ class Recruiters extends Component {
     for (var i  = 0; i < icons.length; i++) {
       icons[i].addEventListener('mouseover', this.handlePush)
     }    
-    console.log(this.refs.pushHandler, "inside compdidMount")      
 
   //   window.addEventListener('mouseout', function() {
   //     for (var i = 0; i < buttons.length; i++) {
@@ -105,7 +104,6 @@ class Recruiters extends Component {
   }
 
   handlePush(event) {
-    console.log("handle push event")
     
     //will need to do something to the target classlist, need to either pass the object in or refer to it in the event object
 
