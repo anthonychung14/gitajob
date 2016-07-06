@@ -9,6 +9,8 @@ import unsupportedMessage from '../db/unsupportedMessage';
 import { sessionSecret } from './secrets';
 import { DB_TYPE, ENV } from './appConfig';
 import { session as dbSession } from '../db';
+import gzip from 'compression';
+
 
 export default (app) => {
   app.set('port', (process.env.PORT || 3000));
@@ -20,6 +22,11 @@ export default (app) => {
   app.set('views', path.join(__dirname, '..', 'views'));
 
   app.set('view cache', false);
+
+  
+  if (ENV === 'production') {
+    app.use(gzip());
+  }
 
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
