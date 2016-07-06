@@ -9,7 +9,7 @@ import SwiperView from 'components/SwiperView'
 import classNames from 'classnames/bind';
 import styles from 'css/components/recruiters.css'
 import styles2 from 'css/components/about.css'
-import Anthony from 'images/anthony.jpg'
+import Anthony from 'images/anthony2.jpg'
 import FaBolt from 'react-icons/lib/fa/bolt'
 import FaGithubAlt from 'react-icons/lib/fa/github-alt'
 import FaRocket from 'react-icons/lib/fa/rocket'
@@ -21,13 +21,17 @@ import GoFlame from 'react-icons/lib/go/flame'
 const cx = classNames.bind(styles);
 const buttons = [  
   {
+    id: 0,
+    header: "Click the buttons to find out why!"
+  },
+  {
     id: 1,
     title: 'Skills',
     icon: <TiCode />,
     color: '#2196F3',
     seen: false,
     overlay: 'Skills',
-    header: 'React/Redux + Python'
+    header: 'Call my skills toast'
   }, 
   {
     id: 2,
@@ -36,7 +40,7 @@ const buttons = [
     color: '#2196F3',
     seen: false,
     overlay: 'Team',
-    header: 'Autonomy, empathy, collaboration'
+    header: "Culture => effectiveness"
   }, 
   {
     id: 3,
@@ -46,33 +50,20 @@ const buttons = [
     seen: false,
     overlay: 'Mission',
     header: 'Trajectory matters'
-  },  
+  },    
   {
     id: 4,
-    title: 'Drive',
-    icon: <GoFlame />,
-    color: '#2196F3',
-    seen: false,
-    overlay: 'Drive',
-    header: 'Motivation'
-  },  
-  {
-    id: 0,
     title: 'Speed',
     icon: <FaBolt />,
     color: '#2196F3',
     seen: true,
     overlay: 'Speed',
-    header: 'Consulting, teaching, military'
+    header: 'I onboard and contribute quickly'
   },
   {
     id: 5,
     header: "Thanks for contacting me!"
-  },
-  {
-    id: 6,
-    header: "Click the buttons to find out why!"
-  }
+  },  
 
 ]
 
@@ -82,7 +73,7 @@ class Recruiters extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      curr: 6,      
+      curr: 0,      
       count: 0,
       seen: [],
       bgColor: {blue: '#2196F3', black: '#000', pink: '#f22195'},
@@ -229,8 +220,7 @@ class Recruiters extends Component {
           <div className={cx('mini-nav')}>           
               <div ref="pushHandler" className={cx('why-me')}>
                 {buttons.map((ele, index) => {
-                  if (index <5) {return this.renderAll(ele, index)}
-                  else if (index === 5) {
+                  if (index === 5) {
                     return (
                       <div className={cx('contact')} 
                         onClick={this.sendContact.bind(this)}
@@ -240,6 +230,7 @@ class Recruiters extends Component {
                       </div> 
                     )                     
                   }
+                  if (index > 0) {return this.renderAll(ele, index)}
                 })}    
               </div>                                                                    
           </div>
