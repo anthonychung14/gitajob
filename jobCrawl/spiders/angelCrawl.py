@@ -34,6 +34,7 @@ class angelCrawler(InitSpider):
     os.environ["webdriver.chrome.driver"] = chromedriver
     self.driver = webdriver.Chrome(chromedriver)
     self.driver.implicitly_wait(30)
+    print("+++++++++++ why hello there people ++++++++++++++++++")
 
   def init_request(self):
     print('================INITIALIZE REQUEST==================')
