@@ -12,15 +12,6 @@ SWCH helps you organize your job search by integrating job postings with workflo
 - [Database](#database-mongodb--mongoose)
 - [Future Features](#future-features)
 
-## Team Members (v. 1.0)
-[![Nathaniel Edwards](https://dl.dropboxusercontent.com/s/9dzxid7ihg37c97/nthaniel.png?dl=0)](https://github.com/nthaniel)
-
-[![Michelle He](https://dl.dropboxusercontent.com/s/zecyw2vna8m56d3/michelleheh.png?dl=0)](https://github.com/michelleheh)
-
-[![Rahim Dharrsi](https://dl.dropboxusercontent.com/s/3typmiqn3wv8f8k/rahimftd.png?dl=0)](https://github.com/rahimftd)
-
-[![Kevin Nguyen](https://dl.dropboxusercontent.com/s/wyebxbavnc7ihk7/kevinwin.png?dl=0)](https://github.com/kevinwin)
-  
 ## Technology Stack, APIs, and Third-party tools
 
 - [React Native](https://facebook.github.io/react-native/)
