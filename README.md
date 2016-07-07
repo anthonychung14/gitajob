@@ -1,23 +1,16 @@
-![](https://dl.dropboxusercontent.com/s/5utw16rifv9cmqe/banner-128.png?dl=0) 
-![Pic](https://s3.amazonaws.com/poly-screenshots.angel.co/Project/49/284111/9614db93bd26c7f1ee02ee920c83046f-original.png) 
-![Demo](https://s3.amazonaws.com/poly-screenshots.angel.co/Project/49/284111/2d48fdcb2991a7f074c3143e634289c3-original.gif) 
+<!--![](https://dl.dropboxusercontent.com/s/5utw16rifv9cmqe/banner-128.png?dl=0) -->
+<!--![Pic](https://s3.amazonaws.com/poly-screenshots.angel.co/Project/49/284111/9614db93bd26c7f1ee02ee920c83046f-original.png) -->
 ---
 
-# waddle [![Build Status](https://travis-ci.org/savory-penguin/waddle.svg?branch=master)](https://travis-ci.org/savory-penguin/waddle)
+# SWCH (switch)
 
-Waddle is a way to meet new people. Grab lunch or coffee with a someone new – who knows, it may just be the start of a beautiful friendship.
+SWCH helps you organize your job search by integrating job postings with workflow management.
 
-Supported operating systems are >= iOS 7.0
-
-- [Team Members](#team-members-v-10)
 - [Technology Stack](#technology-stack-apis-and-third-party-tools)
 - [Client Framework](#client-framework-react-native)
 - [Server Setup](#server-setup-node--express)
 - [Database](#database-mongodb--mongoose)
-- [Testing](#testing-jest--jasmine)
-- [Continuous Integration](#continuous-integration-travis-ci)
-- [Legacy Project Ideas](#legacy-project-ideas)
-- [Tips & Tricks](#tips--tricks)
+- [Future Features](#future-features)
 
 ## Team Members (v. 1.0)
 [![Nathaniel Edwards](https://dl.dropboxusercontent.com/s/9dzxid7ihg37c97/nthaniel.png?dl=0)](https://github.com/nthaniel)
@@ -62,7 +55,7 @@ You may also need to follow some additional steps for the react-native-camera co
  1. Complete the mostly-automatic install instructions [here](https://github.com/lwansbrough/react-native-camera#mostly-automatic-install)
  2. Complete step 5 of the manual iOS section directly below the automatic install section
 
-Users flow through waddle like so:
+Users flow through SWCH like so:
 ```
          +------+
          | Main |
@@ -130,58 +123,9 @@ Database helper functions can be found in db/db.js. These helper functions are u
   - getSuccessfulMatchForUser will return the successful match (if any) for a given user. Any match that is older than 1min will not be returned. This time cutoff has been included to prevent the system from accidentally returning old matches.
   - updateUser will update a user's database entry with the new values provided
 
-
-## Testing: Jest & Jasmine
-
-Jest/Jasmine are used as the unit testing suite for this app. All tests can be found in __tests__/server_db_tests.js. Run the tests with the command 'npm test'.
-
-
-## Continuous Integration: Travis CI
-
-![](https://dl.dropboxusercontent.com/s/0jc7f5kpegy6rsg/travisSignUp.gif?dl=0)
-
-Travis CI runs your test suite every time new code is pushed or a pull request is made, offering a sanity check before integrating any new code.
-
-It's easy to set up:
-
-  1. Go to [travis-ci.org](http://travis-ci.org) and have the admin for your organization sign in through Github
-  2. Once signed in, enable your target repo
-  3. Add a travis.yml file and specify your language and environment
-  4. Add tests
-  5. Push code or start making pull requests. Green builds are passing
-  6. To add a build status indicator on your repo, paste in
-  the following:
-  
-
-  `![](https://travis-ci.org/path/to/repo.svg?branch=master)`
-
-  ** Your repo path if your github url is 
-  https://github.com/savory-penguin/waddle
-  will be savory-penguin/waddle
-
-
-
-## Legacy Project Ideas
+## Future Features
 
 - Integrate Facebook login / authentication
 - Geofencing. Disable / Hide 'I'm here' button until user is within a certain radius
 - Refactor app using Redux architecture
 - Write end to end tests
-- Email Validation
-- Add a user preferences / account settings / delete account / sign out section
-- Incorporate a user rating system
-- Expand service to coffee, dinner, workouts and more
-- Refine matching algorithm
-- Add push notifications (e.g. when match arrives)
-- Integrate other apis (e.g uber, twilio)
-- Make layout more responsive to handle different size screens
-- Port waddle to Android
-
-## Tips & Tricks
-
-- [Install Xcode](https://developer.apple.com/xcode/download/) ASAP if you don't already have it installed.
-- [How to add files to your Xcode project](https://developer.apple.com/library/ios/recipes/xcode_help-structure_navigator/articles/Adding_an_Existing_File_or_Folder.html)
-- [How to run your app on an iOS device](https://facebook.github.io/react-native/docs/running-on-device-ios.html)
-- [How to rename your app](https://developer.apple.com/library/ios/recipes/xcode_help-project_editor/RenamingaProject/RenamingaProject.html)
-- Running `npm install` in the inner project folder and restarting the launch packager & Xcode can resolve errors involving 'RCT' files.
-- If you receive a location error, go to your simulator, click debug -> location -> none. Then set a custom location to your current coordinates [debug -> location -> custom location]. Enabling location capabilites might also be necessary
