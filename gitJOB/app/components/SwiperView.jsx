@@ -21,6 +21,11 @@ import Jam from 'images/jam.jpg'
 import TypeScript from 'images/tech/typescript.png'
 import Skydive from 'images/skydive.gif'
 
+import GoTeam from 'images/teamwork.gif'
+import Teamwork from 'images/goteam.gif'
+import Face from 'images/arrowtoFace.gif'
+
+
 
 import classNames from 'classnames/bind';
 import styles from 'css/components/slide.css'
@@ -36,7 +41,7 @@ const buttons = [
       { value: "Psst...try the icon in the bar nav bar above me",
         explanation: '',
         more: [],
-        photos: [ <iframe src="http://giphy.com/gifs/xaDTfJ1NmfwB2/html5" width="480" height="362" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>]
+        photos: [ <iframe src={Face} width="480" height="362" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>]
 
       },
       {
@@ -49,7 +54,7 @@ const buttons = [
         value: 'Ideal characteristics:', 
         explanation: '',
         more: ['Strong stake in product', 'Iterate blazingly fast', 'Relentlessly automate', 'Experiment, fail, learn'],
-        photos:  [ <iframe src="http://giphy.com/gifs/vcHTRiZOglHNu/html5" width="480" height="266" frameBorder="0"></iframe>, <iframe src="http://giphy.com/gifs/LyD8urgobi15C/html5" width="480" height="266" frameBorder="0"></iframe> ],
+        photos:  [ <iframe src={Teamwork} width="480" height="266" frameBorder="0"></iframe>, <iframe src={GoTeam} width="480" height="266" frameBorder="0"></iframe> ],
       },
       {
         value: <p>I care deeply about the product's growth and vision<br/><br/>This might involve...</p>,

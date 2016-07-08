@@ -18,6 +18,7 @@ import TiHeart from 'react-icons/lib/ti/heart'
 import GoFlame from 'react-icons/lib/go/flame'
 
 
+
 const cx = classNames.bind(styles);
 const buttons = [  
   {
