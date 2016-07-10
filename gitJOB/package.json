@@ -85,6 +85,7 @@
     "inline-environment-variables-webpack-plugin": "0.0.2",
     "invariant": "^2.2.1",
     "isomorphic-fetch": "^2.2.1",
+    "jsdom": "^9.4.1",
     "json-loader": "^0.5.4",
     "kerberos": "0.0.20",
     "lodash": "^4.13.1",
@@ -134,6 +135,7 @@
     "warning": "^2.1.0",
     "webpack": "^1.12.14",
     "webpack-dev-middleware": "^1.5.1",
-    "webpack-hot-middleware": "^2.10.0"
+    "webpack-hot-middleware": "^2.10.0",
+    "window-or-global": "^1.0.1"
   }
 }

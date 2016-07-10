@@ -6,8 +6,10 @@ import passportConfig from './config/passport';
 import expressConfig from './config/express';
 import routesConfig from './config/routes';
 import webpackDevConfig from '../webpack/webpack.config.dev-client';
+
 const App = require('../public/assets/server');
 const app = express();
+
 
 /*
  * Database-specific setup
@@ -20,6 +22,14 @@ connect();
  * REMOVE if you do not need passport configuration
  */
 passportConfig();
+
+if (typeof(window) === 'undefined') {
+      console.log("window is undefined")
+      global.window = new Object();
+      global.navigator = {
+        userAgent: 'node'
+  }
+}
 
 if (ENV === 'development') {
   const compiler = webpack(webpackDevConfig);
