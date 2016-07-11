@@ -88,7 +88,11 @@ Database helper functions can be found in db/db.js. These helper functions are u
 
 ## Future Features
 
-- 
-- 
-- 
-- 
+Front-end
+- Modal contexts depending on where you are in pipeline
+- Queue animation + solve the server-window issue
+- Pagination feature instead of infinite scroll
+- Drag and drop functionality a la TRELLO
+- Anime.JS library integration
+- Collapsible bars
+- Integrate contacts into new user flows
