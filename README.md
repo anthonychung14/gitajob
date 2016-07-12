@@ -22,63 +22,19 @@ SWCH helps you organize your job search by integrating job postings with workflo
 
 ## Client Side: React Native
 
-
+6. Run `npm install` to install all dependencies
  ```
- $ npm install -g react-native-cli
- ```  
- 6. Run `npm install` to install all dependencies
-
-You may also need to follow some additional steps for the react-native-camera component:
-
- 1. Complete the mostly-automatic install instructions [here](https://github.com/lwansbrough/react-native-camera#mostly-automatic-install)
- 2. Complete step 5 of the manual iOS section directly below the automatic install section
-
-Users flow through SWCH like so:
-```
-         +------+
-         | Main |
-         +---+--+
-             |
-             |   new user   +------+
-             +-------------->Signup+--------+
-             |              +------+        |
-             |                              |
-         +---v---+                          |
-+-------->Welcome<-----+                 +--v---+
-|        +---+----     |                 |Selfie|
-|            |         |                 +--+---+
-|            |         |   +---------+      |
-|        +---v---+     +---+LooksGood<------+
-|        |Loading|         +---------+
-|        +---+---+
-|            |
-|  no match  |
-+------------+
-             |
-         +---v---+
-         |Results|
-         +---+---+
-             |
-             |
-          +--v--+
-          |Match|
-          +--+--+
-             |
-             |
-          +--v--+
-          |Enjoy|
-          +-----+
-```
+ $ npm install 
+ ```
 
 ## Server Setup: Node & Express
 
 All files for the server can be found in the server folder. The server also makes use of the database helper functions in db/db.js.
-  
-
+ 
 
 ## Database: MongoDB & Mongoose
 
-The Mongodb database has 3 tables: users, matchrequests, and successfulmatches (schema can be found in db/config.js). 
+The Mongodb database has 4 tables: postings, applications, companies, and users (schema can be found in db/config.js). 
   - 
   - 
   - 
@@ -87,6 +43,10 @@ Database helper functions can be found in db/db.js. These helper functions are u
   -
 
 ## Future Features
+
+Full feature
+- Copy Wealthfront's Engineering graph instead to display your job application activity
+- 
 
 Front-end
 - Modal contexts depending on where you are in pipeline
