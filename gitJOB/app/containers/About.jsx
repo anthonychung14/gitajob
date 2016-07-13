@@ -21,7 +21,7 @@ class About extends Component {
           </h1>
         </div>             
         <div className={cx("hero-img")}>                    
-          <Features animate={}/>          
+          <Features/>          
         </div>              
       </section>
     );    

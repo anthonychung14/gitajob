@@ -23,13 +23,6 @@ connect();
  */
 passportConfig();
 
-if (typeof(window) === 'undefined') {
-      console.log("window is undefined")
-      global.window = new Object();
-      global.navigator = {
-        userAgent: 'node'
-  }
-}
 
 if (ENV === 'development') {
   const compiler = webpack(webpackDevConfig);

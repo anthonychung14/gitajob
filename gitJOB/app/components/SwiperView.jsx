@@ -6,18 +6,12 @@ import LandingForm from 'components/LandingForm'
 import FeedbackForm from 'components/FeedbackForm'
 
 import Redis from 'images/tech/redis.png'
-import ReactIcon from 'images/tech/react.png'
 import AWS from 'images/tech/aws.jpg'
-import Babel from 'images/tech/babel.png'
 import Django from 'images/tech/django.jpg'
 import Elastic from 'images/tech/elastic.png'
 import PostGres from 'images/tech/postgres.png'
-import MochaChaiIcon from 'images/tech/mochaChai.png'
 import Mongo from 'images/tech/mongoDB.png'
-import Node from 'images/tech/nodeExpress.png'
-import Redux from 'images/tech/redux.png'
-import Webpack from 'images/tech/webpack.png'
-import Jam from 'images/jam.jpg'
+
 import TypeScript from 'images/tech/typescript.png'
 import Skydive from 'images/skydive.gif'
 
@@ -25,7 +19,7 @@ import GoTeam from 'images/teamwork.gif'
 import Teamwork from 'images/goteam.gif'
 import Face from 'images/arrowtoFace.gif'
 
-
+import JsJam from 'components/JSJam'
 
 import classNames from 'classnames/bind';
 import styles from 'css/components/slide.css'
@@ -42,14 +36,7 @@ const buttons = [
         explanation: '',
         more: [],
         photos: [ <iframe src={Face} width="480" height="362" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>]
-
-      },
-      {
-        value: javaJam(), 
-        explanation: 'Mouseover icons for more (not yet)',
-        more: [],
-        photos:  [ <img src={ReactIcon} />, <img src={Redux} />, <img src={Node} />, <img src={Webpack} />, <img src={Babel} />, <img src={MochaChaiIcon} />]
-      },
+      },      
       {
         value: 'Ideal characteristics:', 
         explanation: '',
@@ -89,8 +76,18 @@ class SwiperView extends Component {
           {ele.explanation}   
           {ele.more.map((e) => <h4 className={cx('team-values')}>{"• " + e}</h4>)}       
         </div>
+
         <div className={cx('tech-container')}>            
-        {ele.photos.map(item => item)}          
+          {ele.photos.map((item, idx) => {
+            return (
+              <div key={idx} className={cx('tile')}>
+                <img src={item} className={cx('netflix')} />
+                <div className={cx('layover')}>
+                  this is a test
+                </div>
+              </div>
+            )}
+          )}          
         </div>        
       </section>
     )
@@ -99,8 +96,9 @@ class SwiperView extends Component {
   render() {                    
     return (              
       <SwipeableViews
-          index={this.props.curr}>
+          index={this.props.curr}>        
         {buttons.map((ele, idx) => this.renderSlide(ele, idx))}        
+        <JsJam />
         <LandingForm key={5} onSubmit={this.submitFeedback} />        
       </SwipeableViews>      
     )
