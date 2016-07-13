@@ -16,7 +16,7 @@ export default () => {
 
   if (dbPassport && dbPassport.deserializeUser) {
     passport.serializeUser((user, done) => {
-      done(null, user.id);
+      done(null, user);
     });
 
     passport.deserializeUser(dbPassport.deserializeUser);

@@ -16,6 +16,7 @@ export default (passport) => {
   *   - Check if there is an existing account with a provider id.
   *     - If there is, return an error message. (Account merging not supported)
   *     - Else link new OAuth account with currently logged-in user.
+ 
   * - User is not logged in.
   *   - Check if it's a returning user.
   *     - If returning user, sign in and we are done.
@@ -29,6 +30,7 @@ export default (passport) => {
   * credentials and calls done providing a user, as well
   * as options specifying a client ID, client secret, and callback URL.
   */
+
   passport.use(new GoogleStrategy({
     clientID: google.clientID,
     clientSecret: google.clientSecret,

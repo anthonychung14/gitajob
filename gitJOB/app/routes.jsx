@@ -9,6 +9,7 @@ import Dashboard from 'containers/Dashboard';
 import Recruiters from 'containers/Recruiters'
 
 import { filterPosition } from 'actions/filter'
+import { fetchUserJobs } from 'actions/apps'
 
 /*
  * @param {Redux Store}
@@ -24,14 +25,15 @@ export default (store) => {
         state: { nextPathname: nextState.location.pathname }
       });
     }
-    callback();
+    store.dispatch(fetchUserJobs())    
+    callback()
   };
 
   const redirectAuth = (nextState, replace, callback) => {
     const { user: { authenticated }} = store.getState();
     if (authenticated) {
       replace({
-        pathname: '/postings'
+        pathname: '/dashboard'
       });
     }
     callback();

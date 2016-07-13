@@ -17,14 +17,6 @@ export function makeUserJobRequest(method, id, data, api = '/apps') {
   return request[method](api + (id ? ('/' + id) : ''), data);
 }
 
-export function increment(id) {
-  return { type: types.INCREMENT_COUNT, id };
-}
-
-export function decrement(id) {
-  return { type: types.DECREMENT_COUNT, id };
-}
-
 export function moveAppDown(id, job) {
   return dispatch => {
     dispatch(decrement(id))
@@ -35,12 +27,20 @@ export function moveAppDown(id, job) {
   }
 }
 
+export function increment(id) {
+  return { type: types.INCREMENT_COUNT, id };
+}
+
+export function decrement(id) {
+  return { type: types.DECREMENT_COUNT, id };
+}
+
+
 export function moveAppUp(id, job) {  
   return dispatch => {
     dispatch(increment(id))    
     return makeUserJobRequest('post', id, job)    
     .then(res => {
-      console.log(res, "THIS IS THE RES YOU GET")
       return res
     });    
   }  

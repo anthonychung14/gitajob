@@ -27,7 +27,7 @@ const cx = classNames.bind(styles);
 
 const javaJam = () => {
   return (
-    <span>Javascript is my<img src={Jam}/></span>
+    <span>Javascript is my<img src={JsJam}/></span>
   )
 }
 
