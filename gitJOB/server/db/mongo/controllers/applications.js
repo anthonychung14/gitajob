@@ -8,7 +8,7 @@ import Application from '../models/apps'
  */
 export function all(req, res) {
   //if user id is not given, check their session token, 
-  const id = req.user._id
+  const id = req.user._id || null
   Application.find({'user': id, 'interest': {'$gt': 0}}).exec((err, data) => {
     if (err) {
       console.log('Error in first query');
