@@ -16,6 +16,8 @@ const clientConfig = {
 // configure baseURL for axios requests (for serverside API calls)
 axios.defaults.baseURL = `http://${clientConfig.host}:${clientConfig.port}`;
 
+
+
 /*
  * Export render function to be used in server/config/routes.js
  * We grab the state passed in from the server and the req object from Express/Koa
@@ -33,6 +35,8 @@ export default function render(req, res) {
     }
   }, history);
   const routes = createRoutes(store);
+  
+  
 
   /*
    * From the react-router docs:

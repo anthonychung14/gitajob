@@ -2,6 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var assetsPath = path.join(__dirname, '..', 'public', 'assets');
 
+
 var commonLoaders = [
   {
     /*

@@ -19,9 +19,14 @@ export default (req, accessToken, refreshToken, profile, done) => {
       });
     });
   }
+
   return User.findOne({ google: profile.id }, (findByGoogleIdErr, existingUser) => {
-    if (existingUser) return done(null, existingUser);
-    return User.findOne({ email: profile._json.emails[0].value }, (findByEmailErr, existingEmailUser) => {
+    if (existingUser) {
+      done(null, existingUser)
+      return      
+    };
+
+    return User.findOne({ email: profile._json.emails[0].value }, (findByEmailErr, existingEmailUser) => {      
       if (existingEmailUser) {
         return done(null, false, { message: 'There is already an account using this email address. Sign in to that account and link it with Google manually from Account Settings.' });
       }

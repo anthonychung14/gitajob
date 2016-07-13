@@ -18,13 +18,14 @@ import styles from 'css/components/postings';
 
 const cx = classNames.bind(styles);
 
-class Postings extends Component {
+class Postings extends Component {  
 
   //Data that needs to be called before rendering the component
   //This is used for server side rending via the fetchComponentDataBeforeRender() method
   static need = [  // eslint-disable-line
     fetchPostings, fetchUserJobs
   ]
+  
 
   getPostings ( postings, filter ){    
     switch(filter) {
@@ -56,7 +57,7 @@ class Postings extends Component {
       openModal, closeModal, modalState, filter, applications, user } = this.props;    
     
     const filteredJobs = this.getPostings(jobs, filter)
-
+    
     return (
       <div className={cx('two-column')}>
         <Profile applications={applications} user={user}/>        
