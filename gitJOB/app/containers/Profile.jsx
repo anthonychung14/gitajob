@@ -11,14 +11,6 @@ import styles from 'css/components/profile';
 const cx = classNames.bind(styles);
 
 class Profile extends Component {  
-  
-  // static need = [
-  //   fetchUserJobs
-  // ]
-
-  componentDidMount() {
-    fetchUserJobs()
-  }
 
   filterQueue(app){
     return app.interest === 1
