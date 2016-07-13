@@ -9,6 +9,8 @@ from scrapy.http import Request, FormRequest
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
+from pyvirtualdisplay import Display
+
 import requests
 import re, time, os
 from lxml import etree
@@ -30,7 +32,10 @@ class angelCrawler(InitSpider):
   )
 
   def __init__(self):
-    chromedriver = "/Users/ACKeepingItCoo/Downloads/chromedriver"
+    self.display = Display(visible=0, size=(800, 600))
+    self.display.start()
+
+    chromedriver = "/home/tony/chromedriver"
     os.environ["webdriver.chrome.driver"] = chromedriver
     self.driver = webdriver.Chrome(chromedriver)
     self.driver.implicitly_wait(30)
