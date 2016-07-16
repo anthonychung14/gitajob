@@ -97,6 +97,11 @@ class LoginOrRegister extends Component {
             <a className={cx('button')}
           href="/auth/google">Login with Google</a>
           </div>
+          <div className={cx('google-container')}>
+            <h1 className={cx('heading')}>LinkedIn</h1>
+            <a className={cx('button')}
+          href="/auth/linkedin">Login with LinkedIn</a>
+          </div>
         </div>
       </div>
     );

@@ -97,6 +97,7 @@
     "nuka-carousel": "^2.0.2",
     "passport": "^0.3.2",
     "passport-google-oauth": "^1.0.0",
+    "passport-linkedin-oauth2": "^1.4.1",
     "passport-local": "^1.0.0",
     "pg": "^4.5.3",
     "pg-hstore": "^2.3.2",

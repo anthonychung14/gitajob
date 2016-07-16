@@ -37,8 +37,8 @@ img.netflix {
 
 
 .tile:hover {  
-  transform: scale(1.75) translate(0, -100%);
-  -webkit-transform: scale(1.75) translate(0, -100%);
+  transform: scale(3) translate(0, -100%);
+  -webkit-transform: scale(3) translate(0, -100%);
 }
 
 .layover {

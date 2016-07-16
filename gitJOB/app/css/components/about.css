@@ -5,7 +5,7 @@
 }
 
 .hero-img {
-  background-image: url('https://swch.io/assets/5683bd297b71515cd31b31d912e072b7.jpg');
+  background-image: url('https://s3-us-west-1.amazonaws.com/anthony-portfolio/swchLanding.jpg');
   background-size: cover;
   height: 100vh;
   background-position: center;

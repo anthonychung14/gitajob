@@ -59,8 +59,8 @@ class JsJam extends Component {
                 )}>
                   <img src={item} className={cx('netflix')}/>
                   <div className={cx('layover')}>
-                    <div>
-                      hello
+                    <div className={cx('descript')}>
+                      hello there I am some words and I want to see how much I can say
                     </div>
                   </div>
                 </div>

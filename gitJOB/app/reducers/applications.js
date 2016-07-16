@@ -17,7 +17,7 @@ export default function applications(state = {
       return Object.assign({}, state, {
         applications: action.payload
       })
-    case GET_USER_JOBS_SUCCESS:
+    case GET_USER_JOBS_SUCCESS:      
       return Object.assign({}, state, {
         isFetching: false,
         applications: action.req.data.data,

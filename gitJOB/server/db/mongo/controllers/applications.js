@@ -8,27 +8,29 @@ import Application from '../models/apps'
  */
 export function all(req, res) {
   //if user id is not given, check their session token, 
-  const id = req.user._id || null
-  Application.find({'user': id, 'interest': {'$gt': 0}}).exec((err, data) => {
+  if (req.user) {
+    const id = req.user._id
+
+    Application.find({'user': id, 'interest': {'$gt': 0}}).exec((err, data) => {
     if (err) {
       console.log('Error in first query');
       return res.status(500).send('Something went wrong getting the data');
     }    
     
-    User.findOne(({'_id': id})).exec((error, user) => {
-      if (err) {
-      console.log('Error in first query');
-      return res.status(500).send('Something went wrong getting the data');
-    }            
-      let response = {}
-      let username = user.email.split("@")[0]
+      User.findOne(({'_id': id})).exec((error, user) => {
+        if (err) {
+        console.log('Error in first query');
+        return res.status(500).send('Something went wrong getting the data');
+      }            
+        let response = {}
+        const name = user.profile ? user.profile.name : 'Maker Hacker'
 
-      response.userId = username
-      response.data = data
-      return res.json(response);
-    })
-
-  });
+        response.userId = name
+        response.data = data
+        return res.json(response);
+      })
+    });
+  } 
 }
 
 /**

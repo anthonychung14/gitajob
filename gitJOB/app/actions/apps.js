@@ -46,10 +46,6 @@ export function moveAppUp(id, job) {
   }  
 }
 
-export function makeUserJobRequest(method, id, data, api = '/apps') {
-  return request[method](api + (id ? ('/' + id) : ''), data);
-}
-
 export function makerUserNopeRequest(method, id, data, api = '/posting/nope') {
   return request[method](api + (id ? ('/' + id) : ''), data);
 }

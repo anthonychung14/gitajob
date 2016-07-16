@@ -21,15 +21,34 @@ export default (app) => {
     console.warn(unsupportedMessage('users routes'));
   }
 
+  
+  app.get('/auth/linkedin', 
+    passport.authenticate('linkedin', {       
+      scope: ['r_emailaddress', 'r_basicprofile', 'w_share'],
+      state: true,
+    }), function(req, res){
+  // The request will be redirected to LinkedIn for authentication, so this
+  // function will not be called.
+  });
+
+  app.get('/auth/linkedin/callback', 
+    passport.authenticate('linkedin', {
+      successRedirect: '/dashboard',
+      failureRedirect: '/about'
+    })
+  )
+  
+
   if (passportConfig && passportConfig.google) {
     // google auth
     // Redirect the user to Google for authentication. When complete, Google
     // will redirect the user back to the application at
     // /auth/google/return
     
+
     // Authentication with google requires an additional scope param, for more info go
     // here https://developers.google.com/identity/protocols/OpenIDConnect#scope-param
-    app.get('/auth/google', passport.authenticate('google', {
+    app.get('/auth/google', passport.authenticate('google', {      
       scope: [
         'https://www.googleapis.com/auth/userinfo.profile',
         'https://www.googleapis.com/auth/userinfo.email'
@@ -41,10 +60,10 @@ export default (app) => {
     // Otherwise, the authentication has failed.
     app.get('/auth/google/callback', 
       passport.authenticate('google', {
-        successRedirect: '/postings',
-        failureRedirect: '/login'
+        successRedirect: '/dashboard',
+        failureRedirect: '/about'
       })
-    )
+    ) 
   }
       
   
