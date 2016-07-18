@@ -72,7 +72,7 @@ const slides = [
 },    
 
 {
-  claim: "You'll text me if you fill out the below box",
+  claim: "Fill out the bottom form to connect with me directly",
   picture: Jam,
   warrants: [  
   {
