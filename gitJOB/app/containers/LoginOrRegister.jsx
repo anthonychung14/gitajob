@@ -97,11 +97,7 @@ class LoginOrRegister extends Component {
             <a className={cx('button')}
           href="/auth/google">Login with Google</a>
           </div>
-          <div className={cx('google-container')}>
-            <h1 className={cx('heading')}>LinkedIn</h1>
-            <a className={cx('button')}
-          href="/auth/linkedin">Login with LinkedIn</a>
-          </div>
+          
         </div>
       </div>
     );
@@ -127,4 +123,10 @@ function mapStateToProps({user}) {
 // It does not modify the component class passed to it
 // Instead, it returns a new, connected component class, for you to use.
 export default connect(mapStateToProps, { manualLogin, signUp, toggleLoginMode })(LoginOrRegister);
+
+//<div className={cx('google-container')}>
+//            <h1 className={cx('heading')}>LinkedIn</h1>
+  //          <a className={cx('button')}
+    //      href="/auth/linkedin">Login with LinkedIn</a>
+      //    </div>
 
