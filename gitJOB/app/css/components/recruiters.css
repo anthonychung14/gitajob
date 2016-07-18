@@ -154,6 +154,7 @@ section .column:hover .overlay {
   flex-wrap: wrap;  
   height: 75vh;
   min-width: 20vw;
+  width: 20vw;
   margin: 1%;  
 }
 .profile-text {

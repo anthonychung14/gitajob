@@ -41,7 +41,7 @@ const buttons = [
     icon: <TiCode />,
     color: '#2196F3',
     seen: false,    
-    header: 'I can contribute right away in these technologies'
+    header: 'I have specialized and will contribute fastest in these'
   }, 
   {
     id: 3,
@@ -166,9 +166,9 @@ class Recruiters extends Component {
             <h2>Anthony Chung</h2>
             <img src={Anthony} />
             <h4>Upcoming Features</h4>                        
-            <h5>Data visualization</h5>
-            <h5>Non-negative matrix factorization</h5>
-            <h5>Kafka + Redis + Scrapy</h5>
+            <h5>Data visualization | <span><a href="https://www.wealthfront.com/engineering">like this</a></span></h5>
+            <h5>Non-negative matrix factorization | <span><a href="http://web.stanford.edu/class/ee378b/papers/xu-lin-gong-nmf.pdf">paper</a></span></h5>
+            <h5>Kafka + Redis + Scrapy | <span><a href="http://scrapy-cluster.readthedocs.io/en/latest/">library</a></span></h5>
             <h5>Super Secret Recruiter Feature</h5>                          
           </div>
         </div>
