@@ -169,6 +169,7 @@ class Recruiters extends Component {
             <h5>Data visualization | <span><a href="https://www.wealthfront.com/engineering">like this</a></span></h5>
             <h5>Non-negative matrix factorization | <span><a href="http://web.stanford.edu/class/ee378b/papers/xu-lin-gong-nmf.pdf">paper</a></span></h5>
             <h5>Kafka + Redis + Scrapy | <span><a href="http://scrapy-cluster.readthedocs.io/en/latest/">library</a></span></h5>
+            <h5>Continuous integration => 'Deploy button'</h5>                          
             <h5>Super Secret Recruiter Feature</h5>                          
           </div>
         </div>

@@ -89,7 +89,7 @@ const slides = [
   ]
 },
 {
-  claim: 'If not this, maybe the circus. Somebody stop me',
+  claim: 'One might even call it, a circuitous switch...',
   picture: Jam,
   warrants: [{
     hover: <img src={USAFA} className={cx('photo-image')}/>,
