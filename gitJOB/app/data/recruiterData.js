@@ -39,7 +39,7 @@ import FeedbackForm from 'components/FeedbackForm'
 
 const slides = [
 {
-  claim: 'Talk to me about my side-projects (both recent and in-progress)!',
+  claim: 'Want to get in touch? This app will text me if you fill out the below box',
   picture: Jam,
   warrants: [  
   {
@@ -50,7 +50,7 @@ const slides = [
         <div>Recruiters have to quickly determine technical quality and fit from large pools of candidates</div>,
         <div>You might call us startups, since we're asking you to invest your time (the most valuable resource)</div>,                        
         <div>This single-page application (within another app haha) is my way of asking you to invest in me</div>,        
-        <div>Start by hovering over the beige icons</div>        
+        <div>Start by hovering over the beige icons!</div>        
       ]
     }
   },
@@ -58,12 +58,17 @@ const slides = [
   {
     hover: <div className={cx('icon-bar')}><TiChartLine/></div>,
     explanations: {
-      name: "Here's the thing about bootcamps",
-      descript: [        
-        "Given onboarding constraints, the stakes around hiring, saturation of entry-level market, the filtering mechanism recruiters have developed is justified",
-        "However, you could also look at it from a perspective of growth",        
-        "Here's a link to the Paul Graham article about why growth matters",
-        "Here's an article about how bootcamp grads do against others"        
+      name: "To recruiters, engineers, managers",
+      descript: [                
+        "I invite a conversation on any of the topics listed in the following slides",
+        "They indicate I can speak to my professional experience, challenges, and lessons around it",
+        "If you think we'd make a sound technical/cultural fit, I'd love to contribute to your team ",
+        <div>
+          <h5>Food for thought</h5>
+          <h5>Y-Combinator founder Paul Graham wrote <span><a href="http://www.paulgraham.com/growth.html">about why growth matters</a></span></h5>
+          <h5>TripleByte publishes <span><a href="http://blog.triplebyte.com/bootcamps-vs-college">study on bootcamp grads vs CS majors</a></span></h5>
+          <h5>StackOverflow finds <span><a href="http://blog.triplebyte.com/bootcamps-vs-college">majority of developers are self-taught</a></span></h5>
+        </div>
       ]
     }
   },
@@ -71,7 +76,7 @@ const slides = [
    {
     hover: <div className={cx('icon-bar')}><TiUserAdd/></div>,
     explanations: {
-      name: "TLDR: Here's what I add",
+      name: "TLDR: Here's my value-add",
       descript: [        
         <div className={cx('gif-caption')}><div>Awesome teamwork</div><iframe src={Teamwork} width="400" height="250" frameBorder="0" allowFullScreen/></div>,
         <div className={cx('gif-caption')}>JavaScript is my<span><img src={Jam}/></span></div>,
@@ -83,14 +88,14 @@ const slides = [
 },
 
 {
-  claim: 'I have implemented training programs, managed teams, and worked with peers and management',
+  claim: 'Fast is my comfort-zone',
   picture: Jam,
   warrants: [{
     hover: <img src={USAFA} className={cx('photo-image')}/>,
     explanations: {
       name: 'Air Force',
       descript: [
-      'Shaved my head and marched in circles (among other things)', 
+      'Shaved my head and marched in the desert', 
       'Leadership over both squadron and cadet-wing', 
       'Jumping out of airplanes', 
       'Actual bootcamp (lol)'
@@ -102,11 +107,11 @@ const slides = [
     explanations: {
       name: '7th grade teacher',
       descript: [
-      'Charter school (they loved the military)', 
-      'Five subjects to a 26-student class', 
-      'Teaching and developing a growth-mindset', 
+      'Oakland Charter Academy - Five subjects to a 26-student class', 
+      'Teaching and developing a growth-mindset',      
       'Empathetic communication', 
-      'Students crush state tests with some of the highest pass rates in district (96% math)'
+      'Students crush state tests with some of the highest pass rates in district (96% math)',
+      'Made bootcamp look like summer camp'
       ]
     }
   },
@@ -115,18 +120,18 @@ const slides = [
     explanations: {
       name: 'Management Consulting',
       descript: [
-      'Learning accounting and accounting software in one week', 
-      'Programmed scripts in Microsoft Visual Basic', 
-      'Management team for thirty-person operation', 
-      'Delivered on multiple daily deadlines.', 
-      'Built on clear communication from teaching'
+      'Learning fund accounting, client software, and operations in two weeks',       
+      'Programmed scripts in Microsoft Visual Basic to automate trading tasks', 
+      'Management team for thirty-person outsourcing operation', 
+      'Delivered on multiple daily trading deadlines', 
+      'Developed training and onboarding program for engagement'
       ]
     }
   }]
 },
 
 {
-  claim: 'Contact me to help you grow your platform!',
+  claim: 'Love the craft, need the rent',
   picture: Jam,
   warrants: [ 
   {
@@ -206,7 +211,7 @@ const slides = [
     hover: <img src={Redis} className={cx('photo-image')}/>, 
     explanations: {
       name: 'Redis',
-      descript: ['Caching', 'Queue management with Scrapy']
+      descript: ['Caching', 'Redis queue + Scrapy for distributed web-crawling', 'Redis vs. Memcached', 'Redis as LRU Cache']
     }
   }, 
   {
@@ -220,21 +225,21 @@ const slides = [
     hover: <img src={Django} className={cx('photo-image')}/>, 
     explanations: {
       name: 'Python/Django',
-      descript: ['Pandas', 'Web-crawling', 'Django ORM', 'Django vs. Flask vs. Pyramid']
+      descript: ['Pandas', 'Web-crawling', 'Django ORM', 'Django vs. Flask vs. Pyramid', 'HTML templating']
     }
   }, 
   {
     hover: <img src={Elastic} className={cx('photo-image')}/>, 
     explanations: {
       name: 'Elastic',
-      descript: ['Uses', 'Pros/Cons', 'Recommendation systems', 'Language', 'Frameworks and ecosystem']
+      descript: ['Uses', 'Pros/Cons', 'Recommendation systems', 'Query language', 'Frameworks and libraries']
     }
   }, 
   {
     hover: <img src={PostGres} className={cx('photo-image')}/>, 
     explanations: {
       name: 'PostgreSQL',
-      descript: ['Common SQL and Joins', 'Scaling SQL']
+      descript: ['Common SQL and Joins', 'Scaling SQL', 'Optimizing SQL queries']
     }
   }
   , 
@@ -242,7 +247,7 @@ const slides = [
     hover: <img src={Mongo} className={cx('photo-image')}/>, 
     explanations: {
       name: 'Mongo',
-      descript: ['Benefits vs noSQL', 'Sharding, clustering', 'MapReduce']
+      descript: ['Benefits vs noSQL', 'Sharding, clustering', 'MapReduce', 'Aggregation']
     }
   }
   ]

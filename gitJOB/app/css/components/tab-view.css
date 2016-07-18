@@ -103,7 +103,7 @@ ul {
 .layover-text {
   font-size: 2vmin;  
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .gif-caption {
