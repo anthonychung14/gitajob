@@ -35,13 +35,13 @@ class LandingForm extends Component {
 
           <div className="form-group" size={["xs-12", "lg-5"]}>
             <label className="sr-only" htmlFor="email">Email address</label>
-            <input type="email" required className="form-control" name="email" placeholder="richard@piedpiper.com"
+            <input type="email" required className="form-control" name="email" placeholder="email@feedback.com"
               onChange={this.handleChange}/>
           </div>
 
           <div className="form-group" size={["xs-12", "lg-5"]}>
             <label className="sr-only" htmlFor="phone">Phone Number</label>
-            <input type="text" pattern="\d*" className="form-control" name="phone" placeholder="numbers only! (optional)"
+            <input type="text" pattern="\d*" className="form-control" name="phone" placeholder="digits (optional)"
               onChange={this.handleChange}/>
           </div>
           

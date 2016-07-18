@@ -2,60 +2,12 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import SwipeableViews from 'react-swipeable-views';
 
-import LandingForm from 'components/LandingForm'
-import FeedbackForm from 'components/FeedbackForm'
-
-import Redis from 'images/tech/redis.png'
-import AWS from 'images/tech/aws.jpg'
-import Django from 'images/tech/django.jpg'
-import Elastic from 'images/tech/elastic.png'
-import PostGres from 'images/tech/postgres.png'
-import Mongo from 'images/tech/mongoDB.png'
-
-import TypeScript from 'images/tech/typescript.png'
-import Skydive from 'images/skydive.gif'
-
-import GoTeam from 'images/teamwork.gif'
-import Teamwork from 'images/goteam.gif'
-import Face from 'images/arrowtoFace.gif'
-
-import JsJam from 'components/JSJam'
+import TabView from 'containers/TabView'
+import slides from 'data/recruiterData'
 
 import classNames from 'classnames/bind';
 import styles from 'css/components/slide.css'
 const cx = classNames.bind(styles);
-
-const javaJam = () => {
-  return (
-    <span>Javascript is my<img src={JsJam}/></span>
-  )
-}
-
-const buttons = [      
-      { value: "Psst...try the icon in the bar nav bar above me",
-        explanation: '',
-        more: [],
-        photos: [ <iframe src={Face} width="480" height="362" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>]
-      },      
-      {
-        value: 'Ideal characteristics:', 
-        explanation: '',
-        more: ['Strong stake in product', 'Iterate blazingly fast', 'Relentlessly automate', 'Experiment, fail, learn'],
-        photos:  [ <iframe src={Teamwork} width="480" height="266" frameBorder="0"></iframe>, <iframe src={GoTeam} width="480" height="266" frameBorder="0"></iframe> ],
-      },
-      {
-        value: <p>I care deeply about the product's growth and vision<br/><br/>This might involve...</p>,
-        explanation: '',
-        more: ['Weighing tradeoffs between technologies', 'Choosing scalable solutions', 'Creating the right tools in-house', 'Yes. This includes doing customer support.'],
-        photos:  [ <img src={Redis} />, <img src={Elastic} />, <img src={PostGres} />, <img src={Mongo} />, <img src={TypeScript} /> ] 
-      },      
-      {
-        value: 'I have thrived across high-stakes environments with minimal resourcing and direction',
-        explanation: "",
-        more: ["Solo skydive 5x in 2 weeks with 4 days of training", "Learned client's investment accounting system w/in one week","Mastered it to become subject-matter expert in 3 months", "Plot twist. Not an accountant", "Drove 7th grade classroom to double their state test pass scores in math (1 yr)"],
-        photos:  [ <iframe src={Skydive} width="480" height="266" frameBorder="0"></iframe> ]
-      },      
-    ]
 
 class SwiperView extends Component {      
   constructor(props) {
@@ -63,48 +15,29 @@ class SwiperView extends Component {
     this.submitFeedback = this.submitFeedback.bind(this)    
   }
   
-
   submitFeedback(form){                    
     this.props.postFeedback(form)
-  }
-
-  renderSlide(ele, idx) {
-    return (
-      <section key={idx} className={cx('meta-slide')}>
-        <div className={cx('describe')}>
-          <h2>{ele.value}</h2>                
-          {ele.explanation}   
-          {ele.more.map((e) => <h4 className={cx('team-values')}>{"• " + e}</h4>)}       
-        </div>
-
-        <div className={cx('tech-container')}>            
-          {ele.photos.map((item, idx) => {
-            return (
-              <div key={idx} className={cx('tile')}>
-                <img src={item} className={cx('netflix')} />
-                <div className={cx('layover')}>
-                  this is a test
-                </div>
-              </div>
-            )}
-          )}          
-        </div>        
-      </section>
-    )
   }
 
   render() {                    
     return (              
       <SwipeableViews
+          style={style} 
           index={this.props.curr}>        
-        {buttons.map((ele, idx) => this.renderSlide(ele, idx))}        
-        <JsJam />
-        <LandingForm key={5} onSubmit={this.submitFeedback} />        
+        {slides.map((ele, idx) => {
+          return (
+            <TabView 
+              key={idx} index={idx} 
+              calcScore={this.props.calcScore} onSubmit={this.submitFeedback}/>
+          )}
+        )}        
       </SwipeableViews>      
     )
   }
 }
-    
 
+const style = {
+  minHeight: '65vh'
+}
 
 export default SwiperView;

@@ -1,18 +1,18 @@
 import React, { Component } from "react";
+import classNames from 'classnames/bind';
+import styles from 'css/components/feedback-form.css'
+import { connect } from 'react-redux';
+
+import { postFeedback } from 'actions/feedback'
+
+const cx = classNames.bind(styles);
 
 class FeedbackForm extends Component {
-
-  static propTypes = {
-    onSubmit: React.PropTypes.func,
-  };
-
-  getInitialState() {
-    return {
-      demographic: 'recruiter'
-    }
+  constructor(props) {
+    super(props)
+    this.state = { email: null, positive: null, demographic: 'recruiter', better: null, selected: ''};
   }
-
-  state = { email: null, positive: null, demographic: null, better: null, selected: ''};
+  
 
   handleChange = (e) => {
     this.setState({ [`${e.target.name}`]: e.target.value });
@@ -20,7 +20,7 @@ class FeedbackForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    if (this.props.onSubmit) { this.props.onSubmit(this.state); }
+    if (this.props.postFeedback) { this.props.postFeedback(this.state); }
   };
 
   handleRadioChange = (e) => {
@@ -32,11 +32,9 @@ class FeedbackForm extends Component {
 
   render() {
     return (
-      <div className="neal-signup-inline">
-        <form className="form-inline row" onSubmit={this.handleSubmit}>            
-          <h1>Leave Specific feedback below!</h1>
+      <div className={cx("signup-inline")}>
+        <form className={cx("signup-inline")} onSubmit={this.handleSubmit}>            
           <fieldset>
-            <legend>Role?</legend>
             <p>              
               <input type = "radio"
                      name = "demographic"
@@ -44,7 +42,7 @@ class FeedbackForm extends Component {
                      checked={this.state.demographic === 'recruiter'}                     
                      id = "recruiter"
                      value = "recruiter"/>              
-              <label for = "recruiter">Recruiter</label>              
+              <h5 for = "recruiter">Recruiter</h5>              
               
               <input type = "radio"
                      name = "demographic"
@@ -52,7 +50,7 @@ class FeedbackForm extends Component {
                      checked={this.state.demographic === 'employer'}                     
                      id = "employer"
                      value = "employer" />
-              <label for = "employer">Employer</label>
+              <h5 for = "employer">Employer</h5>
      
               <input type = "radio"
                      name = "demographic"
@@ -60,7 +58,7 @@ class FeedbackForm extends Component {
                      checked={this.state.demographic === 'peer'}                     
                      id = "peer"
                      value = "peer" />
-              <label for = "peer">Peer</label>
+              <h5 for = "peer">Peer</h5>
               
               <input type = "radio"
                      name = "demographic"
@@ -68,27 +66,15 @@ class FeedbackForm extends Component {
                      checked={this.state.selected === 'other'}                     
                      id = "other"
                      value = "other" />
-              <label for = "other">Other</label>
+              <h5 for = "other">Other</h5>
             </p>       
       </fieldset>     
           
           <fieldset>                       
-            <legend>What went well?</legend>
-            <textarea maxlength="100" type="positive" size="40" required className="form-control" name="positive" placeholder="Color scheme on fleek. I love orange"
+            <legend>Go ahead. Make my day</legend>
+            <textarea size="20" maxlength="200" type="positive" required className={cx("text-area")} name="positive" placeholder="Write right away"
               onChange={this.handleChange}/>              
-          </fieldset>
-
-          <fieldset>            
-            <h4>What can I do more of, less of, or add/remove?</h4>
-            <textarea type="better" required size="40" className="form-control" name="better" placeholder="You should have this. Or not have that."
-              onChange={this.handleChange}/>
-          </fieldset>
-
-          <fieldset>
-            <legend>Email address (optional)</legend>
-            <input type="email" className="form-control" size="40" name="email" placeholder="comment.mcComment@comment.com"
-              onChange={this.handleChange}/>
-          </fieldset>
+          </fieldset>          
           
           <div className="form-group" size={["xs-12", "lg-2"]}>
             <button type="submit" className="btn btn-primary btn-ghost">Send Feedback</button>
@@ -100,4 +86,9 @@ class FeedbackForm extends Component {
   }
 }
 
-export default FeedbackForm
+function mapStateToProps(state) {
+  return {    
+  };
+}
+
+export default connect(mapStateToProps, {postFeedback})(FeedbackForm)

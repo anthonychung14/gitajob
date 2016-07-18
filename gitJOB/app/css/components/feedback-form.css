@@ -1,0 +1,15 @@
+.signup-inline {
+  width: 100%;
+
+}
+
+fieldset > p {
+  display: flex;
+  justify-content: center;
+
+}
+
+fieldset > textarea {
+  width: 75%;
+
+}

@@ -68,7 +68,7 @@ transform: scale(1.1);
 
 section .column {      
   top: 1%;  
-  height: 8vh;
+  height: 4vh;
   width: 10vw;
   border-style: solid;
   color: white;    
@@ -97,12 +97,12 @@ section .column {
 .overlay {    
   position: absolute;  
   top: .01%;  
-  height: 8vh;
-  width: 10vw;
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: black;
+  background-color: #f22195;
   color: white;
   opacity: 0;
   touch-action: none;
@@ -111,7 +111,7 @@ section .column {
 
 .overlay > svg {
   height: 4vh;
-  width: 4vw;
+  width: 3vw;
 }
 
 section .column:hover .overlay {
@@ -131,7 +131,7 @@ section .column:hover .overlay {
   display: flex;
   flex-direction: row;
   flex-wrap:wrap;  
-  justify-content: space-between;      
+  justify-content: space-around;      
 }
 
 .right-content {
@@ -177,13 +177,13 @@ section .column:hover .overlay {
 }
 
 svg {
-  height: 4vh;
-  width: 4vw;
+  height: 3vh;
+  width: 3vw;
 }
 
 .contact {
   top: 1%;  
-  height: 8vh;
+  height: 4vh;
   width: 10vw;
   border-style: solid;
   color: white;    
@@ -212,14 +212,14 @@ svg {
 }
 
 .contact > svg {
-  height: 5vh;
-  width: 5vw;
+  height: 3vh;
+  width: 3vw;
 }
 
 .swipe-view {
   background-color: white;
   height: 100%;
-  width: 70vw;
+  width: 100%;
   flex: 0 1 auto;
 }
 
