@@ -33,8 +33,8 @@ ul li {
 }
 
 .icon-bar:hover {
-  transform: scale(1.3) translate(0, 10%);
-  -webkit-transform: scale(1.3) translate(0, 10%);
+  transform: scale(1.2) translate(0, 10%);
+  -webkit-transform: scale(1.2) translate(0, 10%);
 }
 
 .head-container {
@@ -81,8 +81,8 @@ ul li {
 }
 
 .photo-image:hover {  
-  transform: scale(1.3) translate(0, 10%);
-  -webkit-transform: scale(1.3) translate(0, 10%);
+  transform: scale(1.2) translate(0, 10%);
+  -webkit-transform: scale(1.2) translate(0, 10%);
 }
 
 ul {
@@ -92,8 +92,7 @@ ul {
 .layover {  
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;  
-  max-height: 10vh;  
+  justify-content: flex-start;    
 }
 
 .layover-header {
@@ -103,7 +102,7 @@ ul {
 .layover-text {
   font-size: 2vmin;  
   display: flex;
-  justify-content: center;
+  flex-direction: column;
 }
 
 .gif-caption {
@@ -112,4 +111,10 @@ ul {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+}
+
+.gif-collection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }

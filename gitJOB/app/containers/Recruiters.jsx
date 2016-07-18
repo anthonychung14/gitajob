@@ -25,7 +25,7 @@ const buttons = [
     icon: <FaBolt />,
     color: '#f22195',
     seen: false,    
-    header: 'Invest for growth, potential, and past performance' 
+    header: 'We are all investors in an entrepreneur-economy' 
   },     
   {
     id: 2,
@@ -57,7 +57,7 @@ const buttons = [
     color: '#2196F3',
     seen: false,
     icon: <TiHeart />,
-    header: "Thank you! I'd love your feedback on the experience"
+    header: "Your feedback will help me improve"
   },  
 ]
 
@@ -163,18 +163,13 @@ class Recruiters extends Component {
           </div>                                                
         </div>
         <div className={cx('profile')}>            
-            <h4>Who</h4>
+            <h2>Anthony Chung</h2>
             <img src={Anthony} />
-            <h4>Anthony Chung</h4>
-            <h5>Many lines</h5>
-            <h5>Maybe haiku</h5>
-            <h5>Mouseover the icons</h5>            
-            <h5>It's a bad haiku</h5>            
-            <h5>Disguised as game instructions</h5>
-            <h5>Whoa</h5>
-            <h5>{this.state.score + ' / ' + slides.reduce((prev, curr) => {
-              return prev += curr.warrants.length
-            }, 0)}</h5>                                                
+            <h4>Upcoming Features</h4>                        
+            <h5>Data visualization</h5>
+            <h5>Non-negative matrix factorization</h5>
+            <h5>Kafka + Redis + Scrapy</h5>
+            <h5>Super Secret Recruiter Feature</h5>                          
           </div>
         </div>
       </section>    
@@ -190,3 +185,13 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, 
   { postFeedback })(Recruiters);
+
+  // <h5>Many lines</h5>
+  //           <h5>Maybe haiku</h5>
+  //           <h5>Mouseover the icons</h5>            
+  //           <h5>It's a bad haiku</h5>            
+  //           <h5>Disguised as game instructions</h5>
+  //           <h5>Whoa</h5>
+  //           <h5>{this.state.score + ' / ' + slides.reduce((prev, curr) => {
+  //             return prev += curr.warrants.length
+  //           }, 0)}</h5>                                                

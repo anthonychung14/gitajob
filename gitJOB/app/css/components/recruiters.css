@@ -22,16 +22,6 @@
   flex-wrap: wrap;
 }
 
-.profile > h4 {
-  width: 100%;
-  padding: 1%;
-  background-color: #2196F3;
-  border-style: solid;  
-  text-align: center;
-  font-size: large;
-  color: white;    
-}
-
 .intro-para > h4 {
   width: 100%;
   padding: 1%;
@@ -130,7 +120,7 @@ section .column:hover .overlay {
   text-align: center;
   display: flex;
   flex-direction: row;
-  flex-wrap:wrap;  
+  flex-wrap: wrap;  
   justify-content: space-around;      
 }
 
@@ -151,13 +141,34 @@ section .column:hover .overlay {
 }
 
 .profile {
+  padding: 1%;
+  margin: 1%;
+  background-color: black;
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  height: 65vh;
+  border-style: solid;
+  border-color: white;
+  flex-wrap: wrap;  
+  height: 75vh;
+  min-width: 20vw;
   margin: 1%;  
+}
+.profile-text {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.profile > h4 {
+  width: 100%;
+  padding: 1%;
+  background-color: #2196F3;
+  border-style: solid;  
+  text-align: center;
+  font-size: large;
+  color: white;    
 }
 
 .profile > img {  

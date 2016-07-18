@@ -78,17 +78,18 @@ const slides = [
     explanations: {
       name: "TLDR: Here's my value-add",
       descript: [        
-        <div className={cx('gif-caption')}><div>Awesome teamwork</div><iframe src={Teamwork} width="400" height="250" frameBorder="0" allowFullScreen/></div>,
-        <div className={cx('gif-caption')}>JavaScript is my<span><img src={Jam}/></span></div>,
-        <div className={cx('gif-caption')}><div>Contagious enthusiasm</div><iframe src={Cat} width="400" height="250" frameBorder="0"/></div>,
+        <div className={cx('gif-collection')}>
+        <div className={cx('gif-caption')}><div>Awesome teamwork</div><iframe src={Teamwork} width="400" height="250" frameBorder="0" allowFullScreen/></div>
+        <div className={cx('gif-caption')}>JavaScript is my<span><img src={Jam}/></span></div>
+        <div className={cx('gif-caption')}><div>Contagious enthusiasm</div><iframe src={Cat} width="400" height="250" frameBorder="0"/></div>
+        </div>
       ]
     }
   }
   ]
 },
-
 {
-  claim: 'Fast is my comfort-zone',
+  claim: 'If not this, maybe the circus. Somebody stop me',
   picture: Jam,
   warrants: [{
     hover: <img src={USAFA} className={cx('photo-image')}/>,
@@ -98,7 +99,7 @@ const slides = [
       'Shaved my head and marched in the desert', 
       'Leadership over both squadron and cadet-wing', 
       'Jumping out of airplanes', 
-      'Actual bootcamp (lol)'
+      'An actual bootcamp (lol)'
       ]
     }
   },
@@ -108,10 +109,10 @@ const slides = [
       name: '7th grade teacher',
       descript: [
       'Oakland Charter Academy - Five subjects to a 26-student class', 
+      'Made bootcamp look like summer camp',
       'Teaching and developing a growth-mindset',      
       'Empathetic communication', 
       'Students crush state tests with some of the highest pass rates in district (96% math)',
-      'Made bootcamp look like summer camp'
       ]
     }
   },
@@ -204,7 +205,7 @@ const slides = [
   ]
 },
 {
-  claim: "I love to learn. We would get along if you do too!",
+  claim: "Ask me about my side-projects",
   picture: Jam,
   warrants: [
   {
@@ -254,7 +255,7 @@ const slides = [
 },
 
 {
-  claim: 'Look forward to chatting!',
+  claim: 'Drop me a line!',
   picture: Jam,
   warrants: [
     {
