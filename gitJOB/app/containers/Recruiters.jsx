@@ -14,17 +14,26 @@ import FaGithubAlt from 'react-icons/lib/fa/github-alt'
 import FaRocket from 'react-icons/lib/fa/rocket'
 import TiCode from 'react-icons/lib/ti/code'
 import TiHeart from 'react-icons/lib/ti/heart'
+import TiArrowRightThick from 'react-icons/lib/ti/arrow-right-thick'
 
 import slides from 'data/recruiterData'
 
 const cx = classNames.bind(styles);
 const buttons = [ 
   {
-    id: 4,
+    id: 0,
     title: 'Start',
-    icon: <FaBolt />,
+    icon: <TiArrowRightThick />,
     color: '#f22195',
-    seen: false,    
+    seen: true,    
+    header: 'WELCOME TO WHY YOU SHOULD HIRE ME' 
+  },
+  {
+    id: 1,
+    title: 'Change',
+    icon: <FaBolt />,
+    color: '#2196F3',
+    seen: true,    
     header: 'We are all investors in an entrepreneur-economy' 
   },     
   {
@@ -36,7 +45,7 @@ const buttons = [
     header: "I bring a diverse background of professional experience"
   }, 
   {
-    id: 1,
+    id: 3,
     title: 'Skills',
     icon: <TiCode />,
     color: '#2196F3',
@@ -44,7 +53,7 @@ const buttons = [
     header: 'I have specialized and will contribute fastest in these'
   }, 
   {
-    id: 3,
+    id: 4,
     title: 'Scale',
     icon: <FaRocket />,
     color: '#2196F3',
@@ -103,14 +112,18 @@ class Recruiters extends Component {
     let buttons = this.state.buttons.slice(0)
     let prior = this.state.buttons[this.state.curr]
     let current = this.state.buttons[idx]
+    
+    let newTabs = Object.assign({}, this.state.seen)
+    newTabs[idx] = idx
 
     if (prior !== current) {        
       buttons[idx].color = this.state.bgColor['pink']
-      buttons[this.state.curr].color = this.state.bgColor['blue']
+      // buttons[this.state.curr].color = this.state.bgColor['blue']
 
       this.setState(Object.assign({}, this.state, {
         count: 4,        
         curr: idx,
+        seen: newTabs,
         buttons
       }))
     }    
@@ -118,25 +131,29 @@ class Recruiters extends Component {
 
   renderAll(ele, index) {                    
     const renderTitle = (idx) => {
-      if (this.state.curr === idx) {
+      if (this.state.curr === idx || this.state.seen[idx]) {
         return (
-          <h4>{ele.title}</h4>
+          <div>
+          <h4><TiArrowRightThick/></h4>          
+          </div>
         )
-      } else {
+      } else {                
         return (
           ele.icon
         )
       }
     }
-    return (         
-     <section key={index} className={cx('column')}          
-        style={{ backgroundColor: ele.color}} 
-        onClick={val => this.changeView(val, ele, index)}>                        
-        {renderTitle(index)}
-        <div className={cx('overlay')}>                  
-          <h4>{ele.title}</h4>
-        </div>             
+    return (              
+     <div>
+       <section key={index} className={cx('column')}          
+          style={{ backgroundColor: ele.color}} 
+          onClick={val => this.changeView(val, ele, index)}>                                
+          {renderTitle(index)}        
+          <div className={cx('overlay')}>                  
+            <h4>{ele.title}</h4>
+          </div>                         
       </section>          
+    </div>
    )
   }             
             

@@ -76,13 +76,6 @@ section .column {
   backface-visibility: hidden;            
 }
 
-.shiftUp { 
-  transform: translate3d(0, 40px, 0);
-}
-
-.shiftDown { 
-  transform: translate3d(0,-40px, 0);
-}
 
 .overlay {    
   position: absolute;  
@@ -125,7 +118,7 @@ section .column:hover .overlay {
 }
 
 .right-content {
-  width: 75vw;  
+  width: 70vw;  
   display: flex;
   justify-content: center;
   flex-direction: column;  
@@ -175,8 +168,8 @@ section .column:hover .overlay {
 .profile > img {  
   margin: 1%;    
   flex: 0 1 auto;
-  max-height: 25vh;
-  max-width: 25vh;
+  max-width: 100%;
+  height: auto;
 }
 
 .intro-para {    

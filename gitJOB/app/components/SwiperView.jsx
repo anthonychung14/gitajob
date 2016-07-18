@@ -7,6 +7,8 @@ import slides from 'data/recruiterData'
 
 import classNames from 'classnames/bind';
 import styles from 'css/components/slide.css'
+import LandingForm from 'components/LandingForm'
+
 const cx = classNames.bind(styles);
 
 class SwiperView extends Component {      
@@ -21,6 +23,7 @@ class SwiperView extends Component {
 
   render() {                    
     return (              
+      <section>
       <SwipeableViews
           style={style} 
           index={this.props.curr}>        
@@ -31,7 +34,9 @@ class SwiperView extends Component {
               calcScore={this.props.calcScore} onSubmit={this.submitFeedback}/>
           )}
         )}        
-      </SwipeableViews>      
+      </SwipeableViews>
+      <LandingForm onSubmit={this.submitFeedback}/>                  
+      </section>
     )
   }
 }

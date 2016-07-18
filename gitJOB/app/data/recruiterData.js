@@ -15,6 +15,9 @@ import Teamwork from 'images/teamwork.gif'
 import Cat from 'images/cattyping.gif'
 import Haha from 'images/haha.gif'
 import Face from 'images/arrowtoFace.gif'
+import Resume from 'images/resumes.gif'
+import FaGithubAlt from 'react-icons/lib/fa/github-alt'
+
 import ReactIcon from 'images/tech/react.png'
 import Babel from 'images/tech/babel.png'
 import Node from 'images/tech/nodeExpress.png'
@@ -27,6 +30,7 @@ import TiChartLine from 'react-icons/lib/ti/chart-line'
 import TiUserAdd from 'react-icons/lib/ti/user-add'
 
 import StartupYou from 'images/startupyou.png'
+import Tina from 'images/tinafey.gif'
 
 import classNames from 'classnames/bind';
 import styles from 'css/components/tab-view.css'
@@ -39,7 +43,36 @@ import FeedbackForm from 'components/FeedbackForm'
 
 const slides = [
 {
-  claim: 'Want to get in touch? This app will text me if you fill out the below box',
+  claim: 'Stuck? Please let me know!',
+  picture: Jam,
+  warrants: [
+    {
+      hover: <iframe src={Resume} width="480" height="301" frameBorder="0" allowFullScreen></iframe>,
+      explanations: {
+        name: 'Tired of all the resumes in your inbox?',
+        descript: [                    
+          <div className={cx('list-item')}>
+            1. Click icons like these
+            <div className={cx('column')}>
+              <FaGithubAlt/>
+              </div>              
+              to change slides         
+          </div>,
+          <div>2. When you see them, hover over icons like this <TiSocial className={cx('pic-example')}/> or even this <img className={cx('pic-example')} src={ReactIcon}/> for more content. </div>,          
+          <div>Or this <img className={cx('pic-example')} src={TFA}/> and even these <img className={cx('pic-example')} src={Redis}/></div>,
+
+          <div className={cx('gif-caption')}>
+            <div>Sweet. Good luck</div>
+              <iframe src={Tina} width="400" height="250" frameBorder="0" allowFullScreen/>
+          </div>
+        ]
+      }
+    }  
+  ]
+},    
+
+{
+  claim: "You'll text me if you fill out the below box",
   picture: Jam,
   warrants: [  
   {
@@ -50,7 +83,6 @@ const slides = [
         <div>Recruiters have to quickly determine technical quality and fit from large pools of candidates</div>,
         <div>You might call us startups, since we're asking you to invest your time (the most valuable resource)</div>,                        
         <div>This single-page application (within another app haha) is my way of asking you to invest in me</div>,        
-        <div>Start by hovering over the beige icons!</div>        
       ]
     }
   },

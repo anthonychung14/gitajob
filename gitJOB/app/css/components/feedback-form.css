@@ -1,15 +1,24 @@
+.landing-signup-inline {  
+  margin: 1%;
+}
+
+.landing-form {
+  display: flex;
+  flex-wrap:wrap;  
+}
+.landing-form-group {
+  margin: .5%;
+}
+
 .signup-inline {
   width: 100%;
-
 }
 
 fieldset > p {
   display: flex;
   justify-content: center;
-
 }
 
 fieldset > textarea {
   width: 75%;
-
 }

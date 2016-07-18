@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import LandingForm from 'components/LandingForm'
 
 import classNames from 'classnames/bind';
 import styles from 'css/components/tab-view.css'
@@ -72,9 +71,7 @@ class TabView extends Component {
                     
           <div className={cx('head-container')}>
             <h4>{claim}</h4>
-            <LandingForm onSubmit={this.props.onSubmit}/>            
-          </div>                         
-        
+          </div>                                 
         </section>
     )
   }
