@@ -34,9 +34,6 @@ class TabView extends Component {
     }
     
     render(){          
-      let layoverStyle;              
-      layoverStyle = this.state.hover ? {opacity: 1} : {opacity: 1}            
-            
       const currentSlide = slides[this.props.index]
       const claim = currentSlide.claim
       const claimPicture = currentSlide.picture
@@ -62,7 +59,7 @@ class TabView extends Component {
               )}
             </div> 
 
-            <div className={cx('layover')} style={layoverStyle}>                                        
+            <div className={cx('layover')}>                                        
               <div className={cx('layover-header')}>{activeName}</div>
               <ul className={cx('layover-text')}>{activeDescript.map((ele,idx) => {
                 return (

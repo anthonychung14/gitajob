@@ -18,15 +18,15 @@ import TiHeart from 'react-icons/lib/ti/heart'
 import slides from 'data/recruiterData'
 
 const cx = classNames.bind(styles);
-const buttons = [    
+const buttons = [ 
   {
-    id: 1,
-    title: 'Skills',
-    icon: <TiCode />,
+    id: 4,
+    title: 'Start',
+    icon: <FaBolt />,
     color: '#f22195',
     seen: false,    
-    header: 'I can contribute right away in these technologies'
-  }, 
+    header: 'Invest for growth, potential, and past performance' 
+  },     
   {
     id: 2,
     title: 'Team',
@@ -36,21 +36,21 @@ const buttons = [
     header: "I bring a diverse background of professional experience"
   }, 
   {
+    id: 1,
+    title: 'Skills',
+    icon: <TiCode />,
+    color: '#2196F3',
+    seen: false,    
+    header: 'I can contribute right away in these technologies'
+  }, 
+  {
     id: 3,
     title: 'Scale',
     icon: <FaRocket />,
     color: '#2196F3',
     seen: false,    
-    header: 'Since finishing Hack Reactor in February, I also picked up these technologies'
-  },    
-  {
-    id: 4,
-    title: 'Growth',
-    icon: <FaBolt />,
-    color: '#2196F3',
-    seen: false,    
-    header: 'Invest for growth, potential, and past performance' 
-  },
+    header: 'Since finishing Hack Reactor in February, I have built on my skills with these'
+  },      
   {
     id: 5,
     title: 'Connect',

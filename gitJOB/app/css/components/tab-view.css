@@ -1,3 +1,7 @@
+ul li {
+  margin: 1%;
+}
+
 .meta-slide {
   display: flex;  
   flex-direction: column;
@@ -51,9 +55,7 @@
   justify-content: center;
 }
 
-.tech-container {    
-  margin: 1%;
-  padding: 1%;
+.tech-container {        
   display: flex;
   max-height: 25vh; 
   justify-content: center;  
@@ -101,10 +103,13 @@ ul {
 .layover-text {
   font-size: 2vmin;  
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .gif-caption {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }

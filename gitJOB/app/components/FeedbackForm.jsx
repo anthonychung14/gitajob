@@ -72,7 +72,7 @@ class FeedbackForm extends Component {
           
           <fieldset>                       
             <legend>Go ahead. Make my day</legend>
-            <textarea size="20" maxlength="200" type="positive" required className={cx("text-area")} name="positive" placeholder="Write right away"
+            <textarea size="20" maxlength="200" type="positive" required className={cx("text-area")} name="positive" placeholder="Time to get Schwifty in here"
               onChange={this.handleChange}/>              
           </fieldset>          
           

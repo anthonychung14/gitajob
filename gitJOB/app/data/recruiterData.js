@@ -12,6 +12,7 @@ import USAFA from 'images/usafalogo.jpeg'
 import TFA from 'images/tfalogo.jpg'
 
 import Teamwork from 'images/teamwork.gif'
+import Cat from 'images/cattyping.gif'
 import Haha from 'images/haha.gif'
 import Face from 'images/arrowtoFace.gif'
 import ReactIcon from 'images/tech/react.png'
@@ -25,6 +26,8 @@ import TiSocial from 'react-icons/lib/ti/social-linkedin'
 import TiChartLine from 'react-icons/lib/ti/chart-line'
 import TiUserAdd from 'react-icons/lib/ti/user-add'
 
+import StartupYou from 'images/startupyou.png'
+
 import classNames from 'classnames/bind';
 import styles from 'css/components/tab-view.css'
 const cx = classNames.bind(styles);
@@ -36,6 +39,93 @@ import FeedbackForm from 'components/FeedbackForm'
 
 const slides = [
 {
+  claim: 'Talk to me about my side-projects (both recent and in-progress)!',
+  picture: Jam,
+  warrants: [  
+  {
+    hover: <div className={cx('icon-bar')}><TiSocial/></div>,
+    explanations: {
+      name: <div>Consider<span><img src={StartupYou}/></span>by the LinkedIn co-founders</div>,
+      descript: [        
+        <div>Recruiters have to quickly determine technical quality and fit from large pools of candidates</div>,
+        <div>You might call us startups, since we're asking you to invest your time (the most valuable resource)</div>,                        
+        <div>This single-page application (within another app haha) is my way of asking you to invest in me</div>,        
+        <div>Start by hovering over the beige icons</div>        
+      ]
+    }
+  },
+
+  {
+    hover: <div className={cx('icon-bar')}><TiChartLine/></div>,
+    explanations: {
+      name: "Here's the thing about bootcamps",
+      descript: [        
+        "Given onboarding constraints, the stakes around hiring, saturation of entry-level market, the filtering mechanism recruiters have developed is justified",
+        "However, you could also look at it from a perspective of growth",        
+        "Here's a link to the Paul Graham article about why growth matters",
+        "Here's an article about how bootcamp grads do against others"        
+      ]
+    }
+  },
+  
+   {
+    hover: <div className={cx('icon-bar')}><TiUserAdd/></div>,
+    explanations: {
+      name: "TLDR: Here's what I add",
+      descript: [        
+        <div className={cx('gif-caption')}><div>Awesome teamwork</div><iframe src={Teamwork} width="400" height="250" frameBorder="0" allowFullScreen/></div>,
+        <div className={cx('gif-caption')}>JavaScript is my<span><img src={Jam}/></span></div>,
+        <div className={cx('gif-caption')}><div>Contagious enthusiasm</div><iframe src={Cat} width="400" height="250" frameBorder="0"/></div>,
+      ]
+    }
+  }
+  ]
+},
+
+{
+  claim: 'I have implemented training programs, managed teams, and worked with peers and management',
+  picture: Jam,
+  warrants: [{
+    hover: <img src={USAFA} className={cx('photo-image')}/>,
+    explanations: {
+      name: 'Air Force',
+      descript: [
+      'Shaved my head and marched in circles (among other things)', 
+      'Leadership over both squadron and cadet-wing', 
+      'Jumping out of airplanes', 
+      'Actual bootcamp (lol)'
+      ]
+    }
+  },
+  {
+    hover: <img src={TFA} className={cx('photo-image')}/>,
+    explanations: {
+      name: '7th grade teacher',
+      descript: [
+      'Charter school (they loved the military)', 
+      'Five subjects to a 26-student class', 
+      'Teaching and developing a growth-mindset', 
+      'Empathetic communication', 
+      'Students crush state tests with some of the highest pass rates in district (96% math)'
+      ]
+    }
+  },
+  {
+    hover: <img src={Accenture} className={cx('photo-image')}/>,
+    explanations: {
+      name: 'Management Consulting',
+      descript: [
+      'Learning accounting and accounting software in one week', 
+      'Programmed scripts in Microsoft Visual Basic', 
+      'Management team for thirty-person operation', 
+      'Delivered on multiple daily deadlines.', 
+      'Built on clear communication from teaching'
+      ]
+    }
+  }]
+},
+
+{
   claim: 'Contact me to help you grow your platform!',
   picture: Jam,
   warrants: [ 
@@ -44,9 +134,9 @@ const slides = [
     explanations: {
       name: 'React',
       descript: [
-        'This app is in React/Redux',
-        "React's tradeoffs with Angular/Angular 2/Backbone/Ember", 
-        'Benefits/roadblocks around isomorphic JavaScript'
+        'I built this single-page application (and four others) using React',
+        "I can talk to you about tradeoffs with Angular/Angular 2/Backbone/Ember", 
+        'I have experienced the benefits/roadblocks around isomorphic JavaScript'
       ]
     }
   }, 
@@ -55,9 +145,9 @@ const slides = [
     explanations: {
       name: 'Redux',
       descript: [
-        'Why I chose Redux over other implementations', 
-        'How to leverage other libraries to handle an expanding state tree', 
-        'How to maximize the performance of Redux applications'
+        'Three apps in Redux (including this one)', 
+        'Thinking about how to to best design state trees in complicated apps', 
+        'I Love maximizing performance of Redux (and any other tech really)'
       ]
     }
   }, 
@@ -66,9 +156,9 @@ const slides = [
     explanations: {
       name: 'API Design',
       descript: [
-      'Anatomy of a RESTful API and its importance', 
+      'Practical and academic experience with a RESTful API and its importance', 
       'Data modeling and schema design', 
-      'Streams and observables as a tool for async'
+      'Leveraging streams and observables with functional programming'
       ]
     }
   }, 
@@ -77,8 +167,8 @@ const slides = [
     explanations: {
       name: 'Build tools',
       descript: [
-       'Connecting Webpack to Python/Django', 
-       'Comparison with Browserify, Gulp, and Grunt', 
+       'Connecting Webpack with Python/Django. Because reasons', 
+       'Comparison with other build tools Browserify, Gulp, and Grunt', 
        'Modularizing CSS loaders to optimize load-times'
        ]
     }
@@ -100,54 +190,13 @@ const slides = [
     explanations: {
       name: 'TDD',
       descript: [
-      'Python - using Nose to test API logic', 
-      'Node/React - unit testing', 
-      'Either - Seleneium to mock user flow/auth/etc.'
+      'Python - Nose to test API logic and unit test', 
+      'Node/React/Redux - unit/component/reducer testing', 
+      'Either - Seleneium to mock user flow/auth for integration testing'
       ]
     }
   }
   ]
-},
-{
-  claim: 'I have implemented training programs, managed teams, and worked with peers and management',
-  picture: Jam,
-  warrants: [{
-    hover: <img src={USAFA} className={cx('photo-image')}/>,
-    explanations: {
-      name: 'Air Force',
-      descript: [
-      'Military academy', 
-      'Leadership over squadron and cadet-wing', 
-      'Discipline', 
-      'lol, actual bootcamps']
-    }
-  },
-  {
-    hover: <img src={TFA} className={cx('photo-image')}/>,
-    explanations: {
-      name: '7th grade teacher',
-      descript: [
-      'Charter school (they loved the military)', 
-      'Five subjects to a 26-student class', 
-      'The growth-mindset', 
-      'Empathy and social justice', 
-      'Doubling the math state test pass-rate'
-      ]
-    }
-  },
-  {
-    hover: <img src={Accenture} className={cx('photo-image')}/>,
-    explanations: {
-      name: 'Management Consulting',
-      descript: [
-      'Learning accounting and accounting software in one week', 
-      'Programmed scripts in Microsoft Visual Basic', 
-      'Management team for thirty-person operation', 
-      'Delivered on multiple daily deadlines.', 
-      'Built on clear communication from teaching'
-      ]
-    }
-  }]
 },
 {
   claim: "I love to learn. We would get along if you do too!",
@@ -164,7 +213,7 @@ const slides = [
     hover: <img src={AWS} className={cx('photo-image')}/>, 
     explanations: {
       name: 'AWS',
-      descript: ['EC2', 'S3', 'Cloudfront']
+      descript: ['EC2 deployment', 'S3 upload from Python scripts and MongoDB', 'Cloudfront distribution with Nginx load balancing']
     }
   }, 
   {
@@ -199,47 +248,6 @@ const slides = [
   ]
 },
 
-{
-  claim: 'Talk to me about my side-projects (both recent and in-progress)!',
-  picture: Jam,
-  warrants: [  
-  {
-    hover: <div className={cx('icon-bar')}><TiSocial/></div>,
-    explanations: {
-      name: "We are all startups",
-      descript: [
-        <div>Founder of LinkedIn wrote a book on this very topic</div>,
-        <div>"The fastest way to change yourself is to hang out with people who are already the way you want to be."</div>,
-        <div>"No matter how brilliant your mind or strategy, if you’re playing a solo game, you’ll always lose out to a team."</div>,
-      ]
-    }
-  },
-
-  {
-    hover: <div className={cx('icon-bar')}><TiChartLine/></div>,
-    explanations: {
-      name: "Why growth is important ",
-      descript: [
-        'If you want to understand startups, understand growth. Growth drives everything in this world. Growth is why startups usually work on technology—because ideas for fast growing companies are so rare that the best way to find new ones is to discover those recently made viable by change, and technology is the best source of rapid change.',
-        'Understanding growth is what starting a startup consists of',
-        'So important, in fact, that I said this other thing too'
-      ]
-    }
-  },
-  
-   {
-    hover: <div className={cx('icon-bar')}><TiUserAdd/></div>,
-    explanations: {
-      name: "TLDR: Here's what I add",
-      descript: [        
-        <div className={cx('gif-caption')}><div>Awesome team powers</div><iframe src={Teamwork} width="400" height="250" frameBorder="0" allowFullScreen/></div>,
-        <div className={cx('gif-caption')}>JavaScript is my<span><img src={Jam}/></span></div>,
-        <div className={cx('gif-caption')}><div>I make the haha</div><iframe src={Haha} width="400" height="250" frameBorder="0" allowFullScreen/></div>,
-      ]
-    }
-  }
-  ]
-},
 {
   claim: 'Look forward to chatting!',
   picture: Jam,
