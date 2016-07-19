@@ -116,8 +116,12 @@ ul {
   align-items: center;
 }
 
-.gif-landing {    
-  
+.gif-landing {  
+  align-self: center;  
+}
+
+li .gif-landing {
+  width: 50%;
 }
 
 .gif-collection {
