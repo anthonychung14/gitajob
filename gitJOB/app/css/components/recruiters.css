@@ -6,18 +6,27 @@
 
 .hero-ownership {
   background-color: black;
-  display: flex;  
+  display: -webkit-flex;
+
+  display: flex;
+
   flex-wrap: wrap;    
 }
 
 .why-me {
+  display: -webkit-flex;
+
   display: flex;
+
   flex-wrap: wrap;
   justify-content: center;  
 }
 
 .my-values {    
+  display: -webkit-flex;
+
   display: flex;
+
   flex-direction: row;
   flex-wrap: wrap;
 }
@@ -63,7 +72,10 @@ section .column {
   border: 1px solid white;
   color: white;    
 
+  display: -webkit-flex;
+
   display: flex;
+
   flex-direction: column;  
   align-items: center;
 
@@ -82,7 +94,11 @@ section .column {
   top: .01%;  
   height: 100%;
   width: 100%;
+  display: -webkit-flex;
+
+
   display: flex;
+
   flex-direction: column;
   align-items: center;
   background-color: #f22195;
@@ -112,6 +128,8 @@ section .column:hover .overlay {
   height: 80vh;
   text-align: center;
   display: flex;
+  display: -webkit-flex;
+
   flex-direction: row;
   flex-wrap: wrap;  
   justify-content: space-around;      
@@ -120,6 +138,7 @@ section .column:hover .overlay {
 .right-content {
   width: 70vw;  
   display: flex;
+  display: -webkit-flex;
   justify-content: center;
   flex-direction: column;  
 }
@@ -139,6 +158,7 @@ section .column:hover .overlay {
   background-color: black;
   color: white;
   display: flex;
+  display: -webkit-flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
@@ -151,7 +171,10 @@ section .column:hover .overlay {
   margin: 1%;  
 }
 .profile-text {
+  display: -webkit-flex;
+
   display: flex;
+
   flex-wrap: wrap;
 }
 
@@ -174,7 +197,10 @@ section .column:hover .overlay {
 
 .intro-para {    
   color: white;
+  display: -webkit-flex;
+
   display: flex;
+
   justify-content: space-between;
   flex-direction: row;
   height: 65vh;
@@ -194,7 +220,10 @@ svg {
   color: white;    
 
   background-color: #f22195;
+  display: -webkit-flex;
+
   display: flex;
+
   flex-direction: column;  
   justify-content: center;
   align-items: center;
@@ -228,4 +257,15 @@ svg {
   flex: 0 1 auto;
 }
 
+h5 {
+  font-size: 2.0vh;
+}
+
+h4 {
+  font-size: 2.0vw;
+}
+
+h2 {
+  font-size: 2.0vw;
+}
   

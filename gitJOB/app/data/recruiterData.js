@@ -51,17 +51,17 @@ const slides = [
       explanations: {
         name: 'Tired of all the resumes in your inbox?',
         descript: [                    
-          <div className={cx('list-item')}>
-            1. Click icons like these
+          <div className={cx('list-item')}>1. Click icons like these
             <div className={cx('column')}>
               <FaGithubAlt/>
-              </div>              
-              to change slides         
+            </div>              
+              to change slides
           </div>,
-          <div>2. When you see them, hover over icons like this <TiSocial className={cx('pic-example')}/> or even this <img className={cx('pic-example')} src={ReactIcon}/> for more content. </div>,          
-          <div>Or this <img className={cx('pic-example')} src={TFA}/> and even these <img className={cx('pic-example')} src={Redis}/></div>,
+          <div className={cx('list-item')}>2. When you see them, hover over icons like these<br/> 
+                <TiSocial className={cx('pic-example')}/> <img className={cx('pic-example')} src={TFA}/>  <img className={cx('pic-example')} src={ReactIcon}/> <img className={cx('pic-example')} src={Redis}/>
+          </div>,          
 
-          <div className={cx('gif-caption')}>
+          <div className={cx('gif-landing')}>
             <div>Sweet. Good luck</div>
               <iframe src={Tina} width="400" height="250" frameBorder="0" allowFullScreen/>
           </div>

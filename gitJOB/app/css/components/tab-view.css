@@ -13,7 +13,7 @@ ul li {
 .top-half {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  
 }
 
 .icon-bar {    
@@ -55,20 +55,6 @@ ul li {
   justify-content: center;
 }
 
-.tech-container {        
-  display: flex;
-  max-height: 30vh; 
-  justify-content: center;  
-  overflow-x: scroll;
-}
-
-.photo-tile {  
-  margin: 1%;
-  max-height: 15vh;
-  max-width: 30%;
-  display: flex;  
-}
-
 .photo-image {  
   margin: 1%;
   max-height: 10vh;
@@ -89,6 +75,20 @@ ul {
   list-style: none;
 }
 
+.tech-container {        
+  display: flex;
+  display: -webkit-flex;  
+  justify-content: center;
+  margin: 1%;    
+}
+
+.photo-tile {  
+  margin: 1%;
+  
+  max-width: 30%;
+  display: flex;  
+}
+
 .layover {  
   display: flex;
   flex-direction: column;
@@ -101,9 +101,11 @@ ul {
 
 .layover-text {
   font-size: 2vmin;  
-  display: flex;
+  display: flex;  
+  flex-wrap: wrap;
   flex-direction: column;
-  overflow-y: scroll;
+  justify-content: space-between;
+
 }
 
 .gif-caption {
@@ -114,30 +116,29 @@ ul {
   align-items: center;
 }
 
+.gif-landing {    
+  
+}
+
 .gif-collection {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
 
-.list-item {
-  display: flex;
-  margin: 1%;
+.list-item {  
+  margin: 1%;  
+  width: 100%;
 }
 
 div .column {      
-  top: 1%;  
+  
   height: 4vh;
-  width: 10vw;
+  width: 5vw;
   border-style: solid;
   color: white;
-  background-color: #2196F3;    
-  margin-left: 2%;
-  margin-right: 2%;
-
-  display: flex;
-  flex-direction: column;  
-  align-items: center;  
+  background-color: #2196F3;        
+  display: inline-block;
 
   transition: 1s transform;
   -webkit-transition: 1s -webkit-transform;
