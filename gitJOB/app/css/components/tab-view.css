@@ -124,6 +124,10 @@ li .gif-landing {
   width: 50%;
 }
 
+li .list-item {
+  width: 50%; 
+}
+
 .gif-collection {
   display: flex;
   flex-wrap: wrap;
