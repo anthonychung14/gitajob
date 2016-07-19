@@ -26,7 +26,7 @@
   width: 100%;
   padding: 1%;
   background-color: #2196F3;  
-  border-style: solid;
+  border: 1px solid white;
   text-align: center;
   font-size: large;
   color: white;        
@@ -59,8 +59,8 @@ transform: scale(1.1);
 section .column {      
   top: 1%;  
   height: 4vh;
-  width: 10vw;
-  border-style: solid;
+  width: 7vw;
+  border: 1px solid white;
   color: white;    
 
   display: flex;
@@ -142,7 +142,7 @@ section .column:hover .overlay {
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  border-style: solid;
+  border: 1px solid white;
   border-color: white;
   flex-wrap: wrap;  
   height: 75vh;
@@ -159,7 +159,7 @@ section .column:hover .overlay {
   width: 100%;
   padding: 1%;
   background-color: #2196F3;
-  border-style: solid;  
+  border: 1px solid white;  
   text-align: center;
   font-size: large;
   color: white;    
@@ -190,7 +190,7 @@ svg {
   top: 1%;  
   height: 4vh;
   width: 10vw;
-  border-style: solid;
+  border: 1px solid white;
   color: white;    
 
   background-color: #f22195;
@@ -200,7 +200,7 @@ svg {
   align-items: center;
   color: white;    
   
-  border-style: solid;  
+  border: 1px solid white;  
 
   transition: 1s transform;
   -webkit-transition: 1s -webkit-transform;
