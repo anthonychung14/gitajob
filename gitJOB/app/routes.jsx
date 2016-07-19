@@ -54,4 +54,3 @@ export default (store) => {
   );
 };
 
-// <Route path="about" component={About} />
