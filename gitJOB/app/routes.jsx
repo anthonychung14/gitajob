@@ -33,7 +33,7 @@ export default (store) => {
     const { user: { authenticated }} = store.getState();
     if (authenticated) {
       replace({
-        pathname: '/dashboard'
+        pathname: '/postings'
       });
     }
     callback();
@@ -45,9 +45,8 @@ export default (store) => {
   };
   return (
     <Route path="/" component={App}>      
-      <IndexRoute component={About}/>      
-      <Route path="login" component={LoginOrRegister} />
-      <Route path="about" component={About} />
+      <IndexRoute component={About}/>            
+      <Route path="about" component={About}/>
       <Route path="dashboard" component={Dashboard} onEnter={requireAuth} onLeave={changeFilter} />
       <Route path="postings" component={Posting} onEnter={requireAuth} onLeave={changeFilter} />
       <Route path="recruiters" component={Recruiters} />

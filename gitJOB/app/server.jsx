@@ -23,7 +23,7 @@ axios.defaults.baseURL = `http://${clientConfig.host}:${clientConfig.port}`;
  * We grab the state passed in from the server and the req object from Express/Koa
  * and pass it into the Router.run function.
  */
-export default function render(req, res) {
+export default function render(req, res) {  
   const authenticated = req.isAuthenticated();
   const history = createMemoryHistory();
   const store = configureStore({
