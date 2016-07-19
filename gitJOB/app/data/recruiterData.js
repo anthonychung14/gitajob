@@ -18,6 +18,8 @@ import Face from 'images/arrowtoFace.gif'
 import Resume from 'images/resumes.gif'
 import FaGithubAlt from 'react-icons/lib/fa/github-alt'
 
+import MyMan from 'images/myman.gif'
+
 import ReactIcon from 'images/tech/react.png'
 import Babel from 'images/tech/babel.png'
 import Node from 'images/tech/nodeExpress.png'
@@ -49,7 +51,7 @@ const slides = [
     {
       hover: <iframe src={Resume} width="480" height="301" frameBorder="0" allowFullScreen></iframe>,
       explanations: {
-        name: 'Tired of all the resumes in your inbox?',
+        name: 'Too many resumes?',
         descript: [                    
           <div className={cx('list-item')}>1. Click icons like these
             <div className={cx('column')}>
@@ -62,8 +64,8 @@ const slides = [
           </div>,          
 
           <div className={cx('gif-landing')}>
-            <div>Sweet. Good luck</div>
-              <iframe src={Tina} width="400" height="250" frameBorder="0" allowFullScreen/>
+            <div>Yeah. This is being fixed right now</div>
+              <iframe src={MyMan} width="400" height="250" frameBorder="0" allowFullScreen/>
           </div>
         ]
       }

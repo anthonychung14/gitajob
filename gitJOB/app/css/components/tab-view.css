@@ -38,8 +38,7 @@ ul li {
   -webkit-transform: scale(1.2) translate(0, 10%);
 }
 
-.head-container {
-  margin: 2%;  
+.head-container {    
   display: flex;    
   flex-direction: column;
   justify-content: center;  
@@ -120,12 +119,13 @@ ul {
   align-self: center;  
 }
 
-li .gif-landing {
-  width: 50%;
+li .list-item {
+  display: inline-block;
+  align-items: flex-start;
 }
 
-li .list-item {
-  width: 50%; 
+li .gif-landing {
+  display: inline-block;
 }
 
 .gif-collection {
@@ -135,8 +135,7 @@ li .list-item {
 }
 
 .list-item {  
-  margin: 1%;  
-  width: 100%;
+  margin: 1%;    
 }
 
 div .column {      
