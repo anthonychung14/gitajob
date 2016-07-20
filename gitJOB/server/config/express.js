@@ -26,6 +26,7 @@ export default (app) => {
   
   if (ENV === 'production') {
     app.use(gzip());
+    app.enable('trust proxy')
   }
 
   app.use(bodyParser.json());

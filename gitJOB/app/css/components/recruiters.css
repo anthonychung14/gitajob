@@ -6,26 +6,35 @@
 
 .hero-ownership {
   background-color: black;
-  display: -webkit-flex;
 
-  display: flex;
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
 
   flex-wrap: wrap;    
 }
 
 .why-me {
-  display: -webkit-flex;
 
-  display: flex;
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
 
   flex-wrap: wrap;
   justify-content: center;  
 }
 
 .my-values {    
-  display: -webkit-flex;
 
-  display: flex;
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
 
   flex-direction: row;
   flex-wrap: wrap;
@@ -72,9 +81,12 @@ section .column {
   border: 1px solid white;
   color: white;    
 
-  display: -webkit-flex;
 
-  display: flex;
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
 
   flex-direction: column;  
   align-items: center;
@@ -94,10 +106,13 @@ section .column {
   top: .01%;  
   height: 100%;
   width: 100%;
-  display: -webkit-flex;
 
 
-  display: flex;
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
 
   flex-direction: column;
   align-items: center;
@@ -127,7 +142,11 @@ section .column:hover .overlay {
   max-width: 100%;
   height: 80vh;
   text-align: center;
-  display: flex;
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
   display: -webkit-flex;
 
   flex-direction: row;
@@ -137,7 +156,11 @@ section .column:hover .overlay {
 
 .right-content {
   width: 70vw;  
-  display: flex;
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
   display: -webkit-flex;
   justify-content: center;
   flex-direction: column;  
@@ -157,7 +180,11 @@ section .column:hover .overlay {
   margin: 1%;
   background-color: black;
   color: white;
-  display: flex;
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
   display: -webkit-flex;
   justify-content: space-between;
   align-items: center;
@@ -171,9 +198,12 @@ section .column:hover .overlay {
   margin: 1%;  
 }
 .profile-text {
-  display: -webkit-flex;
 
-  display: flex;
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
 
   flex-wrap: wrap;
 }
@@ -197,9 +227,12 @@ section .column:hover .overlay {
 
 .intro-para {    
   color: white;
-  display: -webkit-flex;
 
-  display: flex;
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
 
   justify-content: space-between;
   flex-direction: row;
@@ -220,9 +253,12 @@ svg {
   color: white;    
 
   background-color: #f22195;
-  display: -webkit-flex;
 
-  display: flex;
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
 
   flex-direction: column;  
   justify-content: center;
