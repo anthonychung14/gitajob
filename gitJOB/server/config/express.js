@@ -82,8 +82,8 @@ export default (app) => {
     // Add HTTPOnly, Secure attributes on Session Cookie
     // If secure is set, and you access your site over HTTP, the cookie will not be set
     cookie: {
-      httpOnly: true,
-      secure: false,
+      httpOnly: false,
+      secure: true,
     },
     store: sessionStore
   };
