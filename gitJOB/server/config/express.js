@@ -83,7 +83,7 @@ export default (app) => {
     // If secure is set, and you access your site over HTTP, the cookie will not be set
     cookie: {
       httpOnly: false,
-      secure: true,
+      secure: false,
     },
     store: sessionStore
   };
@@ -96,7 +96,7 @@ export default (app) => {
   if (ENV === 'production') {
     console.log('===> 🚦  Note: In order for authentication to work in production');
     console.log('===>           you will need a secure HTTPS connection');
-    sess.cookie.secure = true; // Serve secure cookies
+    sess.cookie.secure = false; // Serve secure cookies
   }
   console.log('--------------------------');
 
