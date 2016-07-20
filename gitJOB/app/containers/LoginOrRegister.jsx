@@ -92,10 +92,13 @@ class LoginOrRegister extends Component {
                 value={isLogin ? 'Login' : 'Register'} />
             </form>
           </div>
-          <div className={cx('google-container')}>
-           <h1 className={cx('heading')}>LinkedIn</h1>
+          <div className={cx('google-container')}>           
            <a className={cx('button')}
          href="/auth/linkedin">Login with LinkedIn</a>
+         </div>          
+         <div className={cx('google-container')}>           
+           <a className={cx('button')}
+         href="/auth/google">Login with Google</a>
          </div>          
         </div>
       </div>
